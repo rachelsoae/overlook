@@ -1,5 +1,6 @@
 /* 
 COLOR PALETTE:
+Dark Green ~ #032A2E
 Carribean Current (dark teal) ~ #006D77
 Tiffany Blue (light teal) ~ #83C5BE
 Alice Blue (off white) ~ #EDF6F9
@@ -13,19 +14,20 @@ Open Sans 300 400 ~ Body Text
 */
 
 * {
-  border: 1px solid #006D77;
+  /* border: 1px solid #006D77; */
 }
 
 body {
   background: #EDF6F9;
   font-size: 62.5%;
+  padding: 3em;
 }
 
 /* DASHBOARD */
 /* HEADER */
 
 header {
-  padding: 3em;
+  padding: 0 3em;
 }
 
 .header-content,
@@ -55,7 +57,7 @@ h1 {
 
 .date-picker,
 .search {
-  height: 100%;
+  height: 80%;
 }
 
 .date-picker {
@@ -65,7 +67,9 @@ h1 {
 .search {
   width: 25%; 
   font-family: 'Trirong', serif;
-  font-size: 2rem;
+  font-size: 1.75rem;
+  background-color: #FFDDD2;
+  border: none;
 }
 
 /* BOOKINGS - CUSTOMER VIEW */
@@ -73,23 +77,55 @@ h1 {
 main {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding: 3em;
 }
 
 .bookings {
   margin: 3em;
   background-color: #FFFFFF;
   border: solid #E29578 2px;
+  margin: 0;
+  width: 100%;
+  padding: 3em;
+}
+
+.bookings-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bookings-cost {
+  display: flex;
+  align-items: center;
+  width: 15%;
+}
+
+h3,
+.bookings-cost-upcoming,
+.bookings-cost-past {
+  font-family: 'Trirong', serif;
+  font-size: 1.4rem;
+  color: #032A2E;
+}
+
+.bookings-div {
+  height: 2px;
+  width: 90%;
+  background-color: #83C5BE;
+  margin: 3em;
   border-radius: 20px;
 }
 
 h2 {
   font-family: 'Trirong', serif;
   font-size: 2rem;
-  margin-left: 3em;
+  color: #032A2E;
 }
 
 p {
   font-family: 'Open Sans', sans-serif;
   text-align: center; 
   font-size: 1rem;
+  color: #032A2E;
 }
