@@ -1,3 +1,95 @@
+/* 
+COLOR PALETTE:
+Carribean Current (dark teal) ~ #006D77
+Tiffany Blue (light teal) ~ #83C5BE
+Alice Blue (off white) ~ #EDF6F9
+Pale Dogwood (peach) ~ #FFDDD2
+Atomic tangerine (burnt orange) ~ #E29578
+
+FONTS:
+Ropa Sans 400 Normal ~ Header/Logo
+Trirong Extra Light 200 Italic ~ Sub-Headers
+Open Sans 300 400 ~ Body Text
+*/
+
+* {
+  border: 1px solid #006D77;
+}
+
 body {
-  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+  background: #EDF6F9;
+  font-size: 62.5%;
+}
+
+/* DASHBOARD */
+/* HEADER */
+
+header {
+  padding: 3em;
+}
+
+.header-content,
+h1,
+.date-search {
+  margin: 0;
+}
+
+.header-content,
+.date-search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+h1 {
+  font-family: 'Ropa Sans', sans-serif;
+  color: #006D77;
+  font-size: 6rem;
+}
+
+.date-search {
+  width: 65%;
+  height: 8em;
+  margin: 0;
+}
+
+.date-picker,
+.search {
+  height: 100%;
+}
+
+.date-picker {
+  width: 70%;
+}
+
+.search {
+  width: 25%; 
+  font-family: 'Trirong', serif;
+  font-size: 2rem;
+}
+
+/* BOOKINGS - CUSTOMER VIEW */
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+.bookings {
+  margin: 3em;
+  background-color: #FFFFFF;
+  border: solid #E29578 2px;
+  border-radius: 20px;
+}
+
+h2 {
+  font-family: 'Trirong', serif;
+  font-size: 2rem;
+  margin-left: 3em;
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center; 
+  font-size: 1rem;
 }

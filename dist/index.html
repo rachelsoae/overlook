@@ -4,10 +4,36 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Ropa+Sans&family=Trirong:ital,wght@1,200&display=swap" rel="stylesheet">
+  <title>The Overlook</title>
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo">
+  <header>
+    <div class="header-content">
+      <h1>THE OVERLOOK</h1>
+      <form class="date-search">
+        <select class="date-picker">datepicker</select>
+        <button class="search">Search </button>
+      </form>
+    </div>
+  </header>
+  <main class="dashboard-view">
+    <section class="bookings">
+      <h2>Upcoming Bookings</h2>
+      <section class="bookings-upcoming">
+        <p>You don't have any upcoming bookings!</p>
+      </section>
+    </section>
+    <section class="bookings">
+      <h2>Past Bookings</h2>
+      <section class="bookings-past">
+        <p>You don't have any past bookings!</p>
+      </section>
+    </section>
+  </main>
+  
   
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
