@@ -11,6 +11,11 @@ FONTS:
 Ropa Sans 400 Normal ~ Header/Logo
 Trirong Extra Light 200 Italic ~ Sub-Headers
 Open Sans 300 400 ~ Body Text
+
+ICONS:
+Bed: <span class="material-symbols-round">bed</span>
+Moon: <span class="material-symbols-rounded">bedtime</span>
+
 */
 
 * {
@@ -67,9 +72,10 @@ h1 {
 .search {
   width: 25%; 
   font-family: 'Trirong', serif;
-  font-size: 1.75rem;
-  background-color: #FFDDD2;
+  font-size: 2rem;
+  background-color: #E29578;
   border: none;
+  color: #FFFFFF;
 }
 
 /* BOOKINGS - CUSTOMER VIEW */
@@ -130,4 +136,39 @@ p {
   text-align: center; 
   font-size: 1rem;
   color: #032A2E;
+}
+
+/* SEARCH VIEW */
+
+.bookings-searched {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.room {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #83C5BE;
+  padding: 2em;
+  padding-right: 10em;
+  margin: 2em;
+  width: 80%;
+  border: 1px solid #FFDDD2;
+  
+}
+
+.room-image{
+  width: 10%;
+}
+
+.room,
+.room-image {
+  border-radius: 12px;
+}
+
+.num-beds-container {
+  display: flex;
+  align-items: center;
 }

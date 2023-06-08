@@ -5,8 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Ropa+Sans&family=Trirong:ital,wght@1,200&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Ropa+Sans&family=Trirong:ital,wght@1,200&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
+      rel="stylesheet">
   <title>The Overlook</title>
 </head>
 <body>
@@ -15,7 +17,7 @@
       <h1>THE OVERLOOK</h1>
       <form class="date-search">
         <select class="date-picker">datepicker</select>
-        <button class="search">Search </button>
+        <button class="search">Book Your Stay</button>
       </form>
     </div>
   </header>
@@ -48,28 +50,24 @@
   </main>
   <main class="book-room-view">
     <section class="bookings">
-      <div class="bookings-header">
-        <h2>Upcoming Bookings</h2>
-        <span class="bookings-cost">
-          <h3>Total Cost:</h3>
-          <span class="bookings-cost-upcoming">$  </span>
-        </span>
-      </div>
-      <section class="bookings-upcoming">
-        <p>You don't have any upcoming bookings!</p>
-      </section>
-    </section>
-    <div class="bookings-div"></div>
-    <section class="bookings">
-      <div class="bookings-header">
-        <h2>Past Bookings</h2>
-        <span class="bookings-cost">
-          <h3>Total Cost:</h3>
-          <span class="bookings-cost-past">$  </span>
-        </span>
-      </div>
-      <section class="bookings-past">
-        <p>You don't have any past bookings!</p>
+      <h2>Search Results</h2>
+      <section class="bookings-searched">
+        <article class="room">
+          <img class="room-image" src="./images/jr-suite.png">
+          <p class="room-type">Junior Suite</p>
+          <span class="num-beds-container">
+            <span class="num-beds">
+              2
+            </span>
+            <span class="material-icons-round">
+              bed
+            </span>
+          </span>
+          <p class="bed-size">Queen</p>
+          <p class="bidet">Has bidet</p>
+          <p class="cost-per-night">$dollars</p>
+        </article>
+        <p>We're so sorry - all rooms are booked for the date you have selected. Please book a different date, or choose another room type.</p>
       </section>
     </section>
   </main>
