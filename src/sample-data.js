@@ -3,7 +3,7 @@ const bookings = [
     "id": "1180820",
     "userID": 1,
     "date": "2018/08/20",
-    "roomNumber": 3
+    "roomNumber": 2
   },
   {
     "id": "5131202",
@@ -39,13 +39,13 @@ const bookings = [
     "id": "1220422",
     "userID": 1,
     "date": "2022/04/22",
-    "roomNumber": 1
+    "roomNumber": 3
   },  
   {
     "id": "5200311",
     "userID": 5,
     "date": "2020/03/11",
-    "roomNumber": 3
+    "roomNumber": 1
   }
 ]
 

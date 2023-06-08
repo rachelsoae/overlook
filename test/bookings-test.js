@@ -1,12 +1,13 @@
 import chai from 'chai';
 const expect = chai.expect;
 import { bookings, rooms, customers } from '../src/sample-data'
-import { getBookings } from '../src/bookings'
+import { getBookings, getTotalCost } from '../src/bookings'
 
 describe('Should access customer\'s information', () => {
   const customer1 = customers[0];
   const customer2 = customers[1];
   const allBookings = bookings;
+  const allRooms = rooms;
 
   it('Should list all user\'s previous bookings', () => {
     const customer1Bookings = getBookings(allBookings, customer1)
@@ -16,7 +17,7 @@ describe('Should access customer\'s information', () => {
         "id": "1180820",
         "userID": 1,
         "date": "2018/08/20",
-        "roomNumber": 3
+        "roomNumber": 2
       },
       {
         "id": "1160422",
@@ -34,7 +35,7 @@ describe('Should access customer\'s information', () => {
         "id": "1220422",
         "userID": 1,
         "date": "2022/04/22",
-        "roomNumber": 1
+        "roomNumber": 3
       }
     ]);
   });
@@ -65,8 +66,24 @@ describe('Should access customer\'s information', () => {
         "id": "5200311",
         "userID": 5,
         "date": "2020/03/11",
-        "roomNumber": 3
+        "roomNumber": 1
       }
     ]);
+  });
+
+  it('Should be able to calculate the total cost of bookings for a user', () => {
+    const customer1Bookings = getBookings(allBookings, customer1)
+
+    const customer1Cost = getTotalCost(allRooms, customer1Bookings)
+
+    expect(customer1Cost).to.equal('1875.34')
+  });
+
+  it('Should be able to calculate the total cost for a different user', () => {
+    const customer2Bookings = getBookings(allBookings, customer2)
+
+    const customer2Cost = getTotalCost(allRooms, customer2Bookings)
+
+    expect(customer2Cost).to.equal('1623.62')
   });
 });
