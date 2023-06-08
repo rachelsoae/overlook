@@ -102,7 +102,7 @@ main {
   width: 85%;
   justify-content: space-between;
   align-items: center;
-  margin: 1em 7em;
+  margin: 4em 7em 2em;;
 }
 
 .bookings-cost {
@@ -123,18 +123,22 @@ main {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  margin-bottom: 4em;
 }
 
 .room {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: space-around; */
-  background-color: #83C5BE;
+  background-color: #FFDDD2;
   padding: 2em 0 ;
   margin: 2em;
   width: 20%;
   border: 1px solid #FFDDD2;
+}
+
+.booking-date {
+  font-weight: 300;
 }
 
 .room-image{
@@ -178,6 +182,7 @@ p {
   font-size: 1rem;
   color: #032A2E;
   margin: 0.5em;
+  font-weight: 300;
 }
 
 /* SEARCH VIEW */

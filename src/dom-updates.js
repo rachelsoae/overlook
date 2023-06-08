@@ -27,7 +27,7 @@ const setDashboard = (customer, allBookings, allRooms) => {
     `
     <article class="room">
       <h3 class="room-type">${room.roomType}</h3>  
-      <p>${booking.date}</p>
+      <p class="booking-date">${booking.date}</p>
       <img class="room-image" src=${image}>
       <div class="room-details">
         <span class="num-beds-container">
