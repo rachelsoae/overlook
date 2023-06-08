@@ -108,20 +108,11 @@ main {
 }
 
 h3,
-.bookings-cost-upcoming,
-.bookings-cost-past {
+.bookings-cost-upcoming {
   font-family: 'Trirong', serif;
   font-size: 1.4rem;
   color: #032A2E;
   margin: 0;
-}
-
-.bookings-div {
-  height: 2px;
-  width: 90%;
-  background-color: #83C5BE;
-  margin: 3em;
-  border-radius: 20px;
 }
 
 h2 {
