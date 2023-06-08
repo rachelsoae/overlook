@@ -1,14 +1,16 @@
 import chai from 'chai';
 const expect = chai.expect;
 import { bookings, rooms, customers } from '../src/sample-data'
+import { getBookings } from '../src/bookings'
 
 describe('Should access customer\'s information', () => {
   const customer1 = customers[0];
   const customer2 = customers[1];
+  const allBookings = bookings;
 
   it('Should list all user\'s previous bookings', () => {
-    const customer1Bookings = getBookings(customer1)
-
+    const customer1Bookings = getBookings(allBookings, customer1)
+    
     expect(customer1Bookings).to.deep.equal([
       {
         "id": "1180820",
@@ -38,7 +40,7 @@ describe('Should access customer\'s information', () => {
   });
 
   it('Should be able to list bookings for a different user', () => {
-    const customer2Bookings = getBookings(customer2)
+    const customer2Bookings = getBookings(allBookings, customer2)
 
     expect(customer2Bookings).to.deep.equal([
       {
