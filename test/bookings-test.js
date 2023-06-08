@@ -100,8 +100,8 @@ describe('Cost per customer', () => {
   it('Should return 0 if the user has no bookings', () => {
     const customer3Bookings = getBookings(allBookings, customer3);
 
-    const customer1Cost = getTotalCost(allRooms, customer3Bookings);
+    const customer3Cost = getTotalCost(allRooms, customer3Bookings);
 
-    expect(customer1Cost).to.equal(0);
+    expect(customer3Cost).to.equal(0);
   })
 });
