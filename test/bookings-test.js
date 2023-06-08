@@ -3,12 +3,12 @@ const expect = chai.expect;
 import { bookings, rooms, customers } from '../src/sample-data'
 import { getBookings, getTotalCost } from '../src/bookings'
 
-describe('Should access customer\'s information', () => {
-  const customer1 = customers[0];
-  const customer2 = customers[1];
-  const allBookings = bookings;
-  const allRooms = rooms;
+const customer1 = customers[0];
+const customer2 = customers[1];
+const customer3 = customers[2];
+const allBookings = bookings;
 
+describe('Bookings per customer', () => {
   it('Should list all user\'s previous bookings', () => {
     const customer1Bookings = getBookings(allBookings, customer1)
     
@@ -71,6 +71,16 @@ describe('Should access customer\'s information', () => {
     ]);
   });
 
+  it('Should return a message if the user has no bookings', () => {    
+    const customer3Bookings = getBookings(allBookings, customer3)
+
+    expect(customer3Bookings).to.equal('You don\'t have any bookings yet. Book your first stay today!')
+  });
+});
+
+describe('Cost per customer', () => {
+  const allRooms = rooms;
+
   it('Should be able to calculate the total cost of bookings for a user', () => {
     const customer1Bookings = getBookings(allBookings, customer1)
 
@@ -86,4 +96,12 @@ describe('Should access customer\'s information', () => {
 
     expect(customer2Cost).to.equal('1623.62')
   });
+
+  it('Should return 0 if the user has no bookings', () => {
+    const customer3Bookings = getBookings(allBookings, customer3);
+
+    const customer1Cost = getTotalCost(allRooms, customer3Bookings);
+
+    expect(customer1Cost).to.equal(0);
+  })
 });

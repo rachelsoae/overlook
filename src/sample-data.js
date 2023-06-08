@@ -92,6 +92,10 @@ const customers = [
   {
     "id": 5,
     "name": "Rocio Schuster"
+  },
+  {
+    "id": 6,
+    "name": "Rachel Prather"
   }
 ]
 
