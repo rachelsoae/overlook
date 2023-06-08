@@ -28,7 +28,6 @@ body {
   padding: 3em;
 }
 
-/* DASHBOARD */
 /* HEADER */
 
 header {
@@ -78,7 +77,7 @@ h1 {
   color: #FFFFFF;
 }
 
-/* BOOKINGS - CUSTOMER VIEW */
+/* BOOKINGS */
 
 main {
   display: flex;
@@ -88,38 +87,89 @@ main {
 }
 
 .bookings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 3em;
   background-color: #FFFFFF;
   border: solid #E29578 1px;
   margin: 0;
   width: 100%;
-  padding: 3em;
 }
 
 .bookings-header {
   display: flex;
+  width: 85%;
   justify-content: space-between;
+  align-items: center;
+  margin: 1em 7em;
 }
 
 .bookings-cost {
   display: flex;
-  align-items: center;
-  width: 15%;
-}
-
-h3,
-.bookings-cost-upcoming {
+  align-items: baseline;
+  width: 20%;
   font-family: 'Trirong', serif;
   font-size: 1.4rem;
   color: #032A2E;
   margin: 0;
 }
 
-h2 {
+.bookings-cost-insert {
+  margin-left: 1em;
+}
+
+.bookings-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.room {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: space-around; */
+  background-color: #83C5BE;
+  padding: 2em 0 ;
+  margin: 2em;
+  width: 20%;
+  border: 1px solid #FFDDD2;
+}
+
+.room-image{
+  width: 50%;
+}
+
+.room,
+.room-image {
+  border-radius: 12px;
+}
+
+.room-details {
+  display: flex;
+  width: 60%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.num-beds-container {
+  display: flex;
+  align-items: center;
+}
+
+h2, h3 {
   font-family: 'Trirong', serif;
-  font-size: 2rem;
   color: #032A2E;
   margin: 0;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.4rem;
 }
 
 p {
@@ -127,6 +177,7 @@ p {
   text-align: center; 
   font-size: 1rem;
   color: #032A2E;
+  margin: 0.5em;
 }
 
 /* SEARCH VIEW */
@@ -135,33 +186,6 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center; 
-}
-
-.room {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  background-color: #83C5BE;
-  padding: 2em;
-  padding-right: 10em;
-  margin: 2em;
-  width: 80%;
-  border: 1px solid #FFDDD2;
-  
-}
-
-.room-image{
-  width: 10%;
-}
-
-.room,
-.room-image {
-  border-radius: 12px;
-}
-
-.num-beds-container {
-  display: flex;
-  align-items: center;
 }
 
 .hidden {

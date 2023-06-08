@@ -28,6 +28,7 @@ import {
 
 // * GLOBAL VARIABLES * //
 const yourBookings = document.querySelector('.bookings-list')
+const yourBookingsCost = document.querySelector('.bookings-cost-insert')
 
 // Event Listeners
 window.addEventListener('load', () => {
@@ -44,5 +45,6 @@ export {
   bookings,
   rooms,
   customers,
-  yourBookings
+  yourBookings,
+  yourBookingsCost
 }

@@ -4,17 +4,19 @@ import {
 } from './bookings'
 
 import {
-  bookings,
-  rooms,
-  customers,
-  yourBookings
+  yourBookings,
+  yourBookingsCost
 } from './scripts'
 
 const setDashboard = (customer, allBookings, allRooms) => {
   const usersBookings = getBookings(allBookings, customer);
   const spent = getTotalCost(allRooms, usersBookings);
 
+  yourBookingsCost.innerHTML = '';
   yourBookings.innerHTML = '';
+
+  yourBookingsCost.innerHTML = `$${spent}`
+
   usersBookings.forEach(booking => {
     let room = allRooms.find(room => room.number === booking.roomNumber);
     let image = setRoomImage(room);
@@ -24,16 +26,18 @@ const setDashboard = (customer, allBookings, allRooms) => {
     yourBookings.innerHTML += 
     `
     <article class="room">
-          <img class="room-image" src=${image}>
-          <p class="room-type">${room.roomType}</p>
-          <span class="num-beds-container">
-            <span class="num-beds">${room.numBeds}</span>
-            <span class="material-icons-round">bed</span>
-          </span>
-          <p class="bed-size">${room.bedSize}</p>
-          <p class="bidet">${bidet}</p>
-          <p class="cost-per-night">$${room.costPerNight}/night</p>
-        </article>
+      <h3 class="room-type">${room.roomType}</h3>  
+      <p>${booking.date}</p>
+      <img class="room-image" src=${image}>
+      <div class="room-details">
+        <span class="num-beds-container">
+          <p class="num-beds">${room.numBeds}</p>
+          <span class="material-icons-round">bed</span>
+        </span>
+        <p class="bed-size">${room.bedSize}</p>
+        <p class="bidet">${bidet}</p>
+      </div>
+    </article>
     `
   })
 }
