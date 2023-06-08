@@ -1,15 +1,15 @@
 const bookings = [
   {
-    "id": "1220422",
-    "userID": 1,
-    "date": "2022/04/22",
-    "roomNumber": 1
-  },
-  {
     "id": "1180820",
     "userID": 1,
     "date": "2018/08/20",
     "roomNumber": 3
+  },
+  {
+    "id": "5131202",
+    "userID": 5,
+    "date": "2013/12/02",
+    "roomNumber": 4
   },
   {
     "id": "1160422",
@@ -24,11 +24,11 @@ const bookings = [
     "roomNumber": 2
   },
   {
-    "id": "5131202",
+    "id": "5190629",
     "userID": 5,
-    "date": "2013/12/02",
-    "roomNumber": 4
-  },
+    "date": "2019/06/29",
+    "roomNumber": 1
+  },  
   {
     "id": "5230501",
     "userID": 5,
@@ -36,11 +36,11 @@ const bookings = [
     "roomNumber": 2
   },
   {
-    "id": "5190629",
-    "userID": 5,
-    "date": "2019/06/29",
+    "id": "1220422",
+    "userID": 1,
+    "date": "2022/04/22",
     "roomNumber": 1
-  },
+  },  
   {
     "id": "5200311",
     "userID": 5,
@@ -77,7 +77,7 @@ const rooms = [
   {
     "number": 4,
     "roomType": "junior suite",
-    "bidet": truse,
+    "bidet": true,
     "bedSize": "twin",
     "numBeds": 2,
     "costPerNight": 429.44
@@ -94,3 +94,5 @@ const customers = [
     "name": "Rocio Schuster"
   }
 ]
+
+export { bookings, rooms, customers }
