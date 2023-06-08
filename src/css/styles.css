@@ -1,3 +1,178 @@
+/* 
+COLOR PALETTE:
+Dark Green ~ #032A2E
+Carribean Current (dark teal) ~ #006D77
+Tiffany Blue (light teal) ~ #83C5BE
+Alice Blue (off white) ~ #EDF6F9
+Pale Dogwood (peach) ~ #FFDDD2
+Atomic tangerine (burnt orange) ~ #E29578
+
+FONTS:
+Ropa Sans 400 Normal ~ Header/Logo
+Trirong Extra Light 200 Italic ~ Sub-Headers
+Open Sans 300 400 ~ Body Text
+
+ICONS:
+Bed: <span class="material-symbols-round">bed</span>
+Moon: <span class="material-symbols-rounded">bedtime</span>
+
+*/
+
+* {
+  /* border: 1px solid #006D77; */
+}
+
 body {
-  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+  background: #EDF6F9;
+  font-size: 62.5%;
+  padding: 3em;
+}
+
+/* DASHBOARD */
+/* HEADER */
+
+header {
+  padding: 0 3em;
+}
+
+.header-content,
+h1,
+.date-search {
+  margin: 0;
+}
+
+.header-content,
+.date-search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+h1 {
+  font-family: 'Ropa Sans', sans-serif;
+  color: #006D77;
+  font-size: 6rem;
+}
+
+.date-search {
+  width: 65%;
+  height: 8em;
+  margin: 0;
+}
+
+.date-picker,
+.search {
+  height: 80%;
+}
+
+.date-picker {
+  width: 70%;
+}
+
+.search {
+  width: 25%; 
+  font-family: 'Trirong', serif;
+  font-size: 2rem;
+  background-color: #E29578;
+  border: none;
+  color: #FFFFFF;
+}
+
+/* BOOKINGS - CUSTOMER VIEW */
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6em;
+}
+
+.bookings {
+  margin: 3em;
+  background-color: #FFFFFF;
+  border: solid #E29578 1px;
+  margin: 0;
+  width: 100%;
+  padding: 3em;
+}
+
+.bookings-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bookings-cost {
+  display: flex;
+  align-items: center;
+  width: 15%;
+}
+
+h3,
+.bookings-cost-upcoming,
+.bookings-cost-past {
+  font-family: 'Trirong', serif;
+  font-size: 1.4rem;
+  color: #032A2E;
+  margin: 0;
+}
+
+.bookings-div {
+  height: 2px;
+  width: 90%;
+  background-color: #83C5BE;
+  margin: 3em;
+  border-radius: 20px;
+}
+
+h2 {
+  font-family: 'Trirong', serif;
+  font-size: 2rem;
+  color: #032A2E;
+  margin: 0;
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center; 
+  font-size: 1rem;
+  color: #032A2E;
+}
+
+/* SEARCH VIEW */
+
+.bookings-searched {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.room {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #83C5BE;
+  padding: 2em;
+  padding-right: 10em;
+  margin: 2em;
+  width: 80%;
+  border: 1px solid #FFDDD2;
+  
+}
+
+.room-image{
+  width: 10%;
+}
+
+.room,
+.room-image {
+  border-radius: 12px;
+}
+
+.num-beds-container {
+  display: flex;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
 }
