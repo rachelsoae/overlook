@@ -1,19 +1,10 @@
 // * IMPORTS * //
-
-// Stylesheet
 import './css/styles.css';
 
-// Images
 import './images/jr-suite.png'
 import './images/res-suite.png'
 import './images/suite.png'
 import './images/single-room.png'
-
-// Functions
-import {
-  getBookings,
-  getTotalCost
-} from './bookings'
 
 import {
   getCustomersData,
@@ -25,35 +16,34 @@ import {
   setDashboard
 } from './dom-updates'
 
-// SAMPLE DATA TO BE DELETED AND REPLACED WITH API CALLS
-import {
-  bookings,
-  rooms,
-  customers
-} from './sample-data'
+import flatpickr from 'flatpickr'
 
 // * GLOBAL VARIABLES * //
-let allCustomers, allBookings, allRooms;
+let customers, bookings, rooms;
 
 const yourBookings = document.querySelector('.bookings-list')
 const yourBookingsCost = document.querySelector('.bookings-cost-insert')
+const dateField = document.querySelector('.date-picker')
 
 // Event Listeners
-
 window.addEventListener('load', () => {
   Promise.all([getCustomersData(), getBookingsData(), getRoomsData()])
   .then(data => {
-    allCustomers = data[0].customers
-    allBookings = data[1].bookings
-    allRooms = data[2].rooms
-    setDashboard(allCustomers[1], allBookings, allRooms)
-  })
-})
+    customers = data[0].customers
+    bookings = data[1].bookings
+    rooms = data[2].rooms
+    setDashboard(customers[1], bookings, rooms)
+  });
+  
+});
+
+
 
 export {
+  customers,
   bookings,
   rooms,
-  customers,
   yourBookings,
-  yourBookingsCost
+  yourBookingsCost,
+  dateField
 }
