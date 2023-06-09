@@ -1,7 +1,14 @@
 import chai from 'chai';
 const expect = chai.expect;
-import { bookings, bookings1, bookings5, rooms, customers } from '../src/sample-data'
-import { getBookings, getTotalCost } from '../src/bookings'
+import { 
+  bookings, 
+  bookings1, 
+  bookings5, 
+  rooms, 
+  availRooms1, 
+  customers 
+} from '../src/sample-data'
+import { getBookings, getTotalCost, searchByDate } from '../src/bookings'
 
 describe('Bookings per customer', () => {
   const customer1 = customers[0];
@@ -62,8 +69,28 @@ describe('Cost per customer', () => {
   })
 });
 
-describe('Search avaialable rooms', () => {
-  it.skip('Should return a list of rooms available on a given date', () => {
+describe('Search available rooms', () => {
+  const roomsAvailXmas2025 = availRooms1;
+  const allBookings = bookings;
+  const allRooms = rooms;
+  
+  it('Should return a list of rooms available on a given date', () => {
+    const date = '2025/12/25'
 
-  })
+    const roomsByDate = searchByDate(allBookings, allRooms, date);
+
+    expect(roomsByDate).to.deep.equal(roomsAvailXmas2025)
+  });
+
+  it.skip('Should return a message if no rooms are available', () => {
+
+  });
+
 })
+
+// if a room is available on a date, then bookings does NOT contain a booking with the same room number && date
+
+// iterate over bookings
+// return bookings with dates that match the given date
+// iterate over rooms
+// for each room, check to see if the room number is included in 
