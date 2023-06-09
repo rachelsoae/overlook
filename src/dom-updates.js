@@ -1,6 +1,7 @@
 import {
   getBookings,
-  getTotalCost
+  getTotalCost,
+  searchByDate
 } from './bookings'
 
 import {
@@ -8,14 +9,16 @@ import {
   yourBookingsCost,
   dateField,
   dashboard,
-  searchResults
+  searchResults,
+  availableRooms
 } from './scripts'
 
 const setDashboard = (customer, allBookings, allRooms) => {
   flatpickr(dateField, {
     minDate: 'today',
     altInput: true,
-    altFormat: "F j, Y"
+    altFormat: "F j, Y",
+    dateFormat: "Y/m/d"
   })
   
   const usersBookings = getBookings(allBookings, customer);
@@ -34,17 +37,13 @@ const setDashboard = (customer, allBookings, allRooms) => {
     yourBookings.innerHTML += 
     `
     <article class="room">
-      <h3 class="room-type">${room.roomType}</h3>  
+      <h3 class="room-type">${room.roomType} ${bidet}</h3>  
       <p class="booking-date">${booking.date}</p>
       <img class="room-image" src=${image} alt="photo of a ${room.roomType}">
       <div class="room-details">
-        <span class="num-beds-container">
-          <p class="num-beds">${room.numBeds}</p>
-          <span class="material-icons-round">bed</span>
-        </span>
-        <p class="bed-size">${room.bedSize}</p>
-        <p class="bidet">${bidet}</p>
-      </div>
+        <span class="material-icons-round">bed</span>  
+        <p class="num-beds">${room.numBeds} ${room.bedSize}</p>
+     </div>
     </article>
     `
   })
@@ -66,20 +65,44 @@ const setRoomImage = (room) => {
 
 const checkForBidet = (room) => {
   let bidet;
-  room.bidet ? bidet = 'has bidet' : bidet = 'no bidet'
+  room.bidet ? bidet = 'with bidet' : bidet = ''
   return bidet;
 }
 
-const viewSearchResults = () => {
+const displaySearchResults = (allBookings, allRooms, date) => {
   toggleHidden(dashboard)
   toggleHidden(searchResults)
+
+  const availRooms = searchByDate(allBookings, allRooms, date);
+
+  availableRooms.innerHTML = '';
+  availRooms.forEach(room => {
+    const image = setRoomImage(room);
+    const bidet = checkForBidet(room);
+    const cost = room.costPerNight.toFixed(2)
+    
+    availableRooms.innerHTML +=
+    `
+    <article class="room">
+      <h3 class="room-type">${room.roomType} ${bidet}</h3>  
+      <img class="room-image" src=${image} alt="photo of a ${room.roomType}">
+      <div class="room-details">
+        <span class="material-icons-round">bed</span>  
+        <p class="num-beds">${room.numBeds} ${room.bedSize}</p>
+      </div>
+      <p class="cost">$${cost} per night</p>
+    </article>
+    `
+  }) 
 }
 
 const toggleHidden = (element) => {
   element.classList.toggle('hidden')
 }
 
+
+
 export {
   setDashboard,
-  viewSearchResults
+  displaySearchResults
 }

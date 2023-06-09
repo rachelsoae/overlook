@@ -14,7 +14,7 @@ import {
 
 import {
   setDashboard,
-  viewSearchResults
+  displaySearchResults
 } from './dom-updates'
 
 import flatpickr from 'flatpickr'
@@ -27,7 +27,8 @@ const yourBookingsCost = document.querySelector('.bookings-cost-insert')
 const dateField = document.querySelector('.date-picker')
 const dateSearch = document.querySelector('form')
 const dashboard = document.querySelector('.dashboard-view');
-const searchResults = document.querySelector('.book-room-view')
+const searchResults = document.querySelector('.book-room-view');
+const availableRooms = document.querySelector('.bookings-searched')
 
 // Event Listeners
 window.addEventListener('load', () => {
@@ -43,9 +44,10 @@ window.addEventListener('load', () => {
 dateSearch.addEventListener('submit', (event) => {
   event.preventDefault();
   dateSearch.reset();
-  viewSearchResults();
+  if (dateField.value) {
+    displaySearchResults(bookings, rooms, dateField.value);
+  }
 })
-
 
 
 export {
@@ -56,5 +58,6 @@ export {
   yourBookingsCost,
   dateField,
   dashboard,
-  searchResults
+  searchResults,
+  availableRooms
 }

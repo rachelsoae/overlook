@@ -131,12 +131,20 @@ main {
   width: 100%;
 }
 
-.bookings-header {
+.bookings-header,
+.search-header {
   display: flex;
   width: 85%;
-  justify-content: space-between;
+  margin: 4em 7em 2em;
+}
+
+.bookings-header {
   align-items: center;
-  margin: 4em 7em 2em;;
+  justify-content: space-between;
+}
+
+.search-header {
+  justify-content: flex-start;
 }
 
 .bookings-cost {
@@ -153,7 +161,8 @@ main {
   margin-left: 1em;
 }
 
-.bookings-list {
+.bookings-list,
+.bookings-searched {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -187,12 +196,7 @@ main {
 .room-details {
   display: flex;
   width: 60%;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.num-beds-container {
-  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
@@ -212,14 +216,6 @@ h3 {
 
 p {
   text-align: center;
-}
-
-/* SEARCH VIEW */
-
-.bookings-searched {
-  display: flex;
-  flex-direction: column;
-  align-items: center; 
 }
 
 .hidden {
