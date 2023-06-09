@@ -21,14 +21,13 @@ const setDashboard = (customer, allBookings, allRooms) => {
     let room = allRooms.find(room => room.number === booking.roomNumber);
     let image = setRoomImage(room);
     let bidet = checkForBidet(room);
-    console.log(bidet)
 
     yourBookings.innerHTML += 
     `
     <article class="room">
       <h3 class="room-type">${room.roomType}</h3>  
       <p class="booking-date">${booking.date}</p>
-      <img class="room-image" src=${image}>
+      <img class="room-image" src=${image} alt="photo of a ${room.roomType}">
       <div class="room-details">
         <span class="num-beds-container">
           <p class="num-beds">${room.numBeds}</p>

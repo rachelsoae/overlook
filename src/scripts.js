@@ -16,6 +16,12 @@ import {
 } from './bookings'
 
 import {
+  getCustomersData,
+  getBookingsData,
+  getRoomsData,
+} from './api-calls'
+
+import {
   setDashboard
 } from './dom-updates'
 
@@ -27,19 +33,22 @@ import {
 } from './sample-data'
 
 // * GLOBAL VARIABLES * //
+let allCustomers, allBookings, allRooms;
+
 const yourBookings = document.querySelector('.bookings-list')
 const yourBookingsCost = document.querySelector('.bookings-cost-insert')
 
 // Event Listeners
+
 window.addEventListener('load', () => {
-  setDashboard(customers[0], bookings, rooms);
+  Promise.all([getCustomersData(), getBookingsData(), getRoomsData()])
+  .then(data => {
+    allCustomers = data[0].customers
+    allBookings = data[1].bookings
+    allRooms = data[2].rooms
+    setDashboard(allCustomers[1], allBookings, allRooms)
+  })
 })
-
-
-// on page load, display every booking for a user
-// get list of bookings
-// get total cost
-// display innerHTML
 
 export {
   bookings,
