@@ -6,6 +6,7 @@ import {
   bookings5, 
   rooms, 
   availRooms1, 
+  allRoomsBooked,
   customers 
 } from '../src/sample-data'
 import { getBookings, getTotalCost, searchByDate } from '../src/bookings'
@@ -73,17 +74,22 @@ describe('Search available rooms', () => {
   const roomsAvailXmas2025 = availRooms1;
   const allBookings = bookings;
   const allRooms = rooms;
+  const halloweenBookings = allRoomsBooked;
   
   it('Should return a list of rooms available on a given date', () => {
-    const date = '2025/12/25'
+    const date1 = '2025/12/25'
 
-    const roomsByDate = searchByDate(allBookings, allRooms, date);
+    const christmasRooms = searchByDate(allBookings, allRooms, date1);
 
-    expect(roomsByDate).to.deep.equal(roomsAvailXmas2025)
+    expect(christmasRooms).to.deep.equal(roomsAvailXmas2025)
   });
 
-  it.skip('Should return a message if no rooms are available', () => {
+  it('Should return a message if no rooms are available', () => {
+    const date2 = '2023/10/31'
 
+    const halloweenRooms = searchByDate(halloweenBookings, allRooms, date2);
+
+    expect(halloweenRooms).to.deep.equal('We\'re terribly sorry - all rooms are booked for the date you have selected. Please book a different date.')
   });
 
 })
