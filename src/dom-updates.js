@@ -5,10 +5,19 @@ import {
 
 import {
   yourBookings,
-  yourBookingsCost
+  yourBookingsCost,
+  dateField,
+  dashboard,
+  searchResults
 } from './scripts'
 
 const setDashboard = (customer, allBookings, allRooms) => {
+  flatpickr(dateField, {
+    minDate: 'today',
+    altInput: true,
+    altFormat: "F j, Y"
+  })
+  
   const usersBookings = getBookings(allBookings, customer);
   const spent = getTotalCost(allRooms, usersBookings);
 
@@ -61,6 +70,16 @@ const checkForBidet = (room) => {
   return bidet;
 }
 
+const viewSearchResults = () => {
+  toggleHidden(dashboard)
+  toggleHidden(searchResults)
+}
+
+const toggleHidden = (element) => {
+  element.classList.toggle('hidden')
+}
+
 export {
-  setDashboard
+  setDashboard,
+  viewSearchResults
 }

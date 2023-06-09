@@ -13,7 +13,8 @@ import {
 } from './api-calls'
 
 import {
-  setDashboard
+  setDashboard,
+  viewSearchResults
 } from './dom-updates'
 
 import flatpickr from 'flatpickr'
@@ -24,18 +25,26 @@ let customers, bookings, rooms;
 const yourBookings = document.querySelector('.bookings-list')
 const yourBookingsCost = document.querySelector('.bookings-cost-insert')
 const dateField = document.querySelector('.date-picker')
+const dateSearch = document.querySelector('form')
+const dashboard = document.querySelector('.dashboard-view');
+const searchResults = document.querySelector('.book-room-view')
 
 // Event Listeners
 window.addEventListener('load', () => {
   Promise.all([getCustomersData(), getBookingsData(), getRoomsData()])
-  .then(data => {
-    customers = data[0].customers
-    bookings = data[1].bookings
-    rooms = data[2].rooms
-    setDashboard(customers[1], bookings, rooms)
-  });
-  
+    .then(data => {
+      customers = data[0].customers
+      bookings = data[1].bookings
+      rooms = data[2].rooms
+      setDashboard(customers[1], bookings, rooms)
+    });
 });
+
+dateSearch.addEventListener('submit', (event) => {
+  event.preventDefault();
+  dateSearch.reset();
+  viewSearchResults();
+})
 
 
 
@@ -45,5 +54,7 @@ export {
   rooms,
   yourBookings,
   yourBookingsCost,
-  dateField
+  dateField,
+  dashboard,
+  searchResults
 }
