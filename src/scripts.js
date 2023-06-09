@@ -1,11 +1,59 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
+// * IMPORTS * //
 
-// An example of how you tell webpack to use a CSS (SCSS) file
+// Stylesheet
 import './css/styles.css';
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
+// Images
 import './images/jr-suite.png'
+import './images/res-suite.png'
+import './images/suite.png'
+import './images/single-room.png'
 
+// Functions
+import {
+  getBookings,
+  getTotalCost
+} from './bookings'
 
-console.log('This is the JavaScript entry file - your code begins here.');
+import {
+  getCustomersData,
+  getBookingsData,
+  getRoomsData,
+} from './api-calls'
+
+import {
+  setDashboard
+} from './dom-updates'
+
+// SAMPLE DATA TO BE DELETED AND REPLACED WITH API CALLS
+import {
+  bookings,
+  rooms,
+  customers
+} from './sample-data'
+
+// * GLOBAL VARIABLES * //
+let allCustomers, allBookings, allRooms;
+
+const yourBookings = document.querySelector('.bookings-list')
+const yourBookingsCost = document.querySelector('.bookings-cost-insert')
+
+// Event Listeners
+
+window.addEventListener('load', () => {
+  Promise.all([getCustomersData(), getBookingsData(), getRoomsData()])
+  .then(data => {
+    allCustomers = data[0].customers
+    allBookings = data[1].bookings
+    allRooms = data[2].rooms
+    setDashboard(allCustomers[1], allBookings, allRooms)
+  })
+})
+
+export {
+  bookings,
+  rooms,
+  customers,
+  yourBookings,
+  yourBookingsCost
+}
