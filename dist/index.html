@@ -15,9 +15,12 @@
   <header>
     <div class="header-content">
       <h1>THE OVERLOOK</h1>
-      <form class="date-search">
-        <select class="date-picker">datepicker</select>
-        <button class="search">Book Your Stay</button>
+      <form role="search" class="date-search">
+        <span class="date-picker-container">
+          <label for="date-picker" class="material-icons-round icon-calendar">calendar_month</label>
+          <input type="text" name="date-picker" class="date-picker" placeholder="Select a Date...">
+        </span>
+        <button type="submit" class="search">Book</button>
       </form>
     </div>
   </header>
@@ -49,6 +52,6 @@
   
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
-
+  
 </body>
 </html>

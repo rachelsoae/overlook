@@ -18,6 +18,8 @@ Moon: <span class="material-symbols-rounded">bedtime</span>
 
 */
 
+@import '~flatpickr/dist/flatpickr.css';
+
 * {
   /* border: 1px solid #006D77; */
 }
@@ -31,17 +33,18 @@ body {
 /* HEADER */
 
 header {
-  padding: 0 3em;
+  padding: 0 6em;
+  height: 10em;
 }
 
 .header-content,
 h1,
 .date-search {
   margin: 0;
+  height: 100%;
 }
 
-.header-content,
-.date-search {
+.header-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -54,27 +57,58 @@ h1 {
 }
 
 .date-search {
-  width: 65%;
-  height: 8em;
-  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 45%;
+  height: 100%;
+  color: #006D77;
+}
+
+input,
+.flatpickr-calendar,
+p {
+  font-family: 'Open Sans', sans-serif; 
+  font-size: 1rem;
+  color: #032A2E;
+  margin: 0.5em;
+  font-weight: 300;
+}
+
+input {
+  padding-left: 2em;
+}
+
+.date-picker-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 70%;
+}
+
+.icon-calendar {
+  font-size: 3rem;
+  color: #83C5BE;
+}
+
+.date-picker {
+  width: 90%;
+  height: 50%;
 }
 
 .date-picker,
 .search {
-  height: 80%;
-}
-
-.date-picker {
-  width: 70%;
+  height: 75%;
+  border: none;
 }
 
 .search {
-  width: 25%; 
+  width: 30%; 
   font-family: 'Trirong', serif;
   font-size: 2rem;
-  background-color: #E29578;
-  border: none;
+  background-color: #83C5BE;
   color: #FFFFFF;
+  margin: 0;
 }
 
 /* BOOKINGS */
@@ -147,7 +181,7 @@ main {
 
 .room,
 .room-image {
-  border-radius: 12px;
+  /* border-radius: 12px; */
 }
 
 .room-details {
@@ -177,12 +211,7 @@ h3 {
 }
 
 p {
-  font-family: 'Open Sans', sans-serif;
-  text-align: center; 
-  font-size: 1rem;
-  color: #032A2E;
-  margin: 0.5em;
-  font-weight: 300;
+  text-align: center;
 }
 
 /* SEARCH VIEW */
