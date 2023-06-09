@@ -14,7 +14,7 @@ const bookings = [
   {
     "id": "1160422",
     "userID": 1,
-    "date": "2016/04/22",
+    "date": "2025/12/25",
     "roomNumber": 4
   },
   {
@@ -59,7 +59,7 @@ const bookings1 = [
   {
     "id": "1160422",
     "userID": 1,
-    "date": "2016/04/22",
+    "date": "2025/12/25",
     "roomNumber": 4
   },
   {
@@ -138,6 +138,60 @@ const rooms = [
   }
 ]
 
+const availRooms1 = [
+  {
+    "number": 1,
+    "roomType": "residential suite",
+    "bidet": true,
+    "bedSize": "queen",
+    "numBeds": 1,
+    "costPerNight": 358.4
+  },
+  {
+    "number": 2,
+    "roomType": "suite",
+    "bidet": false,
+    "bedSize": "full",
+    "numBeds": 2,
+    "costPerNight": 477.38
+  },
+  {
+    "number": 3,
+    "roomType": "single room",
+    "bidet": false,
+    "bedSize": "king",
+    "numBeds": 1,
+    "costPerNight": 491.14
+  }
+]
+
+const allRoomsBooked = [
+  {
+    "id": "5131202",
+    "userID": 8,
+    "date": "2023/10/31",
+    "roomNumber": 4
+  },
+  {
+    "id": "5190629",
+    "userID": 12,
+    "date": "2023/10/31",
+    "roomNumber": 3
+  },
+  {
+    "id": "5230501",
+    "userID": 4,
+    "date": "2023/10/31",
+    "roomNumber": 2
+  },
+  {
+    "id": "5200311",
+    "userID": 1,
+    "date": "2023/10/31",
+    "roomNumber": 1
+  }
+]
+
 const customers = [
   {
     "id": 1,
@@ -153,4 +207,12 @@ const customers = [
   }
 ]
 
-export { bookings, bookings1, bookings5, rooms, customers }
+export { 
+  bookings, 
+  bookings1, 
+  bookings5, 
+  rooms, 
+  availRooms1,
+  allRoomsBooked,
+  customers
+}
