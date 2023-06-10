@@ -8,6 +8,7 @@ import {
   roomImages,
   yourBookings,
   yourBookingsCost,
+  yourBookingsCostContainer,
   dateField,
   dashboard,
   searchResults,
@@ -15,49 +16,27 @@ import {
 } from './scripts'
 
 const setDashboard = (customer, allBookings, allRooms) => {
+  show(dashboard)
+  hide(searchResults)
+  
   const usersBookings = getBookings(allBookings, customer);
   
   if (typeof usersBookings === 'string') {
-    yourBookingsCost.innerHTML = `<p>${usersBookings}</p>`
+    yourBookingsCostContainer.classList.add('invisible')
+    yourBookings.innerHTML = `<h3>${usersBookings}</h3>`
   } else {
+    yourBookingsCostContainer.classList.remove('invisible')
+
     const spent = getTotalCost(allRooms, usersBookings);
-
-    yourBookings.innerHTML = '';
-
     yourBookingsCost.innerHTML = `$${spent}`
-    
+
+    yourBookings.innerHTML = '';    
     usersBookings.forEach(booking => {
-      // getRoomInfo(booking)
-      let room = allRooms.find(room => room.number === booking.roomNumber);
-      let image = `./images/${roomImages[room.roomType]}.png`
-      let bidet = checkForBidet(room);
-  
-      yourBookings.innerHTML += 
-      `
-      <article class="room">
-        <h3 class="room-type">${room.roomType} ${bidet}</h3>  
-        <p class="booking-date">${booking.date}</p>
-        <img class="room-image" src=${image} alt="photo of a ${room.roomType}">
-        <div class="room-details">
-          <span class="material-icons-round">bed</span>  
-          <p class="num-beds">${room.numBeds} ${room.bedSize}</p>
-       </div>
-      </article>
-      `
+      const roomRef = allRooms.find(room => room.number === booking.roomNumber)
+      let dashRoom = getRoomDetails(roomRef)
+      yourBookings.innerHTML += createDashboardCard(dashRoom, booking)
     })
   }
-}
-
-// const getRoomInfo = (booking) => {
-//   let room = allRooms.find(room => room.number === booking.roomNumber);
-//   let image = `./images/${roomImages[booking.roomType]}.png`
-//   let bidet = checkForBidet(room);
-// }
-
-const checkForBidet = (room) => {
-  let bidet;
-  room.bidet ? bidet = 'with bidet' : bidet = ''
-  return bidet;
 }
 
 const displaySearchResults = (allBookings, allRooms, date) => {
@@ -65,30 +44,56 @@ const displaySearchResults = (allBookings, allRooms, date) => {
   show(searchResults)
 
   const availRooms = searchByDate(allBookings, allRooms, date);
-  availableRooms.innerHTML = '';
 
   if (typeof availRooms === 'string') {
-    availableRooms.innerHTML = `<p>${availRooms}</p>`
+    availableRooms.innerHTML = `<h3>${availRooms}</h3>`
   } else {
+    availableRooms.innerHTML = '';
     availRooms.forEach(room => {
-      const image = setRoomImage(room);
-      const bidet = checkForBidet(room);
-      const cost = room.costPerNight.toFixed(2)
-      
-      availableRooms.innerHTML +=
-      `
-      <article class="room">
-        <h3 class="room-type">${room.roomType} ${bidet}</h3>  
-        <img class="room-image" src=${image} alt="photo of a ${room.roomType}">
-        <div class="room-details">
-          <span class="material-icons-round">bed</span>  
-          <p class="num-beds">${room.numBeds} ${room.bedSize}</p>
-        </div>
-        <p class="cost">$${cost} per night</p>
-      </article>
-      `
+      let availRoom = getRoomDetails(room)
+      availableRooms.innerHTML += createSearchCard(availRoom)
     }) 
   }
+}
+
+const getRoomDetails = (room) => {
+  const roomInfo = {...room};
+  roomInfo.image = `./images/${roomImages[roomInfo.roomType]}.png`
+  roomInfo.bidet = room.bidet ? 'with bidet' : '';
+  roomInfo.cost = room.costPerNight.toFixed(2)
+  return roomInfo
+}
+
+const createDashboardCard = (room, booking) => {
+  const dashBookingCard =
+  `
+    <article class="room">
+      <h3 class="room-type">${room.roomType} ${room.bidet}</h3>  
+      <p class="booking-date">${booking.date}</p>
+      <img class="room-image" src=${room.image} alt="photo of a ${room.roomType}">
+      <div class="room-details">
+        <span class="material-icons-round">bed</span>  
+        <p class="num-beds">${room.numBeds} ${room.bedSize}</p>
+      </div>
+    </article>
+  `
+  return dashBookingCard
+}
+
+const createSearchCard = (room) => {
+  const searchRoomCard = 
+  `
+    <article class="room">
+      <h3 class="room-type">${room.roomType} ${room.bidet}</h3>  
+      <img class="room-image" src=${room.image} alt="photo of a ${room.roomType}">
+      <div class="room-details">
+        <span class="material-icons-round">bed</span>  
+        <p class="num-beds">${room.numBeds} ${room.bedSize}</p>
+      </div>
+      <p class="cost">$${room.cost} per night</p>
+    </article>
+  `
+  return searchRoomCard;
 }
 
 const hide = (element) => {
@@ -98,8 +103,6 @@ const hide = (element) => {
 const show = (element) => {
   element.classList.remove('hidden');
 }
-
-
 
 export {
   setDashboard,
