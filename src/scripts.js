@@ -29,6 +29,7 @@ const roomImages = {
 }
 
 const yourBookings = document.querySelector('.bookings-list')
+const yourBookingsCostContainer = document.querySelector('.bookings-cost')
 const yourBookingsCost = document.querySelector('.bookings-cost-insert')
 const dateField = document.querySelector('.date-picker')
 const dateSearch = document.querySelector('form')
@@ -68,6 +69,7 @@ export {
   rooms,
   roomImages,
   yourBookings,
+  yourBookingsCostContainer,
   yourBookingsCost,
   dateField,
   dashboard,
