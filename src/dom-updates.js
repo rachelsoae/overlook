@@ -5,6 +5,7 @@ import {
 } from './bookings'
 
 import {
+  roomImages,
   yourBookings,
   yourBookingsCost,
   dateField,
@@ -14,13 +15,6 @@ import {
 } from './scripts'
 
 const setDashboard = (customer, allBookings, allRooms) => {
-  flatpickr(dateField, {
-    minDate: 'today',
-    altInput: true,
-    altFormat: "F j, Y",
-    dateFormat: "Y/m/d"
-  })
-  
   const usersBookings = getBookings(allBookings, customer);
   
   if (typeof usersBookings === 'string') {
@@ -28,14 +22,14 @@ const setDashboard = (customer, allBookings, allRooms) => {
   } else {
     const spent = getTotalCost(allRooms, usersBookings);
 
-    yourBookingsCost.innerHTML = '';
     yourBookings.innerHTML = '';
 
     yourBookingsCost.innerHTML = `$${spent}`
     
     usersBookings.forEach(booking => {
+      // getRoomInfo(booking)
       let room = allRooms.find(room => room.number === booking.roomNumber);
-      let image = setRoomImage(room);
+      let image = `./images/${roomImages[room.roomType]}.png`
       let bidet = checkForBidet(room);
   
       yourBookings.innerHTML += 
@@ -54,19 +48,11 @@ const setDashboard = (customer, allBookings, allRooms) => {
   }
 }
 
-const setRoomImage = (room) => {
-  let image;
-  if (room.roomType === 'residential suite') {
-    image = './images/res-suite.png'
-  } else if (room.roomType === 'suite') {
-    image = './images/suite.png'
-  } else if (room.roomType === 'single room') {
-    image = './images/single-room.png'
-  } else {
-    image = './images/jr-suite.png'
-  }
-  return image;
-}
+// const getRoomInfo = (booking) => {
+//   let room = allRooms.find(room => room.number === booking.roomNumber);
+//   let image = `./images/${roomImages[booking.roomType]}.png`
+//   let bidet = checkForBidet(room);
+// }
 
 const checkForBidet = (room) => {
   let bidet;

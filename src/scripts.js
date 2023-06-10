@@ -21,6 +21,12 @@ import flatpickr from 'flatpickr'
 
 // * GLOBAL VARIABLES * //
 let customers, bookings, rooms;
+const roomImages = {
+  'residential suite': 'res-suite',
+  suite: 'suite',
+  'single room': 'single-room',
+  'junior suite': 'jr-suite'
+}
 
 const yourBookings = document.querySelector('.bookings-list')
 const yourBookingsCost = document.querySelector('.bookings-cost-insert')
@@ -32,6 +38,12 @@ const availableRooms = document.querySelector('.bookings-searched')
 
 // Event Listeners
 window.addEventListener('load', () => {
+  flatpickr(dateField, {
+    minDate: 'today',
+    altInput: true,
+    altFormat: "F j, Y",
+    dateFormat: "Y/m/d"
+  })
   Promise.all([getCustomersData(), getBookingsData(), getRoomsData()])
     .then(data => {
       customers = data[0].customers
@@ -54,6 +66,7 @@ export {
   customers,
   bookings,
   rooms,
+  roomImages,
   yourBookings,
   yourBookingsCost,
   dateField,
