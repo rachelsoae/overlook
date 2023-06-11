@@ -136,15 +136,8 @@ main {
   display: flex;
   width: 85%;
   margin: 4em 7em 2em;
-}
-
-.bookings-header {
   align-items: center;
   justify-content: space-between;
-}
-
-.search-header {
-  justify-content: flex-start;
 }
 
 .bookings-cost {

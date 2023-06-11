@@ -18,7 +18,7 @@
       <form role="search" class="date-search">
         <span class="date-picker-container">
           <label for="date-picker" class="material-icons-round icon-calendar">calendar_month</label>
-          <input type="text" name="date-picker" class="date-picker" placeholder="Select a Date...">
+          <input type="text" class="date-picker" id="date-picker" placeholder="Select a Date...">
         </span>
         <button type="submit" class="search">Book</button>
       </form>
@@ -44,10 +44,27 @@
     <section class="bookings">
       <div class="search-header">
         <h2>Search Results</h2>
+        <span class="bookings-cost">
+          <label for="filter">Filter Search Results:</label>
+          <select name="filter" class="filter" id="filter">
+            <optgroup label="Room Type">
+              <option value="residential suite">Residential Suite</option>
+              <option value="suite">Suite</option>
+              <option value="junior suite">Junior Suite</option>
+              <option value="single room">Single Room</option>
+            </optgroup>
+            <optgroup label="Bed Type">
+              <option value="king">King</option>
+              <option value="queen">Queen</option>
+              <option value="full">Full</option>
+              <option value="Twin">Twin</option>
+            </optgroup>
+          </select>
+        </span>
       </div>
-      <section class="bookings-searched">
-        <!-- Search Results Populate Here -->
-      </section>
+        <section class="bookings-searched">
+          <!-- Search Results Populate Here -->
+        </section>
     </section>
   </main>
   
