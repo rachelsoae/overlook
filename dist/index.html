@@ -44,21 +44,14 @@
     <section class="bookings">
       <div class="search-header">
         <h2>Search Results</h2>
-        <span class="bookings-cost">
-          <label for="filter">Filter Search Results:</label>
-          <select name="filter" class="filter" id="filter">
-            <optgroup label="Room Type">
-              <option value="residential suite">Residential Suite</option>
-              <option value="suite">Suite</option>
-              <option value="junior suite">Junior Suite</option>
-              <option value="single room">Single Room</option>
-            </optgroup>
-            <optgroup label="Bed Type">
-              <option value="king">King</option>
-              <option value="queen">Queen</option>
-              <option value="full">Full</option>
-              <option value="Twin">Twin</option>
-            </optgroup>
+        <span class="filter-container">
+          <label for="filter">Filter by Room Type:</label>
+          <select name="filter" id="filter">
+            <option value="all" selected>Any</option>
+            <option value="residential suite">Residential Suite</option>
+            <option value="suite">Suite</option>
+            <option value="junior suite">Junior Suite</option>
+            <option value="single room">Single Room</option>
           </select>
         </span>
       </div>

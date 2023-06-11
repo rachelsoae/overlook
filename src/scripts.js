@@ -20,7 +20,7 @@ import {
 import flatpickr from 'flatpickr'
 
 // * GLOBAL VARIABLES * //
-let customers, bookings, rooms;
+let customers, bookings, rooms, selectedDate;
 const roomImages = {
   'residential suite': 'res-suite',
   suite: 'suite',
@@ -58,7 +58,8 @@ dateSearch.addEventListener('submit', (event) => {
   event.preventDefault();
   dateSearch.reset();
   if (dateField.value) {
-    displaySearchResults(bookings, rooms, dateField.value);
+    selectedDate = dateField.value;
+    displaySearchResults(bookings, rooms, selectedDate);
   }
 })
 
