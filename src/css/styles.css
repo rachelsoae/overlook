@@ -18,6 +18,8 @@ Moon: <span class="material-symbols-rounded">bedtime</span>
 
 */
 
+@import '~flatpickr/dist/flatpickr.css';
+
 * {
   /* border: 1px solid #006D77; */
 }
@@ -31,17 +33,18 @@ body {
 /* HEADER */
 
 header {
-  padding: 0 3em;
+  padding: 0 6em;
+  height: 10em;
 }
 
 .header-content,
 h1,
 .date-search {
   margin: 0;
+  height: 100%;
 }
 
-.header-content,
-.date-search {
+.header-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -54,27 +57,58 @@ h1 {
 }
 
 .date-search {
-  width: 65%;
-  height: 8em;
-  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 45%;
+  height: 100%;
+  color: #006D77;
+}
+
+input,
+.flatpickr-calendar,
+p {
+  font-family: 'Open Sans', sans-serif; 
+  font-size: 1rem;
+  color: #032A2E;
+  margin: 0.5em;
+  font-weight: 300;
+}
+
+input {
+  padding-left: 2em;
+}
+
+.date-picker-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 70%;
+}
+
+.icon-calendar {
+  font-size: 3rem;
+  color: #83C5BE;
+}
+
+.date-picker {
+  width: 90%;
+  height: 50%;
 }
 
 .date-picker,
 .search {
-  height: 80%;
-}
-
-.date-picker {
-  width: 70%;
+  height: 75%;
+  border: none;
 }
 
 .search {
-  width: 25%; 
+  width: 30%; 
   font-family: 'Trirong', serif;
   font-size: 2rem;
-  background-color: #E29578;
-  border: none;
+  background-color: #83C5BE;
   color: #FFFFFF;
+  margin: 0;
 }
 
 /* BOOKINGS */
@@ -97,12 +131,20 @@ main {
   width: 100%;
 }
 
-.bookings-header {
+.bookings-header,
+.search-header {
   display: flex;
   width: 85%;
-  justify-content: space-between;
+  margin: 4em 7em 2em;
+}
+
+.bookings-header {
   align-items: center;
-  margin: 4em 7em 2em;;
+  justify-content: space-between;
+}
+
+.search-header {
+  justify-content: flex-start;
 }
 
 .bookings-cost {
@@ -119,7 +161,8 @@ main {
   margin-left: 1em;
 }
 
-.bookings-list {
+.bookings-list,
+.bookings-searched {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -147,18 +190,13 @@ main {
 
 .room,
 .room-image {
-  border-radius: 12px;
+  /* border-radius: 12px; */
 }
 
 .room-details {
   display: flex;
   width: 60%;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.num-beds-container {
-  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
@@ -177,22 +215,13 @@ h3 {
 }
 
 p {
-  font-family: 'Open Sans', sans-serif;
-  text-align: center; 
-  font-size: 1rem;
-  color: #032A2E;
-  margin: 0.5em;
-  font-weight: 300;
-}
-
-/* SEARCH VIEW */
-
-.bookings-searched {
-  display: flex;
-  flex-direction: column;
-  align-items: center; 
+  text-align: center;
 }
 
 .hidden {
   display: none;
+}
+
+.invisible {
+  visibility: hidden;
 }

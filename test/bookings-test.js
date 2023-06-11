@@ -1,74 +1,34 @@
 import chai from 'chai';
 const expect = chai.expect;
-import { bookings, rooms, customers } from '../src/sample-data'
-import { getBookings, getTotalCost } from '../src/bookings'
-
-const customer1 = customers[0];
-const customer2 = customers[1];
-const customer3 = customers[2];
-const allBookings = bookings;
+import { 
+  bookings, 
+  bookings1, 
+  bookings5, 
+  rooms, 
+  availRooms1, 
+  allRoomsBooked,
+  customers 
+} from '../src/sample-data'
+import { getBookings, getTotalCost, searchByDate } from '../src/bookings'
 
 describe('Bookings per customer', () => {
+  const customer1 = customers[0];
+  const customer2 = customers[1];
+  const customer3 = customers[2];
+  const allBookings = bookings;
+  const bookingsA = bookings1;
+  const bookingsB = bookings5;
+  
   it('Should list all user\'s previous bookings', () => {
     const customer1Bookings = getBookings(allBookings, customer1)
     
-    expect(customer1Bookings).to.deep.equal([
-      {
-        "id": "1180820",
-        "userID": 1,
-        "date": "2018/08/20",
-        "roomNumber": 2
-      },
-      {
-        "id": "1160422",
-        "userID": 1,
-        "date": "2016/04/22",
-        "roomNumber": 4
-      },
-      {
-        "id": "1211004",
-        "userID": 1,
-        "date": "2021/10/04",
-        "roomNumber": 2
-      },
-      {
-        "id": "1220422",
-        "userID": 1,
-        "date": "2022/04/22",
-        "roomNumber": 3
-      }
-    ]);
+    expect(customer1Bookings).to.deep.equal(bookingsA);
   });
 
   it('Should be able to list bookings for a different user', () => {
     const customer2Bookings = getBookings(allBookings, customer2)
 
-    expect(customer2Bookings).to.deep.equal([
-      {
-        "id": "5131202",
-        "userID": 5,
-        "date": "2013/12/02",
-        "roomNumber": 4
-      },
-      {
-        "id": "5190629",
-        "userID": 5,
-        "date": "2019/06/29",
-        "roomNumber": 1
-      },
-      {
-        "id": "5230501",
-        "userID": 5,
-        "date": "2023/05/01",
-        "roomNumber": 2
-      },
-      {
-        "id": "5200311",
-        "userID": 5,
-        "date": "2020/03/11",
-        "roomNumber": 1
-      }
-    ]);
+    expect(customer2Bookings).to.deep.equal(bookingsB);
   });
 
   it('Should return a message if the user has no bookings', () => {    
@@ -79,6 +39,10 @@ describe('Bookings per customer', () => {
 });
 
 describe('Cost per customer', () => {
+  const customer1 = customers[0];
+  const customer2 = customers[1];
+  const customer3 = customers[2];
+  const allBookings = bookings;
   const allRooms = rooms;
 
   it('Should be able to calculate the total cost of bookings for a user', () => {
@@ -105,3 +69,34 @@ describe('Cost per customer', () => {
     expect(customer3Cost).to.equal(0);
   })
 });
+
+describe('Search available rooms', () => {
+  const roomsAvailXmas2025 = availRooms1;
+  const allBookings = bookings;
+  const allRooms = rooms;
+  const halloweenBookings = allRoomsBooked;
+  
+  it('Should return a list of rooms available on a given date', () => {
+    const date1 = '2025/12/25'
+
+    const christmasRooms = searchByDate(allBookings, allRooms, date1);
+
+    expect(christmasRooms).to.deep.equal(roomsAvailXmas2025)
+  });
+
+  it('Should return a message if no rooms are available', () => {
+    const date2 = '2023/10/31'
+
+    const halloweenRooms = searchByDate(halloweenBookings, allRooms, date2);
+
+    expect(halloweenRooms).to.deep.equal('We\'re terribly sorry - all rooms are booked for the date you have selected. Please book a different date.')
+  });
+
+})
+
+// if a room is available on a date, then bookings does NOT contain a booking with the same room number && date
+
+// iterate over bookings
+// return bookings with dates that match the given date
+// iterate over rooms
+// for each room, check to see if the room number is included in 

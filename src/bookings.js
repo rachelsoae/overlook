@@ -24,4 +24,16 @@ const getTotalCost = (roomsArray, customerBookings) => {
   }  
 }
 
-export { getBookings, getTotalCost }
+const searchByDate = (bookingsArray, roomsArray, date) => {
+  const unavailRooms = bookingsArray.filter(booking => booking.date === date).map(booking => booking.roomNumber)
+
+  let availRooms = roomsArray.filter(room => !unavailRooms.includes(room.number))
+
+  if (!availRooms.length) {
+    availRooms = 'We\'re terribly sorry - all rooms are booked for the date you have selected. Please book a different date.'
+  }
+
+  return availRooms;
+}
+
+export { getBookings, getTotalCost, searchByDate }

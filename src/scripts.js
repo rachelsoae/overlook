@@ -1,19 +1,10 @@
 // * IMPORTS * //
-
-// Stylesheet
 import './css/styles.css';
 
-// Images
 import './images/jr-suite.png'
 import './images/res-suite.png'
 import './images/suite.png'
 import './images/single-room.png'
-
-// Functions
-import {
-  getBookings,
-  getTotalCost
-} from './bookings'
 
 import {
   getCustomersData,
@@ -22,38 +13,66 @@ import {
 } from './api-calls'
 
 import {
-  setDashboard
+  setDashboard,
+  displaySearchResults
 } from './dom-updates'
 
-// SAMPLE DATA TO BE DELETED AND REPLACED WITH API CALLS
-import {
-  bookings,
-  rooms,
-  customers
-} from './sample-data'
+import flatpickr from 'flatpickr'
 
 // * GLOBAL VARIABLES * //
-let allCustomers, allBookings, allRooms;
+let customers, bookings, rooms;
+const roomImages = {
+  'residential suite': 'res-suite',
+  suite: 'suite',
+  'single room': 'single-room',
+  'junior suite': 'jr-suite'
+}
 
 const yourBookings = document.querySelector('.bookings-list')
+const yourBookingsCostContainer = document.querySelector('.bookings-cost')
 const yourBookingsCost = document.querySelector('.bookings-cost-insert')
+const dateField = document.querySelector('.date-picker')
+const dateSearch = document.querySelector('form')
+const dashboard = document.querySelector('.dashboard-view');
+const searchResults = document.querySelector('.book-room-view');
+const availableRooms = document.querySelector('.bookings-searched')
 
 // Event Listeners
-
 window.addEventListener('load', () => {
-  Promise.all([getCustomersData(), getBookingsData(), getRoomsData()])
-  .then(data => {
-    allCustomers = data[0].customers
-    allBookings = data[1].bookings
-    allRooms = data[2].rooms
-    setDashboard(allCustomers[1], allBookings, allRooms)
+  flatpickr(dateField, {
+    minDate: 'today',
+    altInput: true,
+    altFormat: "F j, Y",
+    dateFormat: "Y/m/d"
   })
+  Promise.all([getCustomersData(), getBookingsData(), getRoomsData()])
+    .then(data => {
+      customers = data[0].customers
+      bookings = data[1].bookings
+      rooms = data[2].rooms
+      setDashboard(customers[1], bookings, rooms)
+    });
+});
+
+dateSearch.addEventListener('submit', (event) => {
+  event.preventDefault();
+  dateSearch.reset();
+  if (dateField.value) {
+    displaySearchResults(bookings, rooms, dateField.value);
+  }
 })
 
+
 export {
+  customers,
   bookings,
   rooms,
-  customers,
+  roomImages,
   yourBookings,
-  yourBookingsCost
+  yourBookingsCostContainer,
+  yourBookingsCost,
+  dateField,
+  dashboard,
+  searchResults,
+  availableRooms
 }
