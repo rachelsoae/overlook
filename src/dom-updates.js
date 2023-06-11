@@ -1,68 +1,88 @@
 import {
   getBookings,
   getTotalCost,
-  searchByDate
-} from './bookings'
+  searchByRoomType
+} from './bookings';
 
 import {
   roomImages,
   yourBookings,
   yourBookingsCost,
   yourBookingsCostContainer,
-  dateField,
   dashboard,
   searchResults,
-  availableRooms
-} from './scripts'
+  availableRoomsSection,
+} from './scripts';
+
+const showDashboard = () => {
+  show(dashboard);
+  hide(searchResults);
+};
+
+const showSearchResultsView = () => {
+  show(searchResults);
+  hide(dashboard);
+};
 
 const setDashboard = (customer, allBookings, allRooms) => {
-  show(dashboard)
-  hide(searchResults)
-  
+  showDashboard();
   const usersBookings = getBookings(allBookings, customer);
   
   if (typeof usersBookings === 'string') {
-    yourBookingsCostContainer.classList.add('invisible')
-    yourBookings.innerHTML = `<h3>${usersBookings}</h3>`
+    yourBookingsCostContainer.classList.add('invisible');
+    yourBookings.innerHTML = `<h3>${usersBookings}</h3>`;
   } else {
-    yourBookingsCostContainer.classList.remove('invisible')
+    yourBookingsCostContainer.classList.remove('invisible');
 
     const spent = getTotalCost(allRooms, usersBookings);
-    yourBookingsCost.innerHTML = `$${spent}`
+    yourBookingsCost.innerHTML = `$${spent}`;
 
     yourBookings.innerHTML = '';    
     usersBookings.forEach(booking => {
-      const roomRef = allRooms.find(room => room.number === booking.roomNumber)
-      let dashRoom = getRoomDetails(roomRef)
-      yourBookings.innerHTML += createDashboardCard(dashRoom, booking)
-    })
-  }
-}
+      const roomRef = allRooms.find(room => room.number === booking.roomNumber);
+      let dashRoom = getRoomDetails(roomRef);
+      yourBookings.innerHTML += createDashboardCard(dashRoom, booking);
+    });
+  };
+};
 
-const displaySearchResults = (allBookings, allRooms, date) => {
-  hide(dashboard)
-  show(searchResults)
-
-  const availRooms = searchByDate(allBookings, allRooms, date);
-
+const displaySearchResults = (availRooms) => {
   if (typeof availRooms === 'string') {
-    availableRooms.innerHTML = `<h3>${availRooms}</h3>`
+    availableRoomsSection.innerHTML = `<h3>${availRooms}</h3>`;
   } else {
-    availableRooms.innerHTML = '';
+    availableRoomsSection.innerHTML = '';
     availRooms.forEach(room => {
-      let availRoom = getRoomDetails(room)
-      availableRooms.innerHTML += createSearchCard(availRoom)
-    }) 
-  }
-}
+      let availRoom = getRoomDetails(room);
+      availableRoomsSection.innerHTML += createSearchCard(availRoom);
+    }) ;
+  };
+
+  return availRooms;
+};
+
+const filterByRoomType = (availRooms, roomType) => {
+  const filteredRooms = searchByRoomType(availRooms, roomType);
+
+  if (typeof filteredRooms === 'string') {
+    availableRoomsSection.innerHTML = `<h3>${filteredRooms}</h3>`;
+  } else {
+    availableRoomsSection.innerHTML = '';
+    filteredRooms.forEach(room => {
+      let availRoom = getRoomDetails(room);
+      availableRoomsSection.innerHTML += createSearchCard(availRoom);
+    }) ;
+  };
+
+  return availRooms;
+};
 
 const getRoomDetails = (room) => {
   const roomInfo = {...room};
-  roomInfo.image = `./images/${roomImages[roomInfo.roomType]}.png`
+  roomInfo.image = `./images/${roomImages[roomInfo.roomType]}.png`;
   roomInfo.bidet = room.bidet ? 'with bidet' : '';
-  roomInfo.cost = room.costPerNight.toFixed(2)
-  return roomInfo
-}
+  roomInfo.cost = room.costPerNight.toFixed(2);
+  return roomInfo;
+};
 
 const createDashboardCard = (room, booking) => {
   const dashBookingCard =
@@ -76,8 +96,8 @@ const createDashboardCard = (room, booking) => {
         <p class="num-beds">${room.numBeds} ${room.bedSize}</p>
       </div>
     </article>
-  `
-  return dashBookingCard
+  `;
+  return dashBookingCard;
 }
 
 const createSearchCard = (room) => {
@@ -92,19 +112,21 @@ const createSearchCard = (room) => {
       </div>
       <p class="cost">$${room.cost} per night</p>
     </article>
-  `
+  `;
   return searchRoomCard;
 }
 
 const hide = (element) => {
   element.classList.add('hidden');
-}
+};
 
 const show = (element) => {
   element.classList.remove('hidden');
-}
+};
 
 export {
   setDashboard,
-  displaySearchResults
-}
+  displaySearchResults,
+  showSearchResultsView,
+  filterByRoomType
+};
