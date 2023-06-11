@@ -80,7 +80,8 @@ const filterByRoomType = (availRooms, roomType) => {
 
 const getRoomDetails = (room) => {
   const roomInfo = {...room};
-  roomInfo.image = `./images/${roomImages[roomInfo.roomType]}.png`;
+  roomInfo.image = `./images/${roomImages[roomInfo.roomType].imageName}.png`;
+  roomInfo.imageAltText = `${roomImages[roomInfo.roomType].altText}`
   roomInfo.bidet = room.bidet ? 'with bidet' : '';
   roomInfo.cost = room.costPerNight.toFixed(2);
   return roomInfo;
@@ -92,7 +93,7 @@ const createDashboardCard = (room, booking) => {
     <article class="room">
       <h3 class="room-type">${room.roomType} ${room.bidet}</h3>  
       <p class="booking-date">${booking.date}</p>
-      <img class="room-image" src=${room.image} alt="photo of a ${room.roomType}">
+      <img class="room-image" src=${room.image} alt="${room.imageAltText}">
       <div class="room-details">
         <span class="material-icons-round">bed</span>  
         <p class="num-beds">${room.numBeds} ${room.bedSize}</p>
@@ -107,7 +108,7 @@ const createSearchCard = (room) => {
   `
     <article class="room room-selection" id=${room.number}>
       <h3 class="room-type room-selection">${room.roomType} ${room.bidet}</h3>  
-      <img class="room-image room-selection" src=${room.image} alt="photo of a ${room.roomType}">
+      <img class="room-image room-selection" src=${room.image} alt="${room.imageAltText}">
       <div class="room-details room-selection">
         <span class="material-icons-round room-selection">bed</span>  
         <p class="num-beds room-selection">${room.numBeds} ${room.bedSize}</p>
@@ -124,7 +125,7 @@ const displayConfirmation = (room) => {
   `
   <h2>Click "Book Now" to confirm your reservation  </h2>
   <article class="confirmation-room" id=${room.number}>
-    <img class="room-image" src=${room.image} alt="photo of a ${room.roomType}">  
+    <img class="room-image" src=${room.image} alt="${room.imageAltText}">  
     <h3 class="room-type">${room.roomType} ${room.bidet}</h3>  
     <div class="room-details">
       <span class="material-icons-round">bed</span>  
