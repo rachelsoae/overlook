@@ -138,9 +138,15 @@ main {
   align-items: center;
   margin: 3em;
   background-color: #FFFFFF;
-  border: solid #E29578 1px;
   margin: 0;
   width: 100%;
+}
+
+.bookings,
+.date-picker,
+.search {
+  /* border: 1px solid #E29578; */
+  box-shadow: 0 0 4px #FFDDD2;
 }
 
 .bookings-header,
@@ -202,6 +208,7 @@ select {
   margin: 2em;
   width: 20%;
   border: 1px solid #FFDDD2;
+  box-shadow: 0 0 10px #EDF6F9
 }
 
 .booking-date {
@@ -241,6 +248,14 @@ h3 {
 p {
   text-align: center;
 }
+
+/* CONFIRMATION OVERLAY */
+.confirmation {
+  position: fixed;
+  width: 75%;
+  height: 75vh;
+}
+
 
 .hidden {
   display: none;
