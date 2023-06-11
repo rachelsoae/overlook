@@ -37,7 +37,13 @@ const searchByDate = (bookingsArray, roomsArray, date) => {
 }
 
 const searchByRoomType = (roomsArray, roomType) => {
-  return roomsArray.filter(room => room.roomType === roomType);
+  let desiredRooms = roomsArray.filter(room => room.roomType === roomType);
+
+  if (!desiredRooms.length) {
+    desiredRooms = `We\'re terribly sorry - there are no rooms of that type available for the date you have selected. Please select a different room type, or book a different date.`
+  }
+
+  return desiredRooms;
 }
 
 export { 

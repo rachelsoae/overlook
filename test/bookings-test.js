@@ -75,17 +75,13 @@ describe('Search available rooms', () => {
   const rooms= sampleData.rooms
   
   it('Should return a list of rooms available on a given date', () => {
-    const date1 = '2025/12/25'
+    const xmasRooms = searchByDate(bookings, rooms, '2025/12/25');
 
-    const roomsAvailOnXmas = searchByDate(bookings, rooms, date1);
-
-    expect(roomsAvailOnXmas).to.deep.equal([rooms[0], rooms[1], rooms[2]])
+    expect(xmasRooms).to.deep.equal([rooms[0], rooms[1], rooms[2]])
   });
 
   it('Should return a message if no rooms are available', () => {
-    const date2 = '2023/10/31'
-
-    const halloweenRooms = searchByDate(bookings, rooms, date2);
+    const halloweenRooms = searchByDate(bookings, rooms, '2023/10/31');
 
     expect(halloweenRooms).to.deep.equal('We\'re terribly sorry - all rooms are booked for the date you have selected. Please book a different date.')
   });
@@ -94,5 +90,13 @@ describe('Search available rooms', () => {
     const onlyJuniorSuites = searchByRoomType(rooms, 'junior suite');
 
     expect(onlyJuniorSuites).to.deep.equal([rooms[3]])
-  })
+  });
+
+  it('Should return a message if no rooms of the selected type are available', () => {
+    const xmasRooms = searchByDate(bookings, rooms, '2025/12/25')
+    const onlyJuniorSuites = searchByRoomType(xmasRooms, 'junior suite');
+
+    expect(onlyJuniorSuites).to.deep.equal(`We\'re terribly sorry - there are no rooms of that type available for the date you have selected. Please select a different room type, or book a different date.`)
+  });
+
 })
