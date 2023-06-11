@@ -37,6 +37,10 @@ h1,
   cursor: pointer;
 }
 
+.error-message {
+  text-align: center;
+}
+
 /* HEADER */
 
 header {
