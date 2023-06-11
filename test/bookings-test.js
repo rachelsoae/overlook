@@ -1,102 +1,93 @@
 import chai from 'chai';
 const expect = chai.expect;
-import { 
-  bookings, 
-  bookings1, 
-  bookings5, 
-  rooms, 
-  availRooms1, 
-  allRoomsBooked,
-  customers 
-} from '../src/sample-data'
+import { sampleData } from '../src/sample-data'
 import { getBookings, getTotalCost, searchByDate } from '../src/bookings'
 
 describe('Bookings per customer', () => {
-  const customer1 = customers[0];
-  const customer2 = customers[1];
-  const customer3 = customers[2];
-  const allBookings = bookings;
-  const bookingsA = bookings1;
-  const bookingsB = bookings5;
+  const customers = sampleData.customers;
+  const bookings = sampleData.bookings;
   
   it('Should list all user\'s previous bookings', () => {
-    const customer1Bookings = getBookings(allBookings, customer1)
+    const leatha = customers[0];
+
+    const leathasBookings = getBookings(bookings, leatha);
     
-    expect(customer1Bookings).to.deep.equal(bookingsA);
+    expect(leathasBookings).to.deep.equal(leatha.bookings);
   });
 
   it('Should be able to list bookings for a different user', () => {
-    const customer2Bookings = getBookings(allBookings, customer2)
+    const rocio = customers[1];
 
-    expect(customer2Bookings).to.deep.equal(bookingsB);
+    const rociosBookings = getBookings(bookings, rocio);
+
+    expect(rociosBookings).to.deep.equal(rocio.bookings);
   });
 
   it('Should return a message if the user has no bookings', () => {    
-    const customer3Bookings = getBookings(allBookings, customer3)
+    const rachel = customers[2];
 
-    expect(customer3Bookings).to.equal('You don\'t have any bookings yet. Book your first stay today!')
+    const rachelsBookings = getBookings(bookings, rachel);
+
+    expect(rachelsBookings).to.equal('You don\'t have any bookings yet. Book your first stay today!');
   });
 });
 
 describe('Cost per customer', () => {
-  const customer1 = customers[0];
-  const customer2 = customers[1];
-  const customer3 = customers[2];
-  const allBookings = bookings;
-  const allRooms = rooms;
+  const customers = sampleData.customers;
+  const bookings = sampleData.bookings;
+  const rooms = sampleData.rooms;
 
   it('Should be able to calculate the total cost of bookings for a user', () => {
-    const customer1Bookings = getBookings(allBookings, customer1)
+    const leatha = customers[0];
+    const leathasBookings = getBookings(bookings, leatha);
 
-    const customer1Cost = getTotalCost(allRooms, customer1Bookings)
+    const leathasCost = getTotalCost(rooms, leathasBookings)
 
-    expect(customer1Cost).to.equal('1875.34')
+    expect(leathasCost).to.equal('1875.34')
   });
 
   it('Should be able to calculate the total cost for a different user', () => {
-    const customer2Bookings = getBookings(allBookings, customer2)
+    const rocio = customers[1];
+    const rociosBookings = getBookings(bookings, rocio);
 
-    const customer2Cost = getTotalCost(allRooms, customer2Bookings)
+    const rociosCost = getTotalCost(rooms, rociosBookings)
 
-    expect(customer2Cost).to.equal('1623.62')
+    expect(rociosCost).to.equal('1623.62')
   });
 
   it('Should return 0 if the user has no bookings', () => {
-    const customer3Bookings = getBookings(allBookings, customer3);
+    const rachel = customers[2];
+    const rachelsBookings = getBookings(bookings, rachel);
 
-    const customer3Cost = getTotalCost(allRooms, customer3Bookings);
+    const rachelsCost = getTotalCost(rooms, rachelsBookings)
 
-    expect(customer3Cost).to.equal(0);
+    expect(rachelsCost).to.equal(0);
   })
 });
 
 describe('Search available rooms', () => {
-  const roomsAvailXmas2025 = availRooms1;
-  const allBookings = bookings;
-  const allRooms = rooms;
-  const halloweenBookings = allRoomsBooked;
+  const bookings = sampleData.bookings
+  const rooms= sampleData.rooms
   
   it('Should return a list of rooms available on a given date', () => {
     const date1 = '2025/12/25'
 
-    const christmasRooms = searchByDate(allBookings, allRooms, date1);
+    const roomsAvailOnXmas = searchByDate(bookings, rooms, date1);
 
-    expect(christmasRooms).to.deep.equal(roomsAvailXmas2025)
+    expect(roomsAvailOnXmas).to.deep.equal([rooms[0], rooms[1], rooms[2]])
   });
 
   it('Should return a message if no rooms are available', () => {
     const date2 = '2023/10/31'
 
-    const halloweenRooms = searchByDate(halloweenBookings, allRooms, date2);
+    const halloweenRooms = searchByDate(bookings, rooms, date2);
 
     expect(halloweenRooms).to.deep.equal('We\'re terribly sorry - all rooms are booked for the date you have selected. Please book a different date.')
   });
 
+  it('Should return a list of rooms given a room type', () => {
+    const onlyJuniorSuites = searchByRoomType('junior suite');
+
+    expect(onlyJuniorSuites).to.deep.equal()
+  })
 })
-
-// if a room is available on a date, then bookings does NOT contain a booking with the same room number && date
-
-// iterate over bookings
-// return bookings with dates that match the given date
-// iterate over rooms
-// for each room, check to see if the room number is included in 
