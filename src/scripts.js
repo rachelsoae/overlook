@@ -15,6 +15,7 @@ import {
 import {
   setDashboard,
   displaySearchResults,
+  showDashboard,
   showSearchResultsView,
   filterByRoomType
 } from './dom-updates';
@@ -43,6 +44,7 @@ const dashboard = document.querySelector('.dashboard-view');
 const searchResults = document.querySelector('.book-room-view');
 const availableRoomsSection = document.querySelector('.bookings-searched');
 const filter = document.querySelector('.filter-container');
+const logo = document.querySelector('h1');
 
 // Event Listeners
 window.addEventListener('load', () => {
@@ -61,9 +63,13 @@ window.addEventListener('load', () => {
     });
 });
 
+logo.addEventListener('click', () => {
+  showDashboard();
+  setDashboard(customers[1], bookings, rooms);
+});
+
 dateSearch.addEventListener('submit', (event) => {
-  event.preventDefault();
-  dateSearch.reset();
+  event.preventDefault(); 
   if (dateField.value) {
     selectedDate = dateField.value;
     availRooms = searchByDate(bookings, rooms, selectedDate);
@@ -73,11 +79,7 @@ dateSearch.addEventListener('submit', (event) => {
 });
 
 filter.addEventListener('change', (event) => {
-  if (event.target.value === 'any') {
-    displaySearchResults(availRooms);
-  } else {
-    filterByRoomType(availRooms, event.target.value)
-  }
+  event.target.value === 'any' ? displaySearchResults(availRooms) : filterByRoomType(availRooms, event.target.value)
 });
 
 export {

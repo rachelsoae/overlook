@@ -127,6 +127,7 @@ const show = (element) => {
 export {
   setDashboard,
   displaySearchResults,
+  showDashboard,
   showSearchResultsView,
   filterByRoomType
 };
