@@ -96,6 +96,11 @@ input {
   height: 50%;
 }
 
+.date-picker:focus-visible,
+button:focus-visible {
+  outline: 2px solid #006D77;
+}
+
 .date-picker,
 .search {
   height: 75%;
@@ -136,28 +141,40 @@ main {
   display: flex;
   width: 85%;
   margin: 4em 7em 2em;
-}
-
-.bookings-header {
   align-items: center;
   justify-content: space-between;
 }
 
-.search-header {
-  justify-content: flex-start;
-}
-
-.bookings-cost {
+.bookings-cost,
+.filter-container {
   display: flex;
-  align-items: baseline;
-  width: 20%;
   font-family: 'Trirong', serif;
   font-size: 1.4rem;
   color: #032A2E;
   margin: 0;
 }
 
-.bookings-cost-insert {
+.bookings-cost {
+  width: 20%;
+  align-items: baseline;
+}
+
+.filter-container {
+  width: 25%;
+  align-items: center;
+}
+
+select {
+  height: 2rem;
+  border: 1px solid #006D77;
+}
+
+select:focus-visible {
+  outline: 1px solid #006D77
+}
+
+.bookings-cost-insert,
+select {
   margin-left: 1em;
 }
 

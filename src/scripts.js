@@ -1,41 +1,50 @@
 // * IMPORTS * //
 import './css/styles.css';
 
-import './images/jr-suite.png'
-import './images/res-suite.png'
-import './images/suite.png'
-import './images/single-room.png'
+import './images/jr-suite.png';
+import './images/res-suite.png';
+import './images/suite.png';
+import './images/single-room.png';
 
 import {
   getCustomersData,
   getBookingsData,
   getRoomsData,
-} from './api-calls'
+} from './api-calls';
 
 import {
   setDashboard,
-  displaySearchResults
-} from './dom-updates'
+  displaySearchResults,
+  showDashboard,
+  showSearchResultsView,
+  filterByRoomType
+} from './dom-updates';
 
-import flatpickr from 'flatpickr'
+import {
+  searchByDate
+} from './bookings';
+
+import flatpickr from 'flatpickr';
 
 // * GLOBAL VARIABLES * //
-let customers, bookings, rooms;
+let customers, bookings, rooms, selectedDate, availRooms;
 const roomImages = {
   'residential suite': 'res-suite',
   suite: 'suite',
   'single room': 'single-room',
   'junior suite': 'jr-suite'
-}
+};
 
-const yourBookings = document.querySelector('.bookings-list')
-const yourBookingsCostContainer = document.querySelector('.bookings-cost')
-const yourBookingsCost = document.querySelector('.bookings-cost-insert')
-const dateField = document.querySelector('.date-picker')
-const dateSearch = document.querySelector('form')
+const yourBookings = document.querySelector('.bookings-list');
+const yourBookingsCostContainer = document.querySelector('.bookings-cost');
+const yourBookingsCost = document.querySelector('.bookings-cost-insert');
+const dateField = document.querySelector('.date-picker');
+const dateSearch = document.querySelector('form');
 const dashboard = document.querySelector('.dashboard-view');
 const searchResults = document.querySelector('.book-room-view');
-const availableRooms = document.querySelector('.bookings-searched')
+const availableRoomsSection = document.querySelector('.bookings-searched');
+const filter = document.querySelector('.filter-container');
+const logo = document.querySelector('h1');
 
 // Event Listeners
 window.addEventListener('load', () => {
@@ -44,7 +53,7 @@ window.addEventListener('load', () => {
     altInput: true,
     altFormat: "F j, Y",
     dateFormat: "Y/m/d"
-  })
+  });
   Promise.all([getCustomersData(), getBookingsData(), getRoomsData()])
     .then(data => {
       customers = data[0].customers
@@ -54,14 +63,24 @@ window.addEventListener('load', () => {
     });
 });
 
-dateSearch.addEventListener('submit', (event) => {
-  event.preventDefault();
-  dateSearch.reset();
-  if (dateField.value) {
-    displaySearchResults(bookings, rooms, dateField.value);
-  }
-})
+logo.addEventListener('click', () => {
+  showDashboard();
+  setDashboard(customers[1], bookings, rooms);
+});
 
+dateSearch.addEventListener('submit', (event) => {
+  event.preventDefault(); 
+  if (dateField.value) {
+    selectedDate = dateField.value;
+    availRooms = searchByDate(bookings, rooms, selectedDate);
+    showSearchResultsView();
+    displaySearchResults(availRooms);
+  };
+});
+
+filter.addEventListener('change', (event) => {
+  event.target.value === 'any' ? displaySearchResults(availRooms) : filterByRoomType(availRooms, event.target.value)
+});
 
 export {
   customers,
@@ -71,8 +90,8 @@ export {
   yourBookings,
   yourBookingsCostContainer,
   yourBookingsCost,
-  dateField,
   dashboard,
   searchResults,
-  availableRooms
-}
+  availableRoomsSection,
+  availRooms
+};
