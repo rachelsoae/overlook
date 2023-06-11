@@ -7,9 +7,11 @@ import './images/suite.png';
 import './images/single-room.png';
 
 import {
-  getCustomersData,
+  getUserData,
+  getAllCustomersData,
   getBookingsData,
   getRoomsData,
+  bookRoom
 } from './api-calls';
 
 import {
@@ -27,7 +29,7 @@ import {
 import flatpickr from 'flatpickr';
 
 // * GLOBAL VARIABLES * //
-let customers, bookings, rooms, selectedDate, availRooms;
+let customers, bookings, rooms, user, selectedDate, availRooms;
 const roomImages = {
   'residential suite': 'res-suite',
   suite: 'suite',
@@ -54,12 +56,14 @@ window.addEventListener('load', () => {
     altFormat: "F j, Y",
     dateFormat: "Y/m/d"
   });
-  Promise.all([getCustomersData(), getBookingsData(), getRoomsData()])
+  Promise.all([getAllCustomersData(), getBookingsData(), getRoomsData(), getUserData('1')])
     .then(data => {
       customers = data[0].customers
       bookings = data[1].bookings
       rooms = data[2].rooms
-      setDashboard(customers[1], bookings, rooms)
+      user = data[3]
+      console.log(user)
+      setDashboard(user, bookings, rooms)
     });
 });
 
@@ -81,6 +85,12 @@ dateSearch.addEventListener('submit', (event) => {
 filter.addEventListener('change', (event) => {
   event.target.value === 'any' ? displaySearchResults(availRooms) : filterByRoomType(availRooms, event.target.value)
 });
+
+availableRoomsSection.addEventListener('click', (event) => {
+  if (event.target.classList.contains('room-selection')) {
+    bookRoom(user.id, selectedDate, event.target.closest('article').id)
+  };
+})
 
 export {
   customers,

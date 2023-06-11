@@ -30,6 +30,13 @@ body {
   padding: 3em;
 }
 
+h1,
+.date-picker,
+.search,
+.room-selection {
+  cursor: pointer;
+}
+
 /* HEADER */
 
 header {

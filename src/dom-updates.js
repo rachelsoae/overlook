@@ -101,19 +101,19 @@ const createDashboardCard = (room, booking) => {
 }
 
 const createSearchCard = (room) => {
-  const searchRoomCard = 
+  const searchResultCard = 
   `
-    <article class="room">
-      <h3 class="room-type">${room.roomType} ${room.bidet}</h3>  
-      <img class="room-image" src=${room.image} alt="photo of a ${room.roomType}">
-      <div class="room-details">
-        <span class="material-icons-round">bed</span>  
-        <p class="num-beds">${room.numBeds} ${room.bedSize}</p>
+    <article class="room room-selection" id=${room.number}>
+      <h3 class="room-type room-selection">${room.roomType} ${room.bidet}</h3>  
+      <img class="room-image room-selection" src=${room.image} alt="photo of a ${room.roomType}">
+      <div class="room-details room-selection">
+        <span class="material-icons-round room-selection">bed</span>  
+        <p class="num-beds room-selection">${room.numBeds} ${room.bedSize}</p>
       </div>
-      <p class="cost">$${room.cost} per night</p>
+      <p class="cost room-selection">$${room.cost} per night</p>
     </article>
   `;
-  return searchRoomCard;
+  return searchResultCard;
 }
 
 const hide = (element) => {
