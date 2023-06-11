@@ -12,6 +12,8 @@ import {
   dashboard,
   searchResults,
   availableRoomsSection,
+  overlay,
+  confirmationBox
 } from './scripts';
 
 const showDashboard = () => {
@@ -116,6 +118,41 @@ const createSearchCard = (room) => {
   return searchResultCard;
 }
 
+const displayConfirmation = (room) => {
+  show(overlay)
+  confirmationBox.innerHTML = 
+  `
+  <h2>Click "Book Now" to confirm your reservation  </h2>
+  <article class="confirmation-room" id=${room.number}>
+    <img class="room-image" src=${room.image} alt="photo of a ${room.roomType}">  
+    <h3 class="room-type">${room.roomType} ${room.bidet}</h3>  
+    <div class="room-details">
+      <span class="material-icons-round">bed</span>  
+      <p class="num-beds">${room.numBeds} ${room.bedSize}</p>
+    </div>
+    <p class="cost">$${room.cost} per night</p>
+    <button class="book-now search">Book Now</button>
+  </article>
+  `
+}
+
+const displayThankYou = () => {
+  confirmationBox.innerHTML = 
+  `
+  <div class="thank-you">
+    <h2>Congratulations!</h2>
+    <h3>Your next stay is booked.</h3>
+    <p>Click below to return to your bookings</p>
+    <p>Click outside this box to book another reservation</p>
+    <button class="search home">View Dashboard</button>
+  </div>
+  `
+}
+
+const identifyRoom = (roomsArray, roomNumber) => {
+  return roomsArray.find(room => roomNumber == room.number)
+}
+
 const hide = (element) => {
   element.classList.add('hidden');
 };
@@ -129,5 +166,10 @@ export {
   displaySearchResults,
   showDashboard,
   showSearchResultsView,
-  filterByRoomType
+  filterByRoomType,
+  displayConfirmation,
+  identifyRoom,
+  getRoomDetails,
+  displayThankYou,
+  hide
 };

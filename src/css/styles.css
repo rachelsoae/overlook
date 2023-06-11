@@ -147,7 +147,6 @@ main {
 .date-picker,
 .search,
 select {
-  /* border: 1px solid #E29578; */
   box-shadow: 0 0 4px #FFDDD2;
 }
 
@@ -259,7 +258,7 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgb(0, 109, 119, 0.5);
+  background-color: rgb(0, 109, 119, 0.75);
   z-index: 2;
   display: flex;
   align-items: center;
@@ -268,10 +267,42 @@ p {
 
 .confirmation {
   position: static;
-  width: 50%;
+  width: 40%;
   height: 60%;
   background-color: #EDF6F9;
-  border-radius: 12px;
+  box-shadow: 0 0 4px #EDF6F9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirmation-room {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2em;
+  padding-top: 2em;
+}
+
+.book-now,
+.home {
+  border: none; 
+  width: 60%;
+  margin-top: 1em;
+}
+
+.thank-you {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.home {
+  width: 40%;
 }
 
 /* HIDDEN/INVISIBLE */

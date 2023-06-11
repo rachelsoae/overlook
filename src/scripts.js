@@ -19,7 +19,12 @@ import {
   displaySearchResults,
   showDashboard,
   showSearchResultsView,
-  filterByRoomType
+  filterByRoomType,
+  displayConfirmation,
+  identifyRoom,
+  getRoomDetails,
+  displayThankYou,
+  hide
 } from './dom-updates';
 
 import {
@@ -29,7 +34,7 @@ import {
 import flatpickr from 'flatpickr';
 
 // * GLOBAL VARIABLES * //
-let customers, bookings, rooms, user, selectedDate, availRooms;
+let customers, bookings, rooms, user, selectedDate, availRooms, selectedRoom;
 const roomImages = {
   'residential suite': 'res-suite',
   suite: 'suite',
@@ -47,6 +52,9 @@ const searchResults = document.querySelector('.book-room-view');
 const availableRoomsSection = document.querySelector('.bookings-searched');
 const filter = document.querySelector('.filter-container');
 const logo = document.querySelector('h1');
+const overlay = document.querySelector('.background-overlay')
+const confirmationBox = document.querySelector('.confirmation')
+const homeButton = document.querySelector('.home')
 
 // Event Listeners
 window.addEventListener('load', () => {
@@ -86,9 +94,31 @@ filter.addEventListener('change', (event) => {
   event.target.value === 'any' ? displaySearchResults(availRooms) : filterByRoomType(availRooms, event.target.value)
 });
 
-availableRoomsSection.addEventListener('click', (event) => {
+availableRoomsSection.addEventListener('click', (event) => {  
   if (event.target.classList.contains('room-selection')) {
-    bookRoom(user.id, selectedDate, event.target.closest('article').id)
+    selectedRoom = identifyRoom(availRooms, event.target.closest('article').id)
+    let bookingDetails = getRoomDetails(selectedRoom)
+    displayConfirmation(bookingDetails);
+  };
+})
+
+confirmationBox.addEventListener('click', (event) => {
+  if (event.target.classList.contains('book-now')) {
+    bookRoom(user.id, selectedDate, event.target.closest('article').id);
+    displayThankYou();
+  };
+});
+
+overlay.addEventListener('click', (event) => {
+  if (event.target.classList.contains('background-overlay')) {
+    hide(overlay);
+  }
+});
+
+confirmationBox.addEventListener('click', (event) => {
+  if (event.target.classList.contains('home')) {
+    hide(overlay)
+    showDashboard();
   };
 })
 
@@ -103,5 +133,8 @@ export {
   dashboard,
   searchResults,
   availableRoomsSection,
-  availRooms
+  availRooms,
+  selectedRoom,
+  overlay,
+  confirmationBox
 };
