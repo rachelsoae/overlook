@@ -143,7 +143,7 @@ const displayThankYou = () => {
     <h2>Congratulations!</h2>
     <h3>Your next stay is booked.</h3>
     <p>Click below to return to your bookings</p>
-    <p>Click outside this box to book another reservation</p>
+    <p>Click outside this box to return to your search results</p>
     <button class="search home">View Dashboard</button>
   </div>
   `
