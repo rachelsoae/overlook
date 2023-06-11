@@ -1,7 +1,12 @@
 import chai from 'chai';
 const expect = chai.expect;
 import { sampleData } from '../src/sample-data'
-import { getBookings, getTotalCost, searchByDate } from '../src/bookings'
+import { 
+  getBookings, 
+  getTotalCost, 
+  searchByDate, 
+  searchByRoomType  
+} from '../src/bookings'
 
 describe('Bookings per customer', () => {
   const customers = sampleData.customers;
@@ -86,8 +91,8 @@ describe('Search available rooms', () => {
   });
 
   it('Should return a list of rooms given a room type', () => {
-    const onlyJuniorSuites = searchByRoomType('junior suite');
+    const onlyJuniorSuites = searchByRoomType(rooms, 'junior suite');
 
-    expect(onlyJuniorSuites).to.deep.equal()
+    expect(onlyJuniorSuites).to.deep.equal([rooms[3]])
   })
 })

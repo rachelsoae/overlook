@@ -36,4 +36,13 @@ const searchByDate = (bookingsArray, roomsArray, date) => {
   return availRooms;
 }
 
-export { getBookings, getTotalCost, searchByDate }
+const searchByRoomType = (roomsArray, roomType) => {
+  return roomsArray.filter(room => room.roomType === roomType);
+}
+
+export { 
+  getBookings, 
+  getTotalCost, 
+  searchByDate, 
+  searchByRoomType 
+}
