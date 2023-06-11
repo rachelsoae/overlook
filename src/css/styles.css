@@ -105,13 +105,14 @@ input {
 
 .date-picker:focus-visible,
 button:focus-visible {
-  outline: 2px solid #006D77;
+  outline: 2px solid #E29578;
 }
 
 .date-picker,
-.search {
+.search,
+select {
   height: 75%;
-  border: none;
+  border: 1px solid #FFDDD2;
 }
 
 .search {
@@ -144,7 +145,8 @@ main {
 
 .bookings,
 .date-picker,
-.search {
+.search,
+select {
   /* border: 1px solid #E29578; */
   box-shadow: 0 0 4px #FFDDD2;
 }
@@ -179,11 +181,10 @@ main {
 
 select {
   height: 2rem;
-  border: 1px solid #006D77;
 }
 
 select:focus-visible {
-  outline: 1px solid #006D77
+  outline: 1px solid #E29578
 }
 
 .bookings-cost-insert,
@@ -217,11 +218,7 @@ select {
 
 .room-image{
   width: 50%;
-}
-
-.room,
-.room-image {
-  /* border-radius: 12px; */
+  border-radius: 6px;
 }
 
 .room-details {
@@ -250,12 +247,34 @@ p {
 }
 
 /* CONFIRMATION OVERLAY */
-.confirmation {
-  position: fixed;
-  width: 75%;
-  height: 75vh;
+.book-room-view {
+  z-index: 1;
 }
 
+.background-overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(0, 109, 119, 0.5);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirmation {
+  position: static;
+  width: 50%;
+  height: 60%;
+  background-color: #EDF6F9;
+  border-radius: 12px;
+}
+
+/* HIDDEN/INVISIBLE */
 
 .hidden {
   display: none;
