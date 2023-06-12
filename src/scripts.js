@@ -16,6 +16,7 @@ import {
 } from './api-calls';
 
 import {
+  validateLogin,
   setDashboard,
   displaySearchResults,
   showSearchResultsView,
@@ -92,12 +93,13 @@ window.addEventListener('load', () => {
 
 loginForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  console.log(username.value)
   let userID = parseUserID(customers, username.value);
-  Promise.resolve(getUserData(userID))
-  .then(data => user = data)
-  .then(() => setDashboard(user, bookings, rooms));
-})
+  if (validateLogin(userID, password.value)) {
+    Promise.resolve(getUserData(userID))
+    .then(data => user = data)
+    .then(() =>  setDashboard(user, bookings, rooms));
+  };
+});
 
 logo.addEventListener('click', () => {
   setDashboard(user, bookings, rooms);

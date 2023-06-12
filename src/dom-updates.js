@@ -20,6 +20,18 @@ import {
   body
 } from './scripts';
 
+const validateLogin = (username, password) => {
+  if (typeof username === 'string' && password !== 'overlook2021') {
+    alert('The username and password you have entered are invalid. Please try again.')
+  } else if (typeof username === 'string') {  
+    alert(username);
+  } else if (password !== 'overlook2021') {
+    alert('The password you have entered is invalid. Please try again.')
+  } else {
+    return true;
+  };
+};
+
 const removeLoginStyling = () => {
   html.classList.remove('html-login');
   body.classList.add('body-main');
@@ -186,6 +198,7 @@ const show = (element) => {
 };
 
 export {
+  validateLogin,
   setDashboard,
   displaySearchResults,
   showSearchResultsView,
