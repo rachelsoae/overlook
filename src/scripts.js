@@ -72,8 +72,8 @@ const exit = document.querySelector('.icon-exit')
 window.addEventListener('load', () => {
   flatpickr(dateField, {
     minDate: 'today',
-    altInput: true,
-    altFormat: "F j, Y",
+    // altInput: true,
+    // altFormat: "F j, Y",
     dateFormat: "Y/m/d"
   });
   Promise.all([getAllCustomersData(), getBookingsData(), getRoomsData(), getUserData('1')])

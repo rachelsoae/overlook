@@ -28,10 +28,10 @@
   <main class="dashboard-view">
     <section class="bookings">
       <div class="bookings-header">
-        <h2>Your bookings...</h2>
+        <h2 tabindex="0">Your bookings...</h2>
         <span class="bookings-cost">
-          <h3>Total Spent:  </h3>
-          <span class="bookings-cost-insert">
+          <h3 tabindex="0">Total Spent:  </h3>
+          <span class="bookings-cost-insert" tabindex="0">
             <!-- Total Cost of Bookings Populates Here -->
           </span>
         </span>
@@ -44,11 +44,11 @@
   <main class="book-room-view hidden">
     <section class="bookings">
       <div class="search-header">
-        <h2>Select a room to book...</h2>
+        <h2 tabindex="0">Select a room to book...</h2>
         <span class="filter-container">
-          <label for="filter">Filter by Room Type:</label>
+          <label for="filter" tabindex="0">Filter:</label>
           <select name="filter" id="filter">
-            <option value="any" selected>Any</option>
+            <option value="any" selected>Any Room Type</option>
             <option value="residential suite">Residential Suite</option>
             <option value="suite">Suite</option>
             <option value="junior suite">Junior Suite</option>
@@ -63,7 +63,7 @@
     <div role="dialog" class="background-overlay hidden">
       <section class="confirmation" tabindex="0">
         <div class="icon-exit-container">
-          <span class="material-icons-round icon-exit" tabindex="0">cancel</span>
+          <span class="material-icons-round icon-exit" tabindex="1">cancel</span>
         </div>
         <div class="confirmation-box">
           <!-- Room Details & Booking Controls Populate Here -->
