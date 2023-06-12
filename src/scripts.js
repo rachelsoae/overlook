@@ -7,9 +7,11 @@ import './images/suite.png';
 import './images/single-room.png';
 
 import {
-  getCustomersData,
+  getUserData,
+  getAllCustomersData,
   getBookingsData,
   getRoomsData,
+  bookRoom
 } from './api-calls';
 
 import {
@@ -17,7 +19,12 @@ import {
   displaySearchResults,
   showDashboard,
   showSearchResultsView,
-  filterByRoomType
+  filterByRoomType,
+  displayConfirmation,
+  identifyRoom,
+  getRoomDetails,
+  displayThankYou,
+  hide
 } from './dom-updates';
 
 import {
@@ -27,7 +34,7 @@ import {
 import flatpickr from 'flatpickr';
 
 // * GLOBAL VARIABLES * //
-let customers, bookings, rooms, selectedDate, availRooms;
+let customers, bookings, rooms, user, selectedDate, availRooms, selectedRoom, lastFilter;
 const roomImages = {
   'residential suite': 'res-suite',
   suite: 'suite',
@@ -45,6 +52,8 @@ const searchResults = document.querySelector('.book-room-view');
 const availableRoomsSection = document.querySelector('.bookings-searched');
 const filter = document.querySelector('.filter-container');
 const logo = document.querySelector('h1');
+const overlay = document.querySelector('.background-overlay');
+const confirmationBox = document.querySelector('.confirmation');
 
 // Event Listeners
 window.addEventListener('load', () => {
@@ -54,23 +63,25 @@ window.addEventListener('load', () => {
     altFormat: "F j, Y",
     dateFormat: "Y/m/d"
   });
-  Promise.all([getCustomersData(), getBookingsData(), getRoomsData()])
+  Promise.all([getAllCustomersData(), getBookingsData(), getRoomsData(), getUserData('1')])
     .then(data => {
-      customers = data[0].customers
-      bookings = data[1].bookings
-      rooms = data[2].rooms
-      setDashboard(customers[1], bookings, rooms)
+      customers = data[0].customers;
+      bookings = data[1].bookings;
+      rooms = data[2].rooms;
+      user = data[3];
+      console.log(user);
+      setDashboard(user, bookings, rooms);
     });
 });
 
 logo.addEventListener('click', () => {
-  showDashboard();
-  setDashboard(customers[1], bookings, rooms);
+  setDashboard(user, bookings, rooms);
 });
 
 dateSearch.addEventListener('submit', (event) => {
   event.preventDefault(); 
   if (dateField.value) {
+    lastFilter = 'any'
     selectedDate = dateField.value;
     availRooms = searchByDate(bookings, rooms, selectedDate);
     showSearchResultsView();
@@ -79,7 +90,43 @@ dateSearch.addEventListener('submit', (event) => {
 });
 
 filter.addEventListener('change', (event) => {
-  event.target.value === 'any' ? displaySearchResults(availRooms) : filterByRoomType(availRooms, event.target.value)
+  lastFilter = event.target.value;
+  lastFilter === 'any' ? displaySearchResults(availRooms) : filterByRoomType(availRooms, lastFilter);
+});
+
+availableRoomsSection.addEventListener('click', (event) => {  
+  if (event.target.classList.contains('room-selection')) {
+    selectedRoom = identifyRoom(availRooms, event.target.closest('article').id);
+    let bookingDetails = getRoomDetails(selectedRoom);
+    displayConfirmation(bookingDetails);
+  };
+});
+
+overlay.addEventListener('click', (event) => {
+  if (event.target.classList.contains('background-overlay')) {
+    hide(overlay);
+    availRooms = searchByDate(bookings, rooms, selectedDate)
+    displaySearchResults(availRooms);
+    lastFilter === 'any' ? displaySearchResults(availRooms) : filterByRoomType(availRooms, lastFilter)
+  };
+});
+
+confirmationBox.addEventListener('click', (event) => {
+  if (event.target.classList.contains('book-now')) {
+    Promise.resolve(bookRoom(user.id, selectedDate, event.target.closest('article').id))
+    .then(data => {
+      bookings = data.bookings;
+      availRooms = searchByDate(bookings, rooms, selectedDate)
+    })
+    .then(displayThankYou());
+  };
+});
+
+confirmationBox.addEventListener('click', (event) => {
+  if (event.target.classList.contains('home')) {
+    hide(overlay);
+    setDashboard(user, bookings, rooms);
+  };
 });
 
 export {
@@ -93,5 +140,8 @@ export {
   dashboard,
   searchResults,
   availableRoomsSection,
-  availRooms
+  availRooms,
+  selectedRoom,
+  overlay,
+  confirmationBox
 };

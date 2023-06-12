@@ -12,6 +12,8 @@ import {
   dashboard,
   searchResults,
   availableRoomsSection,
+  overlay,
+  confirmationBox
 } from './scripts';
 
 const showDashboard = () => {
@@ -30,7 +32,7 @@ const setDashboard = (customer, allBookings, allRooms) => {
   
   if (typeof usersBookings === 'string') {
     yourBookingsCostContainer.classList.add('invisible');
-    yourBookings.innerHTML = `<h3>${usersBookings}</h3>`;
+    yourBookings.innerHTML = `<p class="error-message">${usersBookings}</p>`;
   } else {
     yourBookingsCostContainer.classList.remove('invisible');
 
@@ -48,7 +50,7 @@ const setDashboard = (customer, allBookings, allRooms) => {
 
 const displaySearchResults = (availRooms) => {
   if (typeof availRooms === 'string') {
-    availableRoomsSection.innerHTML = `<h3>${availRooms}</h3>`;
+    availableRoomsSection.innerHTML = `<p class="error-message">${availRooms}</p>`;
   } else {
     availableRoomsSection.innerHTML = '';
     availRooms.forEach(room => {
@@ -64,7 +66,7 @@ const filterByRoomType = (availRooms, roomType) => {
   const filteredRooms = searchByRoomType(availRooms, roomType);
 
   if (typeof filteredRooms === 'string') {
-    availableRoomsSection.innerHTML = `<h3>${filteredRooms}</h3>`;
+    availableRoomsSection.innerHTML = `<p class="error-message">${filteredRooms}</p>`;
   } else {
     availableRoomsSection.innerHTML = '';
     filteredRooms.forEach(room => {
@@ -73,7 +75,7 @@ const filterByRoomType = (availRooms, roomType) => {
     }) ;
   };
 
-  return availRooms;
+  
 };
 
 const getRoomDetails = (room) => {
@@ -101,19 +103,54 @@ const createDashboardCard = (room, booking) => {
 }
 
 const createSearchCard = (room) => {
-  const searchRoomCard = 
+  const searchResultCard = 
   `
-    <article class="room">
-      <h3 class="room-type">${room.roomType} ${room.bidet}</h3>  
-      <img class="room-image" src=${room.image} alt="photo of a ${room.roomType}">
-      <div class="room-details">
-        <span class="material-icons-round">bed</span>  
-        <p class="num-beds">${room.numBeds} ${room.bedSize}</p>
+    <article class="room room-selection" id=${room.number}>
+      <h3 class="room-type room-selection">${room.roomType} ${room.bidet}</h3>  
+      <img class="room-image room-selection" src=${room.image} alt="photo of a ${room.roomType}">
+      <div class="room-details room-selection">
+        <span class="material-icons-round room-selection">bed</span>  
+        <p class="num-beds room-selection">${room.numBeds} ${room.bedSize}</p>
       </div>
-      <p class="cost">$${room.cost} per night</p>
+      <p class="cost room-selection">$${room.cost} per night</p>
     </article>
   `;
-  return searchRoomCard;
+  return searchResultCard;
+}
+
+const displayConfirmation = (room) => {
+  show(overlay)
+  confirmationBox.innerHTML = 
+  `
+  <h2>Click "Book Now" to confirm your reservation  </h2>
+  <article class="confirmation-room" id=${room.number}>
+    <img class="room-image" src=${room.image} alt="photo of a ${room.roomType}">  
+    <h3 class="room-type">${room.roomType} ${room.bidet}</h3>  
+    <div class="room-details">
+      <span class="material-icons-round">bed</span>  
+      <p class="num-beds">${room.numBeds} ${room.bedSize}</p>
+    </div>
+    <p class="cost">$${room.cost} per night</p>
+    <button class="book-now search">Book Now</button>
+  </article>
+  `
+}
+
+const displayThankYou = () => {
+  confirmationBox.innerHTML = 
+  `
+  <div class="thank-you">
+    <h2>Congratulations!</h2>
+    <h3>Your next stay is booked.</h3>
+    <p>Click below to return to your bookings</p>
+    <p>Click outside this box to return to your search results</p>
+    <button class="search home">View Dashboard</button>
+  </div>
+  `
+}
+
+const identifyRoom = (roomsArray, roomNumber) => {
+  return roomsArray.find(room => roomNumber == room.number)
 }
 
 const hide = (element) => {
@@ -129,5 +166,10 @@ export {
   displaySearchResults,
   showDashboard,
   showSearchResultsView,
-  filterByRoomType
+  filterByRoomType,
+  displayConfirmation,
+  identifyRoom,
+  getRoomDetails,
+  displayThankYou,
+  hide
 };
