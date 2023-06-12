@@ -28,7 +28,7 @@ Bed: <span class="material-symbols-round">bed</span>
   outline: 2px solid #E29578;
 }
 
-html {
+.html-login {
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -37,7 +37,7 @@ html {
   justify-content: center;
 }
 
-body {
+.body-login {
   background-image: url('../images/overlook.png');
   background-size: cover;
   background-repeat: no-repeat;
@@ -46,8 +46,15 @@ body {
   font-size: 62.5%;
   padding: 3em;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.body-main {
+  background: #EDF6F9;
+  font-size: 62.5%;
+  padding: 3em;
 }
 
 h1,
@@ -69,6 +76,13 @@ button {
   color: #FFFFFF;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6em;
+}
+
 /* TYPOGRAPHY */
 
 /* BORDERS */
@@ -77,9 +91,6 @@ button {
 
 /* LOGIN PAGE */
 .login-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   background: #EDF6F9;
   box-shadow: 0 0 10px #EDF6F9;
   width: 50%;
@@ -134,6 +145,7 @@ button {
 header {
   padding: 0 6em;
   height: 10em;
+  width: 93%;
 }
 
 .header-content,
@@ -233,14 +245,7 @@ button {
   height: 75%;
 }
 
-/* BOOKINGS */
-
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 6em;
-}
+/* BOOKINGS/SEARCH RESULTS */
 
 .bookings {
   display: flex;

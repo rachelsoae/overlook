@@ -14,17 +14,32 @@ import {
   availableRoomsSection,
   overlay,
   confirmationContainer,
-  confirmationBox
+  loginPage,
+  header,
+  html,
+  body
 } from './scripts';
 
+const removeLoginStyling = () => {
+  html.classList.remove('html-login');
+  // body.classList.remove('body-login');
+  body.classList.add('body-main');
+}
+
 const showDashboard = () => {
+  show(header);
   show(dashboard);
   hide(searchResults);
+  hide(loginPage);
+  removeLoginStyling();
 };
 
 const showSearchResultsView = () => {
+  show(header);
   show(searchResults);
   hide(dashboard);
+  hide(loginPage);
+  removeLoginStyling();
 };
 
 const setDashboard = (customer, allBookings, allRooms) => {
@@ -181,5 +196,6 @@ export {
   identifyRoom,
   getRoomDetails,
   displayThankYou,
-  hide
+  hide,
+  removeLoginStyling
 };

@@ -24,7 +24,8 @@ import {
   identifyRoom,
   getRoomDetails,
   displayThankYou,
-  hide
+  hide,
+  removeLoginStyling
 } from './dom-updates';
 
 import {
@@ -54,19 +55,25 @@ const roomImages = {
   }
 }
 
+const html = document.querySelector('html');
+const body = document.querySelector('body');
+const loginPage = document.querySelector('.login-page');
+const loginForm = document.querySelector('.login');
+const login = document.querySelector('.login-button');
+const header = document.querySelector('header');
 const yourBookings = document.querySelector('.bookings-list');
 const yourBookingsCostContainer = document.querySelector('.bookings-cost');
 const yourBookingsCost = document.querySelector('.bookings-cost-insert');
 const dateField = document.querySelector('.date-picker');
-const dateSearch = document.querySelector('form');
+const searchForm = document.querySelector('.date-search');
 const dashboard = document.querySelector('.dashboard-view');
 const searchResults = document.querySelector('.book-room-view');
 const availableRoomsSection = document.querySelector('.bookings-searched');
 const filter = document.querySelector('.filter-container');
 const logo = document.querySelector('h1');
 const overlay = document.querySelector('.background-overlay');
-const confirmationContainer = document.querySelector('.confirmation')
-const confirmationBox = document.querySelector('.confirmation-box');
+const confirmationContainer = document.querySelector('.confirmation');
+
 
 // Event Listeners
 window.addEventListener('load', () => {
@@ -83,9 +90,13 @@ window.addEventListener('load', () => {
       rooms = data[2].rooms;
       user = data[3];
       console.log(user);
-      // setDashboard(user, bookings, rooms);
     });
 });
+
+loginForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  setDashboard(user, bookings, rooms);
+})
 
 logo.addEventListener('click', () => {
   setDashboard(user, bookings, rooms);
@@ -97,12 +108,13 @@ logo.addEventListener('keyup', (event) => {
   };
 });
 
-dateSearch.addEventListener('submit', (event) => {
+searchForm.addEventListener('submit', (event) => {
   event.preventDefault(); 
   if (dateField.value) {
     lastFilter = 'any'
     selectedDate = dateField.value;
     availRooms = searchByDate(bookings, rooms, selectedDate);
+    console.log(availRooms)
     showSearchResultsView();
     displaySearchResults(availRooms);
   };
@@ -200,5 +212,8 @@ export {
   selectedRoom,
   overlay,
   confirmationContainer,
-  confirmationBox
+  loginPage,
+  header,
+  html,
+  body
 };
