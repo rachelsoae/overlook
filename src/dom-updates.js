@@ -90,7 +90,7 @@ const getRoomDetails = (room) => {
 const createDashboardCard = (room, booking) => {
   const dashBookingCard =
   `
-    <article class="room">
+    <article class="room" tabindex="0">
       <h3 class="room-type">${room.roomType} ${room.bidet}</h3>  
       <p class="booking-date">${booking.date}</p>
       <img class="room-image" src=${room.image} alt="${room.imageAltText}">
@@ -106,7 +106,7 @@ const createDashboardCard = (room, booking) => {
 const createSearchCard = (room) => {
   const searchResultCard = 
   `
-    <article class="room room-selection" id=${room.number}>
+    <article class="room room-selection" id=${room.number} tabindex="0">
       <h3 class="room-type room-selection">${room.roomType} ${room.bidet}</h3>  
       <img class="room-image room-selection" src=${room.image} alt="${room.imageAltText}">
       <div class="room-details room-selection">
@@ -123,7 +123,7 @@ const displayConfirmation = (room) => {
   show(overlay)
   confirmationBox.innerHTML = 
   `
-  <h2>Click "Book Now" to confirm your reservation  </h2>
+  <h2>Click "Book Now" to confirm your reservation</h2>
   <article class="confirmation-room" id=${room.number}>
     <img class="room-image" src=${room.image} alt="${room.imageAltText}">  
     <h3 class="room-type">${room.roomType} ${room.bidet}</h3>  
