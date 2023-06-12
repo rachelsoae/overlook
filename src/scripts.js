@@ -38,19 +38,19 @@ let customers, bookings, rooms, user, selectedDate, availRooms, selectedRoom, la
 const roomImages = {
   'residential suite': {
     imageName: 'res-suite',
-    altText:'A photo of a luxurious cream-colored suite with high ceilings. The bed is adorned with a white comforter and decorated with black and white pillows. On the far side of the room, there is a door that leads to a sophisticated dining area.'
+    altText:'A photo of a hotel bed in a large suite. On the far side of the room, a door leads to a dining area.'
   },
   suite: {
     imageName: 'suite',
-    altText: 'A photo of a luxurious hotel bed showcasing a grey headboard, adorned with a white comforter and an arrangement of grey and white pillows. A lamp is placed on each side of the bed, providing warm illumination.'
+    altText: 'A photo of a hotel bed with a grey headboard, white comforter, and lamps on either side.'
   },
   'single room': {
     imageName: 'single-room',
-    altText: 'A photo of a cozy hotel room with natural lighting, a bed with grey headboard and white bedding, a side table with a lamp, and a wall-mounted TV.'
+    altText: 'A photo of a hotel room with a window and a bed with lamps on either side.'
   },
   'junior suite': {
     imageName: 'jr-suite',
-    altText: 'A photo of a well-lit hotel room with large windows, a cozy bed featuring a white comforter, grey headboard, and grey/white pillows. Bedside lamps flank the bed, while a grey loveseat and coffee table with a vase of white flowers complete the scene.'
+    altText: 'A photo of a hotel room with large windows, a bed with lamps on either side, and a grey loveseat.'
   }
 }
 
