@@ -13,7 +13,9 @@ import {
   searchResults,
   availableRoomsSection,
   overlay,
-  confirmationBox
+  confirmationContainer,
+  confirmationBox,
+  exit
 } from './scripts';
 
 const showDashboard = () => {
@@ -74,8 +76,6 @@ const filterByRoomType = (availRooms, roomType) => {
       availableRoomsSection.innerHTML += createSearchCard(availRoom);
     }) ;
   };
-
-  
 };
 
 const getRoomDetails = (room) => {
@@ -120,14 +120,12 @@ const createSearchCard = (room) => {
 }
 
 const displayConfirmation = (room) => {
-  show(overlay)
+  show(overlay);
+  confirmationContainer.focus();
   confirmationBox.innerHTML = 
   `
-  <div class="icon-exit-container">
-    <span class="material-icons-round icon-exit">cancel</span>
-  </div>
-  <h2>Click "Book Now" to confirm your reservation</h2>
   <article class="confirmation-room" id=${room.number}>
+    <h2>Click "Book Now" to confirm your reservation</h2>
     <img class="room-image" src=${room.image} alt="${room.imageAltText}">  
     <h3 class="room-type">${room.roomType} ${room.bidet}</h3>  
     <div class="room-details">
@@ -135,24 +133,22 @@ const displayConfirmation = (room) => {
       <p class="num-beds">${room.numBeds} ${room.bedSize}</p>
     </div>
     <p class="cost">$${room.cost} per night</p>
-    <button class="book-now search">Book Now</button>
+    <button class="book-now search" tabindex="0">Book Now</button>
   </article>
   `
+  
 }
 
 const displayThankYou = () => {
   confirmationBox.innerHTML = 
   `
   <div class="thank-you-container">
-    <div class="icon-exit-container">
-      <span class="material-icons-round icon-exit">cancel</span>
-    </div>
     <div class="thank-you">
       <h2>Congratulations!</h2>
       <h3>Your next stay is booked.</h3>
       <p>Click below to return to your bookings</p>
       <p>Exit to return to your search results</p>
-      <button class="search home">View Dashboard</button>
+      <button class="search home" tabindex="0">View Dashboard</button>
     </div>
   </div>
   `
@@ -173,7 +169,6 @@ const show = (element) => {
 export {
   setDashboard,
   displaySearchResults,
-  showDashboard,
   showSearchResultsView,
   filterByRoomType,
   displayConfirmation,

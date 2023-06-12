@@ -17,7 +17,6 @@ import {
 import {
   setDashboard,
   displaySearchResults,
-  showDashboard,
   showSearchResultsView,
   filterByRoomType,
   displayConfirmation,
@@ -65,7 +64,9 @@ const availableRoomsSection = document.querySelector('.bookings-searched');
 const filter = document.querySelector('.filter-container');
 const logo = document.querySelector('h1');
 const overlay = document.querySelector('.background-overlay');
-const confirmationBox = document.querySelector('.confirmation');
+const confirmationContainer = document.querySelector('.confirmation')
+const confirmationBox = document.querySelector('.confirmation-box');
+const exit = document.querySelector('.icon-exit')
 
 // Event Listeners
 window.addEventListener('load', () => {
@@ -172,5 +173,7 @@ export {
   availRooms,
   selectedRoom,
   overlay,
-  confirmationBox
+  confirmationContainer,
+  confirmationBox,
+  exit
 };
