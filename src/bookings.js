@@ -49,9 +49,9 @@ const searchByRoomType = (roomsArray, roomType) => {
 const parseUserID = (customers, username) => {
   const id = username.slice(8, username.length);
   if (customers.some(customer => customer.id === parseInt(id))) {
-    return id;
+    return parseInt(id);
   } else {
-    return 'Oops! You have entered an incorrect username. Please try again.';
+    return 'Oops! The username you have entered is invalid. Please try again.';
   };
 };
 

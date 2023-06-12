@@ -109,7 +109,7 @@ describe('User information', () => {
 
     const id1 = parseUserID(customers, leathasUsername);
 
-    expect(id1).to.equal('1');
+    expect(id1).to.equal(1);
   });
 
   it('Should be able to return a 2-digit user ID', () => {
@@ -117,12 +117,12 @@ describe('User information', () => {
     
     const id2 = parseUserID(customers, bellsUsername)
 
-    expect(id2).to.equal('21');
+    expect(id2).to.equal(21);
   });
 
   it('Should return a message if username is not in database', () => {
     const id = parseUserID(customers, 'randoUser88');
 
-    expect(id).to.equal('Oops! You have entered an incorrect username. Please try again.')
+    expect(id).to.equal('Oops! The username you have entered is invalid. Please try again.')
   });
 })
