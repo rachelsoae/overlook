@@ -293,13 +293,17 @@ p {
 .confirmation {
   position: static;
   width: 40%;
-  height: 60%;
+  height: 70%;
   background-color: #FFFFFF;
   box-shadow: 0 0 3px #83C5BE;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: wrap;
+}
+
+.confirmation-box {
+  width: 100%;
 }
 
 .confirmation-room {
@@ -326,13 +330,8 @@ p {
 .book-now,
 .home {
   border: none; 
-  width: 60%;
+  width: 40%;
   margin-top: 1em;
-}
-
-.thank-you-container {
-  height: 100%;
-  width: 100%;
 }
 
 .thank-you {
@@ -340,13 +339,13 @@ p {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 80%;
+  height: 100%;
   width: 100%;
+  margin-top: 5em;
 }
 
 .home {
-  height: 15%;
-  width: 40%;
+  height: 18%;
 }
 
 /* HIDDEN/INVISIBLE */

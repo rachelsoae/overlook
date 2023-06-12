@@ -142,14 +142,12 @@ const displayConfirmation = (room) => {
 const displayThankYou = () => {
   confirmationBox.innerHTML = 
   `
-  <div class="thank-you-container">
-    <div class="thank-you">
-      <h2 tabindex="0">Congratulations!</h2>
-      <h3 tabindex="0">Your next stay is booked.</h3>
-      <p tabindex="0">Click below to return to your bookings</p>
-      <p tabindex="0">Exit to return to your search results</p>
-      <button class="search home" tabindex="0">View Dashboard</button>
-    </div>
+  <div class="thank-you">
+    <h2 tabindex="0">Congratulations!</h2>
+    <h3 tabindex="0">Your next stay is booked.</h3>
+    <p tabindex="0">Click below to return to your bookings</p>
+    <p tabindex="0">Exit to return to your search results</p>
+    <button class="search home" tabindex="0">View Dashboard</button>
   </div>
   `
 }
