@@ -35,7 +35,7 @@ const bookRoom = (userID, selectedDate, roomNumber) => {
     }
   })
   .then(response => checkForError(response))
-  .then(response => getBookingsData())
+  .then(() => getBookingsData())
   .catch(error => alert(`${error.message}`))
 };
 
