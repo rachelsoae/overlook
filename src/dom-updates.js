@@ -22,7 +22,6 @@ import {
 
 const removeLoginStyling = () => {
   html.classList.remove('html-login');
-  // body.classList.remove('body-login');
   body.classList.add('body-main');
 }
 
@@ -39,7 +38,6 @@ const showSearchResultsView = () => {
   show(searchResults);
   hide(dashboard);
   hide(loginPage);
-  removeLoginStyling();
 };
 
 const setDashboard = (customer, allBookings, allRooms) => {
@@ -196,6 +194,5 @@ export {
   identifyRoom,
   getRoomDetails,
   displayThankYou,
-  hide,
-  removeLoginStyling
+  hide
 };

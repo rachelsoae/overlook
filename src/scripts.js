@@ -24,12 +24,12 @@ import {
   identifyRoom,
   getRoomDetails,
   displayThankYou,
-  hide,
-  removeLoginStyling
+  hide
 } from './dom-updates';
 
 import {
-  searchByDate
+  searchByDate,
+  parseUserID
 } from './bookings';
 
 import flatpickr from 'flatpickr';
@@ -59,7 +59,8 @@ const html = document.querySelector('html');
 const body = document.querySelector('body');
 const loginPage = document.querySelector('.login-page');
 const loginForm = document.querySelector('.login');
-const login = document.querySelector('.login-button');
+const username = document.querySelector('#username');
+const password = document.querySelector('#password');
 const header = document.querySelector('header');
 const yourBookings = document.querySelector('.bookings-list');
 const yourBookingsCostContainer = document.querySelector('.bookings-cost');
@@ -79,23 +80,23 @@ const confirmationContainer = document.querySelector('.confirmation');
 window.addEventListener('load', () => {
   flatpickr(dateField, {
     minDate: 'today',
-    // altInput: true,
-    // altFormat: "F j, Y",
     dateFormat: "Y/m/d"
   });
-  Promise.all([getAllCustomersData(), getBookingsData(), getRoomsData(), getUserData('1')])
+  Promise.all([getAllCustomersData(), getBookingsData(), getRoomsData()])
     .then(data => {
       customers = data[0].customers;
       bookings = data[1].bookings;
       rooms = data[2].rooms;
-      user = data[3];
-      console.log(user);
     });
 });
 
 loginForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  setDashboard(user, bookings, rooms);
+  console.log(username.value)
+  let userID = parseUserID(customers, username.value);
+  Promise.resolve(getUserData(userID))
+  .then(data => user = data)
+  .then(() => setDashboard(user, bookings, rooms));
 })
 
 logo.addEventListener('click', () => {
