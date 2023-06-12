@@ -66,7 +66,6 @@ const logo = document.querySelector('h1');
 const overlay = document.querySelector('.background-overlay');
 const confirmationContainer = document.querySelector('.confirmation')
 const confirmationBox = document.querySelector('.confirmation-box');
-const exit = document.querySelector('.icon-exit')
 
 // Event Listeners
 window.addEventListener('load', () => {
@@ -132,8 +131,17 @@ overlay.addEventListener('click', (event) => {
   };
 });
 
-confirmationBox.addEventListener('click', (event) => {
+confirmationContainer.addEventListener('click', (event) => {
   if (event.target.classList.contains('icon-exit')) {
+    hide(overlay);
+    availRooms = searchByDate(bookings, rooms, selectedDate)
+    displaySearchResults(availRooms);
+    lastFilter === 'any' ? displaySearchResults(availRooms) : filterByRoomType(availRooms, lastFilter)
+  };
+});
+
+confirmationContainer.addEventListener('keyup', (event) => {
+  if (event.target.classList.contains('icon-exit') && event.keyCode === 13) {
     hide(overlay);
     availRooms = searchByDate(bookings, rooms, selectedDate)
     displaySearchResults(availRooms);
@@ -175,5 +183,4 @@ export {
   overlay,
   confirmationContainer,
   confirmationBox,
-  exit
 };

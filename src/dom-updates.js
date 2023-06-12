@@ -14,8 +14,7 @@ import {
   availableRoomsSection,
   overlay,
   confirmationContainer,
-  confirmationBox,
-  exit
+  confirmationBox
 } from './scripts';
 
 const showDashboard = () => {
