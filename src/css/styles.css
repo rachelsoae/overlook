@@ -14,8 +14,6 @@ Open Sans 300 400 ~ Body Text
 
 ICONS:
 Bed: <span class="material-symbols-round">bed</span>
-Moon: <span class="material-symbols-rounded">bedtime</span>
-
 */
 
 @import '~flatpickr/dist/flatpickr.css';
@@ -24,6 +22,10 @@ Moon: <span class="material-symbols-rounded">bedtime</span>
 
 * {
   /* border: 1px solid #006D77; */
+}
+
+*:focus-visible {
+  outline: 2px solid #E29578;
 }
 
 html {
@@ -103,6 +105,16 @@ button {
   width: 100%;
 }
 
+.login-label-container {
+  display: flex;
+  align-items: center;
+}
+
+.icon-login {
+  color: #006D77;
+  margin-left: 0.5em;
+}
+
 .login-label {
   font-weight: 400;
 }
@@ -110,6 +122,7 @@ button {
 .login-input {
   height: 2rem;
   width: 90%;
+  padding-left: 0.5em;
 }
 
 .login-button {
@@ -213,17 +226,6 @@ button {
   width: 90%;
   height: 70%;
   margin-top: 0;
-}
-
-.date-picker:focus-visible,
-button:focus-visible,
-article:focus-visible,
-h1:focus-visible,
-.confirmation:focus-visible,
-.icon-exit:focus-visible,
-.login:focus-visible,
-.login-input:focus-visible {
-  outline: 2px solid #E29578;
 }
 
 .search {

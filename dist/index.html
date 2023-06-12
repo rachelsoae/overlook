@@ -13,16 +13,22 @@
 </head>
 <body>
   <main class="login-page">
-    <p class="welcome">Welcome to</p>
+    <p class="welcome" tabindex="0">Welcome to</p>
     <h1 tabindex="0" class="login-header">THE OVERLOOK</h1>
     <form class="login">
       <div class="input-container">
-        <label for="username" class="login-label">Username:</label>
+        <span class="login-label-container">
+          <span class="material-icons-round icon-login">account_circle</span>
+          <label for="username" class="login-label">Username:</label>
+        </span>
         <input type="text" class="login-input" id="username">
       </div>
       <div class="input-container">
-        <label for="password" class="login-label">Password</label>
-        <input type="text" class="login-input" id="password">
+        <span class="login-label-container">
+          <span class="material-icons-round icon-login">lock</span>
+          <label for="password" class="login-label">Password</label>
+        </span>
+        <input type="password" class="login-input" id="password">
       </div>
       <button class="login-button">Login</button>
     </form>
