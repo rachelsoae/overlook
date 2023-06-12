@@ -90,6 +90,12 @@ logo.addEventListener('click', () => {
   setDashboard(user, bookings, rooms);
 });
 
+logo.addEventListener('keyup', (event) => {
+  if (event.key === 'Enter') {
+    setDashboard(user, bookings, rooms)
+  };
+});
+
 dateSearch.addEventListener('submit', (event) => {
   event.preventDefault(); 
   if (dateField.value) {
@@ -115,7 +121,7 @@ availableRoomsSection.addEventListener('click', (event) => {
 });
 
 availableRoomsSection.addEventListener('keyup', (event) => {  
-  if (event.target.classList.contains('room-selection') && event.keyCode === 13) {
+  if (event.target.classList.contains('room-selection') && event.key === 'Enter') {
     selectedRoom = identifyRoom(availRooms, event.target.closest('article').id);
     let bookingDetails = getRoomDetails(selectedRoom);
     displayConfirmation(bookingDetails);
@@ -141,7 +147,7 @@ confirmationContainer.addEventListener('click', (event) => {
 });
 
 confirmationContainer.addEventListener('keyup', (event) => {
-  if (event.target.classList.contains('icon-exit') && event.keyCode === 13) {
+  if (event.target.classList.contains('icon-exit') && event.key === 'Enter') {
     hide(overlay);
     availRooms = searchByDate(bookings, rooms, selectedDate)
     displaySearchResults(availRooms);
@@ -149,7 +155,7 @@ confirmationContainer.addEventListener('keyup', (event) => {
   };
 });
 
-confirmationBox.addEventListener('click', (event) => {
+confirmationContainer.addEventListener('click', (event) => {
   if (event.target.classList.contains('book-now')) {
     Promise.resolve(bookRoom(user.id, selectedDate, event.target.closest('article').id))
     .then(data => {
@@ -160,7 +166,18 @@ confirmationBox.addEventListener('click', (event) => {
   };
 });
 
-confirmationBox.addEventListener('click', (event) => {
+confirmationContainer.addEventListener('keyup', (event) => {
+  if (event.target.classList.contains('book-now') && event.key === 'Enter') {
+    Promise.resolve(bookRoom(user.id, selectedDate, event.target.closest('article').id))
+    .then(data => {
+      bookings = data.bookings;
+      availRooms = searchByDate(bookings, rooms, selectedDate)
+    })
+    .then(displayThankYou());
+  };
+});
+
+confirmationContainer.addEventListener('click', (event) => {
   if (event.target.classList.contains('home')) {
     hide(overlay);
     setDashboard(user, bookings, rooms);
@@ -182,5 +199,5 @@ export {
   selectedRoom,
   overlay,
   confirmationContainer,
-  confirmationBox,
+  confirmationBox
 };

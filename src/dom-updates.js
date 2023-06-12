@@ -121,32 +121,41 @@ const createSearchCard = (room) => {
 const displayConfirmation = (room) => {
   show(overlay);
   confirmationContainer.focus();
-  confirmationBox.innerHTML = 
+  confirmationContainer.innerHTML = 
   `
-  <article class="confirmation-room" id=${room.number}>
-    <h2 tabindex="0">Click "Book Now" to confirm your reservation</h2>
-    <img class="room-image" src=${room.image} alt="${room.imageAltText}" tabindex="0">  
-    <h3 class="room-type" tabindex="0">${room.roomType} ${room.bidet}</h3>  
-    <div class="room-details">
-      <span class="material-icons-round">bed</span>  
-      <p class="num-beds" tabindex="0">${room.numBeds} ${room.bedSize}</p>
-    </div>
-    <p class="cost" tabindex="0">$${room.cost} per night</p>
-    <button class="book-now search" tabindex="0">Book Now</button>
-  </article>
+  <div class="icon-exit-container">
+    <span class="material-icons-round icon-exit" tabindex="0">cancel</span>
+  </div>
+  <div class="confirmation-box">
+    <article class="confirmation-room" id=${room.number}>
+      <h2 tabindex="0">Click "Book Now" to confirm your reservation</h2>
+      <img class="room-image" src=${room.image} alt="${room.imageAltText}" tabindex="0">  
+      <h3 class="room-type" tabindex="0">${room.roomType} ${room.bidet}</h3>  
+      <div class="room-details">
+        <span class="material-icons-round">bed</span>  
+        <p class="num-beds" tabindex="0">${room.numBeds} ${room.bedSize}</p>
+      </div>
+      <p class="cost" tabindex="0">$${room.cost} per night</p>
+      <button class="book-now search" tabindex="0">Book Now</button>
+    </article>
+  </div>
   `
-  
 }
 
 const displayThankYou = () => {
-  confirmationBox.innerHTML = 
+  confirmationContainer.innerHTML = 
   `
-  <div class="thank-you">
-    <h2 tabindex="0">Congratulations!</h2>
-    <h3 tabindex="0">Your next stay is booked.</h3>
-    <p tabindex="0">Click below to return to your bookings</p>
-    <p tabindex="0">Exit to return to your search results</p>
-    <button class="search home" tabindex="0">View Dashboard</button>
+  <div class="icon-exit-container">
+    <span class="material-icons-round icon-exit" tabindex="0">cancel</span>
+  </div>
+  <div class="confirmation-box">
+    <div class="thank-you">
+      <h2 tabindex="0">Congratulations!</h2>
+      <h3 tabindex="0">Your next stay is booked.</h3>
+      <p tabindex="0">Click below to return to your bookings</p>
+      <p tabindex="0">Exit to return to your search results</p>
+      <button class="search home" tabindex="0">View Dashboard</button>
+    </div>
   </div>
   `
 }
