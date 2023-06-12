@@ -5,6 +5,7 @@ import './images/jr-suite.png';
 import './images/res-suite.png';
 import './images/suite.png';
 import './images/single-room.png';
+import './images/overlook.png';
 
 import {
   getUserData,
@@ -82,7 +83,7 @@ window.addEventListener('load', () => {
       rooms = data[2].rooms;
       user = data[3];
       console.log(user);
-      setDashboard(user, bookings, rooms);
+      // setDashboard(user, bookings, rooms);
     });
 });
 

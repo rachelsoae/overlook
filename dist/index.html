@@ -12,7 +12,22 @@
   <title>The Overlook</title>
 </head>
 <body>
-  <header>
+  <main class="login-page">
+    <p class="welcome">Welcome to</p>
+    <h1 tabindex="0" class="login-header">THE OVERLOOK</h1>
+    <form class="login">
+      <div class="input-container">
+        <label for="username" class="login-label">Username:</label>
+        <input type="text" class="login-input" id="username">
+      </div>
+      <div class="input-container">
+        <label for="password" class="login-label">Password</label>
+        <input type="text" class="login-input" id="password">
+      </div>
+      <button class="login-button">Login</button>
+    </form>
+  </main>
+  <header class="hidden">
     <div class="header-content">
       <h1 tabindex="0">THE OVERLOOK</h1>
       <form role="search" class="date-search">
@@ -25,7 +40,7 @@
       </form>
     </div>
   </header>
-  <main class="dashboard-view">
+  <main class="dashboard-view hidden">
     <section class="bookings">
       <div class="bookings-header">
         <h2 tabindex="0">Your bookings...</h2>
