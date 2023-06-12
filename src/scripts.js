@@ -218,5 +218,6 @@ export {
   loginPage,
   header,
   html,
-  body
+  body,
+  searchForm
 };
