@@ -5,7 +5,8 @@ import {
   getBookings, 
   getTotalCost, 
   searchByDate, 
-  searchByRoomType  
+  searchByRoomType,
+  parseUserID
 } from '../src/bookings'
 
 describe('Bookings per customer', () => {
@@ -98,5 +99,30 @@ describe('Search available rooms', () => {
 
     expect(onlyJuniorSuites).to.deep.equal(`We\'re terribly sorry - there are no rooms of that type available for the date you have selected. Please select a different room type, or book a different date.`)
   });
+})
 
+describe('User information', () => {
+  const customers = sampleData.customers;
+
+  it('Should return a user\'s ID given their login username', () => {
+    const leathasUsername = 'customer1'
+
+    const id1 = parseUserID(customers, leathasUsername);
+
+    expect(id1).to.equal('1');
+  });
+
+  it('Should be able to return a 2-digit user ID', () => {
+    const bellsUsername = 'customer21'
+    
+    const id2 = parseUserID(customers, bellsUsername)
+
+    expect(id2).to.equal('21');
+  });
+
+  it('Should return a message if username is not in database', () => {
+    const id = parseUserID(customers, 'randoUser88');
+
+    expect(id).to.equal('Oops! You have entered an incorrect username. Please try again.')
+  });
 })
