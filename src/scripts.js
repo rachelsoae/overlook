@@ -114,8 +114,25 @@ availableRoomsSection.addEventListener('click', (event) => {
   };
 });
 
+availableRoomsSection.addEventListener('keyup', (event) => {  
+  if (event.target.classList.contains('room-selection') && event.keyCode === 13) {
+    selectedRoom = identifyRoom(availRooms, event.target.closest('article').id);
+    let bookingDetails = getRoomDetails(selectedRoom);
+    displayConfirmation(bookingDetails);
+  };
+});
+
 overlay.addEventListener('click', (event) => {
   if (event.target.classList.contains('background-overlay')) {
+    hide(overlay);
+    availRooms = searchByDate(bookings, rooms, selectedDate)
+    displaySearchResults(availRooms);
+    lastFilter === 'any' ? displaySearchResults(availRooms) : filterByRoomType(availRooms, lastFilter)
+  };
+});
+
+confirmationBox.addEventListener('click', (event) => {
+  if (event.target.classList.contains('icon-exit')) {
     hide(overlay);
     availRooms = searchByDate(bookings, rooms, selectedDate)
     displaySearchResults(availRooms);

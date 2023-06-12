@@ -33,7 +33,8 @@ body {
 h1,
 .date-picker,
 .search,
-.room-selection {
+.room-selection,
+.icon-exit {
   cursor: pointer;
 }
 
@@ -69,8 +70,9 @@ h1 {
 
 .date-search {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  
   width: 45%;
   height: 100%;
   color: #006D77;
@@ -78,7 +80,8 @@ h1 {
 
 input,
 .flatpickr-calendar,
-p {
+p,
+#date-picker-label  {
   font-family: 'Open Sans', sans-serif; 
   font-size: 1rem;
   color: #032A2E;
@@ -92,40 +95,56 @@ input {
 
 .date-picker-container {
   display: flex;
-  align-items: center;
   height: 100%;
-  width: 70%;
+  width: 100%;
 }
 
 .icon-calendar {
   font-size: 3rem;
-  color: #83C5BE;
 }
 
-.date-picker {
-  width: 90%;
-  height: 50%;
+.icon-calendar,
+#date-picker-label {
+  color: #006D77
 }
 
-.date-picker:focus-visible,
-button:focus-visible {
-  outline: 2px solid #E29578;
+#date-picker-label {
+  font-weight: 400;
+  margin: 0;
+  margin-left: 11%;
 }
 
 .date-picker,
 .search,
 select {
-  height: 75%;
   border: 1px solid #FFDDD2;
+}
+
+.icon-calendar,
+.date-picker {
+  height: 100%;
+}
+
+.date-picker {
+  width: 90%;
+  height: 70%;
+  margin-top: 0;
+}
+
+.date-picker:focus-visible,
+button:focus-visible,
+article:focus-visible,
+h1:focus-visible {
+  outline: 2px solid #E29578;
 }
 
 .search {
   width: 30%; 
+  height: 75%;
   font-family: 'Trirong', serif;
   font-size: 2rem;
-  background-color: #83C5BE;
+  background-color: #006D77;
   color: #FFFFFF;
-  margin: 0;
 }
 
 /* BOOKINGS */
@@ -262,7 +281,7 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgb(0, 109, 119, 0.75);
+  background-color: rgb(237, 246, 249, 0.75);
   z-index: 2;
   display: flex;
   align-items: center;
@@ -273,8 +292,8 @@ p {
   position: static;
   width: 40%;
   height: 60%;
-  background-color: #EDF6F9;
-  box-shadow: 0 0 4px #EDF6F9;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 6px #EDF6F9;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -290,6 +309,18 @@ p {
   padding-top: 2em;
 }
 
+.icon-exit-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.icon-exit {
+  font-size: 2rem;
+  color: #006D77;
+  margin: 0.5em;
+}
+
 .book-now,
 .home {
   border: none; 
@@ -297,15 +328,22 @@ p {
   margin-top: 1em;
 }
 
+.thank-you-container {
+  height: 100%;
+  width: 100%;
+}
+
 .thank-you {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 80%;
   width: 100%;
 }
 
 .home {
+  height: 15%;
   width: 40%;
 }
 

@@ -14,13 +14,14 @@
 <body>
   <header>
     <div class="header-content">
-      <h1>THE OVERLOOK</h1>
+      <h1 tabindex="0">THE OVERLOOK</h1>
       <form role="search" class="date-search">
+        <label for="date-picker" id="date-picker-label">Arrival Date</label>
         <span class="date-picker-container">
-          <label for="date-picker" class="material-icons-round icon-calendar">calendar_month</label>
+          <span class="material-icons-round icon-calendar">calendar_month</span>
           <input type="text" class="date-picker" id="date-picker" placeholder="Select a Date...">
-        </span>
-        <button type="submit" class="search">Book</button>
+          <button type="submit" class="search">Book</button>
+      </span>
       </form>
     </div>
   </header>
@@ -44,7 +45,7 @@
     <section class="bookings">
       <div class="search-header">
         <h2>Select a room to book...</h2>
-        <form class="filter-container">
+        <span class="filter-container">
           <label for="filter">Filter by Room Type:</label>
           <select name="filter" id="filter">
             <option value="any" selected>Any</option>
@@ -53,15 +54,15 @@
             <option value="junior suite">Junior Suite</option>
             <option value="single room">Single Room</option>
           </select>
-        </form>
+        </span>
       </div>
       <section class="bookings-searched">
         <!-- Search Results Populate Here -->
       </section>
     </section>
-    <div class="background-overlay hidden">
+    <div class="background-overlay hidden" aria-modal="true">
       <section class="confirmation">
-        
+        <!-- Room Details & Booking Controls Populate Here -->
       </section>
     </div>
   </main>
