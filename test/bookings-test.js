@@ -32,11 +32,6 @@ describe('Bookings per customer', () => {
     const rachelsBookings = getBookings(bookings, rachel);
     expect(rachelsBookings).to.equal('You don\'t have any bookings yet. Book your first stay today!');
   });
-
-  it('Should sort bookings from most to least recent', () => {
-    const rocio = customers[1];
-    
-  })
 });
 
 describe('Cost per customer', () => {
