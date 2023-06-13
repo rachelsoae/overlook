@@ -9,7 +9,8 @@ import {
   parseUserID,
   validateUsername,
   validatePassword,
-  configDate
+  configDate,
+  getTodaysDate
 } from '../src/bookings'
 
 describe('Bookings per customer', () => {
@@ -151,4 +152,9 @@ describe('Dates', () => {
     const dataDate = configDate(longDate);
     expect(dataDate).to.equal('2023/06/29');
   });
+
+  it(' ', () => {
+    const today = getTodaysDate();
+    expect(today).to.equal('2023/06/13')
+  })
 });

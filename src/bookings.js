@@ -71,9 +71,22 @@ const validatePassword = (password) => {
 
 const configDate = (longDate) => {
   const date = new Date(longDate);
+  console.log(date);
   const year = date.getFullYear();
   const day = date.getDate();
   const month = date.getMonth() + 1;
+
+  let formattedMonth;
+  (month.toString().length === 1) ? formattedMonth = `0${month}`: formattedMonth = month;
+
+  return `${year}/${formattedMonth}/${day}`
+}
+
+const getTodaysDate = () => {
+  const today = new Date();
+  const year = today.getFullYear();
+  const day = today.getDate();
+  const month = today.getMonth() + 1;
 
   let formattedMonth;
   (month.toString().length === 1) ? formattedMonth = `0${month}`: formattedMonth = month;
@@ -89,5 +102,6 @@ export {
   parseUserID,
   validateUsername,
   validatePassword,
-  configDate
+  configDate,
+  getTodaysDate
 }
