@@ -60,6 +60,14 @@ h1 {
   font-size: 6rem;
 }
 
+p,
+label,
+input,
+.flatpickr-calendar {
+  font-family: 'Open Sans', sans-serif; 
+  font-size: 1rem;
+}
+
 h2,
 h3,
 button,
@@ -67,14 +75,6 @@ button,
 .bookings-cost,
 .filter-container {
   font-family: 'Trirong', serif;
-}
-
-p,
-label,
-input,
-.flatpickr-calendar {
-  font-family: 'Open Sans', sans-serif; 
-  font-size: 1rem;
 }
 
 .icon-calendar {
@@ -113,6 +113,14 @@ input,
 
 label {
   font-weight: 400;
+}
+
+.filter-label,
+.bookings-cost  {
+  font-family: 'Trirong', serif;
+  color: #032A2E;
+  font-weight: 200;
+  font-size: 1.4rem;
 }
 
 /* ~*~  BORDERS ~*~  */
@@ -337,18 +345,10 @@ label {
 .bookings-cost,
 .filter-container {
   display: flex;
-  font-size: 1.4rem;
-  margin: 0;
-}
-
-.bookings-cost {
-  width: 20%;
+  justify-content: space-around;
   align-items: baseline;
-}
-
-.filter-container {
-  width: 25%;
-  align-items: center;
+  margin: 0;
+  width: 20%;
 }
 
 select {
