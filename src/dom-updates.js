@@ -1,7 +1,9 @@
 import {
   getBookings,
   getTotalCost,
-  searchByRoomType
+  searchByRoomType,
+  validateUsername,
+  validatePassword
 } from './bookings';
 
 import {
@@ -14,17 +16,44 @@ import {
   availableRoomsSection,
   overlay,
   confirmationContainer,
-  confirmationBox
+  loginPage,
+  header,
+  html,
+  body,
+  searchForm
 } from './scripts';
 
+const validateLogin = (customers, username, password) => {
+  if (!validateUsername(customers, username) && !validatePassword(password)) {
+    alert('Oops! The username and password you have entered are invalid. Please try again.')
+  } else if (!validateUsername(customers, username)) {
+    alert('Oops! The username you have entered is invalid. Please try again.')
+  } else if (!validatePassword(password)) {
+    alert('Oops! The password you have entered is invalid. Please try again.')
+  } else {
+    return true;
+  };
+};
+
+const removeLoginStyling = () => {
+  html.classList.remove('html-login');
+  body.classList.add('body-main');
+}
+
 const showDashboard = () => {
+  show(header);
   show(dashboard);
   hide(searchResults);
+  hide(loginPage);
+  removeLoginStyling();
+  searchForm.reset();
 };
 
 const showSearchResultsView = () => {
+  show(header);
   show(searchResults);
   hide(dashboard);
+  hide(loginPage);
 };
 
 const setDashboard = (customer, allBookings, allRooms) => {
@@ -173,6 +202,7 @@ const show = (element) => {
 };
 
 export {
+  validateLogin,
   setDashboard,
   displaySearchResults,
   showSearchResultsView,

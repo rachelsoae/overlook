@@ -202,6 +202,11 @@ const sampleData = {
           "roomNumber": 1
         }
       ]
+    },
+    {
+      "id": 21,
+      "name": "Bell Schwartz",
+      "bookings": null
     }
   ]
 };

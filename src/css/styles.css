@@ -14,17 +14,44 @@ Open Sans 300 400 ~ Body Text
 
 ICONS:
 Bed: <span class="material-symbols-round">bed</span>
-Moon: <span class="material-symbols-rounded">bedtime</span>
-
 */
 
 @import '~flatpickr/dist/flatpickr.css';
+
+/* GENERAL */
 
 * {
   /* border: 1px solid #006D77; */
 }
 
-body {
+*:focus-visible {
+  outline: 2px solid #E29578;
+}
+
+.html-login {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.body-login {
+  background-image: url('../images/overlook.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 90%;
+  width: 95%;
+  font-size: 62.5%;
+  padding: 3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.body-main {
   background: #EDF6F9;
   font-size: 62.5%;
   padding: 3em;
@@ -42,11 +69,83 @@ h1,
   text-align: center;
 }
 
-/* HEADER */
+button {
+  font-family: 'Trirong', serif;
+  font-size: 2rem;
+  background-color: #006D77;
+  color: #FFFFFF;
+}
 
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6em;
+}
+
+/* TYPOGRAPHY */
+
+/* BORDERS */
+
+/* LAYOUT */
+
+/* LOGIN PAGE */
+.login-page {
+  background: #EDF6F9;
+  box-shadow: 0 0 10px #EDF6F9;
+  width: 50%;
+  height: 60%;
+}
+
+.login-header {
+  height: 25%;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5em;
+  width: 30%;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.login-label-container {
+  display: flex;
+  align-items: center;
+}
+
+.icon-login {
+  color: #006D77;
+  margin-left: 0.5em;
+}
+
+.login-label {
+  font-weight: 400;
+}
+
+.login-input {
+  height: 2rem;
+  width: 90%;
+  padding-left: 0.5em;
+}
+
+.login-button {
+  width: 60%;
+  margin-top: 1em;
+}
+
+/* HEADER */
 header {
   padding: 0 6em;
   height: 10em;
+  width: 93%;
 }
 
 .header-content,
@@ -81,15 +180,23 @@ h1 {
 input,
 .flatpickr-calendar,
 p,
-#date-picker-label  {
+#date-picker-label,
+.login-label  {
   font-family: 'Open Sans', sans-serif; 
   font-size: 1rem;
   color: #032A2E;
   margin: 0.5em;
+  
+}
+
+input,
+.flatpickr-calendar,
+p,
+#date-picker-label {
   font-weight: 300;
 }
 
-input {
+#date-picker {
   padding-left: 2em;
 }
 
@@ -104,7 +211,8 @@ input {
 }
 
 .icon-calendar,
-#date-picker-label {
+#date-picker-label,
+.login-label {
   color: #006D77
 }
 
@@ -115,8 +223,9 @@ input {
 }
 
 .date-picker,
-.search,
-select {
+select,
+.login-input,
+button {
   border: 1px solid #FFDDD2;
 }
 
@@ -131,32 +240,12 @@ select {
   margin-top: 0;
 }
 
-.date-picker:focus-visible,
-button:focus-visible,
-article:focus-visible,
-h1:focus-visible,
-.confirmation:focus-visible,
-.icon-exit:focus-visible {
-  outline: 2px solid #E29578;
-}
-
 .search {
   width: 30%; 
   height: 75%;
-  font-family: 'Trirong', serif;
-  font-size: 2rem;
-  background-color: #006D77;
-  color: #FFFFFF;
 }
 
-/* BOOKINGS */
-
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 6em;
-}
+/* BOOKINGS/SEARCH RESULTS */
 
 .bookings {
   display: flex;
@@ -170,8 +259,9 @@ main {
 
 .bookings,
 .date-picker,
-.search,
-select {
+button,
+select,
+.login-input {
   box-shadow: 0 0 4px #FFDDD2;
 }
 
@@ -252,14 +342,18 @@ select {
   align-items: center;
 }
 
-h2, h3 {
+h2, h3, .welcome {
   font-family: 'Trirong', serif;
   color: #032A2E;
   margin: 0;
 }
 
-h2 {
+h2, .welcome {
   font-size: 2rem;
+}
+
+.welcome {
+  color: #006D77
 }
 
 h3 {
