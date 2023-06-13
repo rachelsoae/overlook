@@ -7,6 +7,9 @@ This hotel booking site allows a user to log into a beautiful personalized dashb
 Search for available rooms by desired check-in date, and filter search results by the type of room you want. 
 Once a room is selected, you may confirm your booking or return to your previous search results to change the details of your stay.
 
+### Preview:
+![preview of booking feature](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjY5NWQ1Njc1YTQ4OGVlNTAyMzZjNzQxMzgwNWU4NjA4NzExMmE2NCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/XM2JngU2hKNuC5PqmW/giphy.gif)
+
 ### Contributors:
 [//]: <> (Who worked on this application? Link to their GitHubs.)
 [Rachel Soae Prather](https://github.com/rachelsoae)
