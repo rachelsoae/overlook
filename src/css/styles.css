@@ -22,19 +22,112 @@ Bed: <span class="material-symbols-round">bed</span>
 
 * {
   /* border: 1px solid #006D77; */
+  
 }
 
 *:focus-visible {
   outline: 2px solid #E29578;
 }
 
+h1,
+.date-picker,
+.search,
+.room-selection,
+.icon-exit {
+  cursor: pointer;
+}
+
+button {
+  background-color: #006D77;
+  color: #FFFFFF;
+}
+
+main {
+  padding: 6em;
+}
+
+/* TYPOGRAPHY */
+button,
+.bookings-cost,
+.filter-container,
+h2,
+h3,
+.welcome {
+font-family: 'Trirong', serif;
+}
+
+button,
+h2,
+.welcome,
+.icon-exit {
+font-size: 2rem;
+}
+
+.icon-login,
+h1,
+.date-search,
+.icon-calendar,
+#date-picker-label,
+.login-label,
+.welcome,
+.icon-exit {
+color: #006D77
+}
+
+label {
+  font-weight: 400;
+}
+
+input,
+.flatpickr-calendar,
+p,
+#date-picker-label,
+.booking-date {
+  font-weight: 300;
+}
+
+/* BORDERS */
+
+.login-page,
+.room {
+box-shadow: 0 0 10px #EDF6F9;
+}
+
+/* LAYOUT */
+
+main,
+.login,
+.bookings,
+.room,
+.confirmation,
+.thank-you {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.html-login,
+.room-details,
+.background-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bookings-header,
+.search-header,
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* LOGIN PAGE */
+
 .html-login {
   height: 100%;
   width: 100%;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .body-login {
@@ -51,48 +144,8 @@ Bed: <span class="material-symbols-round">bed</span>
   align-items: center;
 }
 
-.body-main {
-  background: #EDF6F9;
-  font-size: 62.5%;
-  padding: 3em;
-}
-
-h1,
-.date-picker,
-.search,
-.room-selection,
-.icon-exit {
-  cursor: pointer;
-}
-
-.error-message {
-  text-align: center;
-}
-
-button {
-  font-family: 'Trirong', serif;
-  font-size: 2rem;
-  background-color: #006D77;
-  color: #FFFFFF;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 6em;
-}
-
-/* TYPOGRAPHY */
-
-/* BORDERS */
-
-/* LAYOUT */
-
-/* LOGIN PAGE */
 .login-page {
   background: #EDF6F9;
-  box-shadow: 0 0 10px #EDF6F9;
   width: 50%;
   height: 60%;
 }
@@ -102,9 +155,6 @@ main {
 }
 
 .login {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   margin: 5em;
   width: 30%;
 }
@@ -122,12 +172,7 @@ main {
 }
 
 .icon-login {
-  color: #006D77;
   margin-left: 0.5em;
-}
-
-.login-label {
-  font-weight: 400;
 }
 
 .login-input {
@@ -141,7 +186,13 @@ main {
   margin-top: 1em;
 }
 
+.body-main {
+  background: #EDF6F9;
+  padding: 3em;
+}
+
 /* HEADER */
+
 header {
   padding: 0 6em;
   height: 10em;
@@ -155,15 +206,8 @@ h1,
   height: 100%;
 }
 
-.header-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 h1 {
   font-family: 'Ropa Sans', sans-serif;
-  color: #006D77;
   font-size: 6rem;
 }
 
@@ -171,10 +215,8 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  
   width: 45%;
   height: 100%;
-  color: #006D77;
 }
 
 input,
@@ -186,14 +228,6 @@ p,
   font-size: 1rem;
   color: #032A2E;
   margin: 0.5em;
-  
-}
-
-input,
-.flatpickr-calendar,
-p,
-#date-picker-label {
-  font-weight: 300;
 }
 
 #date-picker {
@@ -210,14 +244,8 @@ p,
   font-size: 3rem;
 }
 
-.icon-calendar,
-#date-picker-label,
-.login-label {
-  color: #006D77
-}
-
 #date-picker-label {
-  font-weight: 400;
+  
   margin: 0;
   margin-left: 11%;
 }
@@ -248,9 +276,6 @@ button {
 /* BOOKINGS/SEARCH RESULTS */
 
 .bookings {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   margin: 3em;
   background-color: #FFFFFF;
   margin: 0;
@@ -267,17 +292,14 @@ select,
 
 .bookings-header,
 .search-header {
-  display: flex;
+ 
   width: 85%;
   margin: 4em 7em 2em;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .bookings-cost,
 .filter-container {
   display: flex;
-  font-family: 'Trirong', serif;
   font-size: 1.4rem;
   color: #032A2E;
   margin: 0;
@@ -297,10 +319,6 @@ select {
   height: 2rem;
 }
 
-select:focus-visible {
-  outline: 1px solid #E29578
-}
-
 .bookings-cost-insert,
 select {
   margin-left: 1em;
@@ -316,19 +334,11 @@ select {
 }
 
 .room {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   background-color: #FFDDD2;
   padding: 2em 0 ;
   margin: 2em;
   width: 20%;
   border: 1px solid #FFDDD2;
-  box-shadow: 0 0 10px #EDF6F9
-}
-
-.booking-date {
-  font-weight: 300;
 }
 
 .room-image{
@@ -337,24 +347,13 @@ select {
 }
 
 .room-details {
-  display: flex;
+  
   width: 60%;
-  justify-content: center;
-  align-items: center;
 }
 
 h2, h3, .welcome {
-  font-family: 'Trirong', serif;
   color: #032A2E;
   margin: 0;
-}
-
-h2, .welcome {
-  font-size: 2rem;
-}
-
-.welcome {
-  color: #006D77
 }
 
 h3 {
@@ -366,6 +365,7 @@ p {
 }
 
 /* CONFIRMATION OVERLAY */
+
 .book-room-view {
   z-index: 1;
   width: 90%;
@@ -381,9 +381,7 @@ p {
   bottom: 0;
   background-color: rgb(237, 246, 249, 0.75);
   z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  
 }
 
 .confirmation {
@@ -392,9 +390,6 @@ p {
   height: 70%;
   background-color: #FFFFFF;
   box-shadow: 0 0 3px #83C5BE;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: wrap;
 }
 
@@ -418,8 +413,6 @@ p {
 }
 
 .icon-exit {
-  font-size: 2rem;
-  color: #006D77;
   margin: 0.5em;
 }
 
@@ -431,9 +424,6 @@ p {
 }
 
 .thank-you {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
   height: 100%;
   width: 100%;

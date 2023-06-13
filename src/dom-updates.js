@@ -62,7 +62,7 @@ const setDashboard = (customer, allBookings, allRooms) => {
   
   if (typeof usersBookings === 'string') {
     yourBookingsCostContainer.classList.add('invisible');
-    yourBookings.innerHTML = `<p class="error-message" tabindex="0">${usersBookings}</p>`;
+    yourBookings.innerHTML = `<p tabindex="0">${usersBookings}</p>`;
   } else {
     yourBookingsCostContainer.classList.remove('invisible');
 
@@ -80,7 +80,7 @@ const setDashboard = (customer, allBookings, allRooms) => {
 
 const displaySearchResults = (availRooms) => {
   if (typeof availRooms === 'string') {
-    availableRoomsSection.innerHTML = `<p class="error-message" tabindex="0">${availRooms}</p>`;
+    availableRoomsSection.innerHTML = `<p tabindex="0">${availRooms}</p>`;
   } else {
     availableRoomsSection.innerHTML = '';
     availRooms.forEach(room => {
@@ -96,7 +96,7 @@ const filterByRoomType = (availRooms, roomType) => {
   const filteredRooms = searchByRoomType(availRooms, roomType);
 
   if (typeof filteredRooms === 'string') {
-    availableRoomsSection.innerHTML = `<p class="error-message" tabindex="0">${filteredRooms}</p>`;
+    availableRoomsSection.innerHTML = `<p tabindex="0">${filteredRooms}</p>`;
   } else {
     availableRoomsSection.innerHTML = '';
     filteredRooms.forEach(room => {
