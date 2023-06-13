@@ -117,7 +117,6 @@ searchForm.addEventListener('submit', (event) => {
     lastFilter = 'any'
     selectedDate = dateField.value;
     availRooms = searchByDate(bookings, rooms, selectedDate);
-    console.log(availRooms)
     showSearchResultsView();
     displaySearchResults(availRooms);
   };
