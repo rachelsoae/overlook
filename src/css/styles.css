@@ -1,6 +1,7 @@
+/* ~*~  DESIGN ~*~  */
 /* 
-COLOR PALETTE:
-Dark Green ~ #032A2E
+COLORS:
+Dark Green (for small text) ~ #032A2E
 Carribean Current (dark teal) ~ #006D77
 Tiffany Blue (light teal) ~ #83C5BE
 Alice Blue (off white) ~ #EDF6F9
@@ -11,33 +12,20 @@ FONTS:
 Ropa Sans 400 Normal ~ Header/Logo
 Trirong Extra Light 200 Italic ~ Sub-Headers
 Open Sans 300 400 ~ Body Text
-
-ICONS:
-Bed: <span class="material-symbols-round">bed</span>
 */
 
-@import '~flatpickr/dist/flatpickr.css';
-
-/* GENERAL */
+/* ~*~  GENERAL ~*~  */
 
 * {
   /* border: 1px solid #006D77; */
+  
 }
 
 *:focus-visible {
   outline: 2px solid #E29578;
 }
 
-.html-login {
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.body-login {
+body {
   background-image: url('../images/overlook.png');
   background-size: cover;
   background-repeat: no-repeat;
@@ -45,17 +33,8 @@ Bed: <span class="material-symbols-round">bed</span>
   width: 95%;
   font-size: 62.5%;
   padding: 3em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
-.body-main {
-  background: #EDF6F9;
-  font-size: 62.5%;
-  padding: 3em;
-}
 
 h1,
 .date-picker,
@@ -65,34 +44,162 @@ h1,
   cursor: pointer;
 }
 
-.error-message {
-  text-align: center;
-}
-
 button {
-  font-family: 'Trirong', serif;
-  font-size: 2rem;
   background-color: #006D77;
   color: #FFFFFF;
 }
 
 main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   padding: 6em;
 }
 
-/* TYPOGRAPHY */
+/* ~*~  TYPOGRAPHY~*~   */
 
-/* BORDERS */
+h1 {
+  font-family: 'Ropa Sans', sans-serif;
+  font-size: 6rem;
+}
 
-/* LAYOUT */
+h2,
+h3,
+button,
+.welcome,
+.bookings-cost,
+.filter-container {
+  font-family: 'Trirong', serif;
+}
 
-/* LOGIN PAGE */
+p,
+label,
+input,
+.flatpickr-calendar {
+  font-family: 'Open Sans', sans-serif; 
+  font-size: 1rem;
+}
+
+.icon-calendar {
+  font-size: 3rem;
+}
+
+h2,
+button,
+.welcome,
+.icon-exit {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+h1,
+.icon-login,
+.icon-calendar,
+.welcome,
+.icon-exit {
+  color: #006D77
+}
+
+h2, 
+h3, 
+p,
+label,
+input,
+.bookings-cost,
+.filter-container,
+.welcome  {
+  color: #032A2E;
+}
+
+label {
+  font-weight: 400;
+}
+
+/* ~*~  BORDERS ~*~  */
+
+button,
+select,
+.date-picker,
+.login-input,
+.room {
+  border: 1px solid #FFDDD2;
+}
+
+.book-now,
+.home {
+  border: none; 
+}
+
+.login-page,
+.room {
+  box-shadow: 0 0 10px #EDF6F9;
+}
+
+.bookings,
+.date-picker,
+button,
+select,
+.login-input {
+  box-shadow: 0 0 4px #FFDDD2;
+}
+
+.confirmation {
+  box-shadow: 0 0 3px #83C5BE;
+}
+
+/* ~*~  LAYOUT ~*~  */
+
+/* || CENTERED COLUMN || */
+
+body,
+main,
+.login,
+.bookings,
+.room,
+.confirmation-room,
+.thank-you {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* -- MIDLINE-CENTERED ROW -- */
+
+.html-login,
+.room-details,
+.background-overlay,
+.bookings-header,
+.search-header,
+.header-content {
+  display: flex;
+  align-items: center;
+}
+
+.bookings-header,
+.search-header,
+.header-content {
+  justify-content: space-between;
+}
+
+body, 
+.confirmation,
+.html-login,
+.room-details,
+.background-overlay,
+.thank-you {
+  justify-content: center;
+}
+
+/* ~*~ LOGIN PAGE ~*~ */
+
+.html-login {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
 .login-page {
   background: #EDF6F9;
-  box-shadow: 0 0 10px #EDF6F9;
   width: 50%;
   height: 60%;
 }
@@ -102,9 +209,6 @@ main {
 }
 
 .login {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   margin: 5em;
   width: 30%;
 }
@@ -122,12 +226,7 @@ main {
 }
 
 .icon-login {
-  color: #006D77;
   margin-left: 0.5em;
-}
-
-.login-label {
-  font-weight: 400;
 }
 
 .login-input {
@@ -141,59 +240,39 @@ main {
   margin-top: 1em;
 }
 
-/* HEADER */
+/* ~*~ DASHBOARD & SEARCH RESULTS ~*~ */
+
+.body-main {
+  background: #EDF6F9;
+}
+
+/* -- HEADER -- */
+
 header {
   padding: 0 6em;
   height: 10em;
   width: 93%;
 }
 
-.header-content,
 h1,
+.header-content,
 .date-search {
   margin: 0;
   height: 100%;
-}
-
-.header-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-h1 {
-  font-family: 'Ropa Sans', sans-serif;
-  color: #006D77;
-  font-size: 6rem;
 }
 
 .date-search {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  
   width: 45%;
   height: 100%;
-  color: #006D77;
 }
 
-input,
-.flatpickr-calendar,
 p,
-#date-picker-label,
-.login-label  {
-  font-family: 'Open Sans', sans-serif; 
-  font-size: 1rem;
-  color: #032A2E;
+input,
+label {
   margin: 0.5em;
-  
-}
-
-input,
-.flatpickr-calendar,
-p,
-#date-picker-label {
-  font-weight: 300;
 }
 
 #date-picker {
@@ -206,27 +285,9 @@ p,
   width: 100%;
 }
 
-.icon-calendar {
-  font-size: 3rem;
-}
-
-.icon-calendar,
-#date-picker-label,
-.login-label {
-  color: #006D77
-}
-
 #date-picker-label {
-  font-weight: 400;
   margin: 0;
   margin-left: 11%;
-}
-
-.date-picker,
-select,
-.login-input,
-button {
-  border: 1px solid #FFDDD2;
 }
 
 .icon-calendar,
@@ -245,41 +306,30 @@ button {
   height: 75%;
 }
 
-/* BOOKINGS/SEARCH RESULTS */
+/* -- BOOKINGS/SEARCH RESULTS BOX -- */
+
+.dashboard-view,
+.book-room-view {
+  width: 95%;
+}
 
 .bookings {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   margin: 3em;
   background-color: #FFFFFF;
   margin: 0;
   width: 100%;
 }
 
-.bookings,
-.date-picker,
-button,
-select,
-.login-input {
-  box-shadow: 0 0 4px #FFDDD2;
-}
-
 .bookings-header,
 .search-header {
-  display: flex;
   width: 85%;
   margin: 4em 7em 2em;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .bookings-cost,
 .filter-container {
   display: flex;
-  font-family: 'Trirong', serif;
   font-size: 1.4rem;
-  color: #032A2E;
   margin: 0;
 }
 
@@ -297,12 +347,8 @@ select {
   height: 2rem;
 }
 
-select:focus-visible {
-  outline: 1px solid #E29578
-}
-
-.bookings-cost-insert,
-select {
+select
+.bookings-cost-insert {
   margin-left: 1em;
 }
 
@@ -312,22 +358,14 @@ select {
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin-bottom: 4em;
+  width: 90%;
 }
 
 .room {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   background-color: #FFDDD2;
   padding: 2em 0 ;
   margin: 2em;
   width: 20%;
-  border: 1px solid #FFDDD2;
-  box-shadow: 0 0 10px #EDF6F9
-}
-
-.booking-date {
-  font-weight: 300;
 }
 
 .room-image{
@@ -336,35 +374,21 @@ select {
 }
 
 .room-details {
-  display: flex;
   width: 60%;
-  justify-content: center;
-  align-items: center;
 }
 
-h2, h3, .welcome {
-  font-family: 'Trirong', serif;
-  color: #032A2E;
-  margin: 0;
-}
-
-h2, .welcome {
-  font-size: 2rem;
-}
-
+h2, 
+h3, 
 .welcome {
-  color: #006D77
-}
-
-h3 {
-  font-size: 1.4rem;
+  margin: 0;
 }
 
 p {
   text-align: center;
 }
 
-/* CONFIRMATION OVERLAY */
+/* ~*~ OVERLAY ~*~ */
+
 .book-room-view {
   z-index: 1;
 }
@@ -379,9 +403,7 @@ p {
   bottom: 0;
   background-color: rgb(237, 246, 249, 0.75);
   z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  
 }
 
 .confirmation {
@@ -389,11 +411,6 @@ p {
   width: 40%;
   height: 70%;
   background-color: #FFFFFF;
-  box-shadow: 0 0 3px #83C5BE;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: wrap;
 }
 
 .confirmation-box {
@@ -401,10 +418,6 @@ p {
 }
 
 .confirmation-room {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   margin: 2em;
   padding-top: 2em;
 }
@@ -416,23 +429,16 @@ p {
 }
 
 .icon-exit {
-  font-size: 2rem;
-  color: #006D77;
   margin: 0.5em;
 }
 
 .book-now,
 .home {
-  border: none; 
   width: 40%;
   margin-top: 1em;
 }
 
 .thank-you {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   height: 100%;
   width: 100%;
   margin-top: 5em;
@@ -442,7 +448,7 @@ p {
   height: 18%;
 }
 
-/* HIDDEN/INVISIBLE */
+/* ~*~  UTILITY ~*~  */
 
 .hidden {
   display: none;
@@ -451,3 +457,5 @@ p {
 .invisible {
   visibility: hidden;
 }
+
+@import '~flatpickr/dist/flatpickr.css';
