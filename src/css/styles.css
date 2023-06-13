@@ -117,34 +117,42 @@ label {
 
 /* ~*~  BORDERS ~*~  */
 
-button,
-select,
-.date-picker,
-.login-input,
-.room {
-  border: 1px solid #FFDDD2;
-}
-
 .book-now,
 .home {
   border: none; 
 }
+
+button,
+select,
+input,
+.room {
+  border: 1px solid #FFDDD2;
+}
+
 
 .login-page,
 .room {
   box-shadow: 0 0 10px #EDF6F9;
 }
 
-.bookings,
-.date-picker,
+input
 button,
 select,
-.login-input {
+.bookings {
   box-shadow: 0 0 4px #FFDDD2;
 }
 
 .confirmation {
   box-shadow: 0 0 3px #83C5BE;
+}
+
+button:hover,
+input:hover,
+select:hover,
+.search-card:hover,
+.icon-exit:hover,
+.logo:hover {
+  box-shadow: 0 0 12px #E29578;
 }
 
 /* ~*~  LAYOUT ~*~  */
