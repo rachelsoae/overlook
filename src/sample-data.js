@@ -49,6 +49,12 @@ const sampleData = {
       "roomNumber": 1
     },
     {
+      "id": "0000",
+      "userID": 3,
+      "date": "2023/10/31",
+      "roomNumber": 5
+    },
+    {
       "id": "1234",
       "userID": 3,
       "date": "2023/10/31",
@@ -105,6 +111,14 @@ const sampleData = {
       "bedSize": "twin",
       "numBeds": 2,
       "costPerNight": 429.44
+    },
+    {
+      "number": 5,
+      "roomType": "residential suite",
+      "bidet": false,
+      "bedSize": "king",
+      "numBeds": 2,
+      "costPerNight": 228.4
     }
   ],
   customers: [
@@ -177,6 +191,12 @@ const sampleData = {
       "id": 3,
       "name": "Halloween Convention",
       "bookings": [
+        {
+          "id": "0000",
+          "userID": 3,
+          "date": "2023/10/31",
+          "roomNumber": 5
+        },
         {
           "id": "1234",
           "userID": 3,
