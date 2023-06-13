@@ -46,19 +46,36 @@ const searchByRoomType = (roomsArray, roomType) => {
   return desiredRooms;
 };
 
-const parseUserID = (customers, username) => {
-  const id = username.slice(8, username.length);
-  if (customers.some(customer => customer.id === parseInt(id))) {
-    return parseInt(id);
-  } else {
-    return 'Oops! The username you have entered is invalid. Please try again.';
-  };
+const parseUserID = (username) => {
+  return parseInt(username.slice(8, username.length));
 };
+
+const validateUsername = (customers, username) => {
+  const characters = username.split('');
+  const letters = characters.splice(0, 8);
+  const word = letters.join('');
+
+  let id = parseUserID(username);
+  customers.some(customer => customer.id === id) ? id = true : id =false;
+
+  let validation;
+  ((word === 'customer') && id) ? validation = true : validation = 'Oops! The username you have entered is invalid. Please try again.'
+  return validation;
+};
+
+const validatePassword = (password) => {
+  let validation;
+  password === 'overlook2021' ? validation = true : validation = 'Oops! The password you have entered is invalid. Please try again.';
+  return validation;
+};
+
 
 export { 
   getBookings, 
   getTotalCost, 
   searchByDate, 
   searchByRoomType,
-  parseUserID
+  parseUserID,
+  validateUsername,
+  validatePassword
 }
