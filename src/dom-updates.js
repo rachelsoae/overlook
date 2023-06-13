@@ -1,7 +1,9 @@
 import {
   getBookings,
   getTotalCost,
-  searchByRoomType
+  searchByRoomType,
+  validateUsername,
+  validatePassword
 } from './bookings';
 
 import {
@@ -17,16 +19,17 @@ import {
   loginPage,
   header,
   html,
-  body
+  body,
+  searchForm
 } from './scripts';
 
-const validateLogin = (username, password) => {
-  if (typeof username === 'string' && password !== 'overlook2021') {
-    alert('The username and password you have entered are invalid. Please try again.')
-  } else if (typeof username === 'string') {  
-    alert(username);
-  } else if (password !== 'overlook2021') {
-    alert('The password you have entered is invalid. Please try again.')
+const validateLogin = (customers, username, password) => {
+  if (!validateUsername(customers, username) && !validatePassword(password)) {
+    alert('Oops! The username and password you have entered are invalid. Please try again.')
+  } else if (!validateUsername(customers, username)) {
+    alert('Oops! The username you have entered is invalid. Please try again.')
+  } else if (!validatePassword(password)) {
+    alert('Oops! The password you have entered is invalid. Please try again.')
   } else {
     return true;
   };
@@ -43,6 +46,7 @@ const showDashboard = () => {
   hide(searchResults);
   hide(loginPage);
   removeLoginStyling();
+  searchForm.reset();
 };
 
 const showSearchResultsView = () => {

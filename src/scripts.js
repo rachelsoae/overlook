@@ -93,8 +93,8 @@ window.addEventListener('load', () => {
 
 loginForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  let userID = parseUserID(customers, username.value);
-  if (validateLogin(userID, password.value)) {
+  if (validateLogin(customers, username.value, password.value) === true) {
+    const userID = parseUserID(username.value);
     Promise.resolve(getUserData(userID))
     .then(data => user = data)
     .then(() =>  setDashboard(user, bookings, rooms));
