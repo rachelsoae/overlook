@@ -48,7 +48,9 @@ This project centered around the creation of a fully accessible UI/UX. Accessibl
 
 The current product is the result of 32 hours of work including planning, testing, and implementation. Project was managed through use of GitHub Projects and GitHub Issues. Assets are opensource via [unsplash](https://unsplash.com/).
 
-This build has been extremely gratifying in terms of solidifying my understanding of Fetch and giving me the opportunity to focus on accessibility. The most challenging feature to build was the confirmation page overlay. Not only is it a design feature I have not tried before, but required me to deepen my underestanding of `tabindex` in order to make sure that the feature is useable for folks of all abilities. Time management also remains an ongoing practice; there are many features I would like to add that will require my time in the future..
+This build has been extremely gratifying in terms of solidifying my understanding of Fetch and giving me the opportunity to focus on accessibility. The most challenging feature to build was the confirmation page overlay. Not only is it a design feature I have not tried before, but required me to deepen my underestanding of `tabindex` in order to make sure that the feature is useable for folks of all abilities. Time management also remains an ongoing practice; there are many features I would like to add that will require my time in the future.
+
+My favorite feature, though it's small, is that you can click on the overlay to exit out of the overlay box (or you can click the exit button), and your previous search results will still be there. If you booked one of the rooms, the search results are updated so that the room no longer appears as available. Although it sounds small, having this change instantaneously really added to the finesse of the UI.
 
 ### Plans for the Future:
 A few features and UI improvments I plan to implement:
