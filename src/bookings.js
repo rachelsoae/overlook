@@ -69,6 +69,17 @@ const validatePassword = (password) => {
   return validation;
 };
 
+const configDate = (longDate) => {
+  const date = new Date(longDate);
+  const year = date.getFullYear();
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+
+  let formattedMonth;
+  (month.toString().length === 1) ? formattedMonth = `0${month}`: formattedMonth = month;
+
+  return `${year}/${formattedMonth}/${day}`
+}
 
 export { 
   getBookings, 
@@ -77,5 +88,6 @@ export {
   searchByRoomType,
   parseUserID,
   validateUsername,
-  validatePassword
+  validatePassword,
+  configDate
 }

@@ -8,8 +8,8 @@ import {
   searchByRoomType,
   parseUserID,
   validateUsername,
-  validatePassword
-  
+  validatePassword,
+  configDate
 } from '../src/bookings'
 
 describe('Bookings per customer', () => {
@@ -143,4 +143,12 @@ describe('Password validation', () => {
     const bigValidation = validatePassword(bigPassword);
     expect(bigValidation).to.equal(false);
   })
+});
+
+describe('Dates', () => {
+  it('Should return a date in the correct format', () => {
+    const longDate = 'June 29, 2023';
+    const dataDate = configDate(longDate);
+    expect(dataDate).to.equal('2023/06/29');
+  });
 });
