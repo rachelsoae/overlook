@@ -56,16 +56,16 @@ const validateUsername = (customers, username) => {
   const word = letters.join('');
 
   let id = parseUserID(username);
-  customers.some(customer => customer.id === id) ? id = true : id =false;
+  customers.some(customer => customer.id === id) ? id = true : id = false;
 
   let validation;
-  ((word === 'customer') && id) ? validation = true : validation = 'Oops! The username you have entered is invalid. Please try again.'
+  ((word === 'customer') && id) ? validation = true : validation = false;
   return validation;
 };
 
 const validatePassword = (password) => {
   let validation;
-  password === 'overlook2021' ? validation = true : validation = 'Oops! The password you have entered is invalid. Please try again.';
+  password === 'overlook2021' ? validation = true : validation = false;
   return validation;
 };
 

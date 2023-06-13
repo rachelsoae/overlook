@@ -144,7 +144,7 @@ describe('Username validation', () => {
     
     const elephantValidation = validateUsername(customers, elephantsUsername);
 
-    expect(elephantValidation).to.equal('Oops! The username you have entered is invalid. Please try again.');
+    expect(elephantValidation).to.equal(false);
   });
 
   it('Should be case sensitive', () => {
@@ -152,7 +152,7 @@ describe('Username validation', () => {
 
     const rachelValidation = validateUsername(customers, rachelsUsername);
 
-    expect(rachelValidation).to.equal('Oops! The username you have entered is invalid. Please try again.');
+    expect(rachelValidation).to.equal(false);
   });
 });
 
@@ -170,6 +170,6 @@ describe('Password validation', () => {
 
     const invalidPassword = validatePassword(incorrectPassword);
 
-    expect(invalidPassword).to.equal('Oops! The password you have entered is invalid. Please try again.');
+    expect(invalidPassword).to.equal(false);
   });
 });
