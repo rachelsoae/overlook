@@ -72,7 +72,7 @@ const dashboard = document.querySelector('.dashboard-view');
 const searchResults = document.querySelector('.book-room-view');
 const availableRoomsSection = document.querySelector('.bookings-searched');
 const filter = document.querySelector('.filter-container');
-const logo = document.querySelector('h1');
+const logo = document.querySelector('.logo');
 const overlay = document.querySelector('.background-overlay');
 const confirmationContainer = document.querySelector('.confirmation');
 
@@ -101,7 +101,8 @@ loginForm.addEventListener('submit', (event) => {
   };
 });
 
-logo.addEventListener('click', () => {
+logo.addEventListener('click', (event) => {
+  console.log(event.target)
   setDashboard(user, bookings, rooms);
 });
 
@@ -218,5 +219,6 @@ export {
   header,
   html,
   body,
-  searchForm
+  searchForm,
+  loginForm
 };
