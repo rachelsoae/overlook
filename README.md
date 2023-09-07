@@ -16,21 +16,27 @@ Once a room is selected, you may confirm your booking or return to your previous
 
 ### Installation Instructions:
 [//]: <> (What steps does a person have to take to get your app cloned down and running?)
-Local Server Set Up:
-1. Clone the [local server](https://github.com/turingschool-examples/overlook-api) respository down to your machine
-2. `cd` into the directory
-3. Run `npm install`
-4. Run `npm start`
-5. Keep the server running in separate tab each time you run the client. `Ctrl + C` to close the server.
+#### Local Server Set Up:
+1. Clone the [local server respository](https://github.com/turingschool-examples/overlook-api) down to your machine
+1. `cd` into the directory
+1. Run `npm install` or `npm i`
+1. Run `npm start`
+1. Keep the server running in a separate terminal tab each time you run the client. `Ctrl + C` to close the server.
 
-Client Set Up:
-2. Clone this respository down to your machine
-3. Run `npm install`
-4. Run `npm start`
-5. Navigate to [localHost:8080](http://localhost:8080/) in your browser
-6. Keep the client running while viewing the site. `Ctrl + C` to close the client.
+#### Client Set Up:
+1. Clone this respository down to your machine
+1. Run `npm install` or `npm i`
+1. Run `npm start`
+1. In your browser, navigate to [localHost:8080](http://localhost:8080/)
+1. Keep the client running in the terminal in order to view the site. `Ctrl + C` to close the client.
+1. To run unit tests, run `npm test` from the `overlook` directory 
+
+#### Log In:
+- Username: customer[*input any number between 1 and 50*], example `customer21`
+- Password: `overlook2021`
 
 ### Tech
+#### Build:
 - Vanilla JavaScript
 - HTML
 - CSS
@@ -39,7 +45,7 @@ Client Set Up:
 - Fetch Web API
 - [flatpickr](https://flatpickr.js.org/) via NPM for date selection
 
-Accessibility Testing:
+#### Accessibility Testing:
 - [WAVE Evaluation Tool](https://wave.webaim.org/)
 - Lighthouse
 - [Colorblind - Dalton](https://chrome.google.com/webstore/detail/colorblind-dalton-for-goo/afcafnelafcgjinkaeohkalmfececool)
