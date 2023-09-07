@@ -70,25 +70,41 @@ const validatePassword = (password) => {
 };
 
 const convertOneToTwoDigits = num => {
-  return (num.toString().length === 1) ? parseInt(`0${num}`) : num;
+  const stringNum = num.toString()
+  return (stringNum.length === 1) ? `0${num}` : num;
 }
 
 const configLongDate = (longDate) => {
   const date = new Date(longDate);
   const year = date.getFullYear();
-  const day = date.getDate();
-  const month = date.getMonth() + 1;
+  const day = convertOneToTwoDigits(date.getDate());
+  const month = convertOneToTwoDigits(date.getMonth() + 1);
 
-  let formattedMonth;
-  (month.toString().length === 1) ? formattedMonth = `0${month}`: formattedMonth = month;
-
-  return `${year}/${formattedMonth}/${day}`
+  return `${year}/${month}/${day}`
 }
 
 const configShortDate = (shortDate) =>{
-  //split string
-  //get rid of spaces and commas
-  //
+  const monthsNames = {
+    '01': 'January',
+    '02': 'February',
+    '03': 'March',
+    '04': 'April',
+    '05': 'May',
+    '06': 'June',
+    '07': 'July',
+    '08': 'August',
+    '09': 'September',
+    '10': 'October',
+    '11': 'November',
+    '12': 'December',
+  };
+  
+  const segments = shortDate.split('/');
+  const year = segments[0];
+  const month = monthsNames[segments[1]];
+  const dayDigits = segments[2].split('');
+  const day = dayDigits[0] === '0' ? dayDigits[1] : segments[2];
+  return  `${month} ${day}, ${year}`
 }
 
 const getTodaysDate = () => {
@@ -116,6 +132,7 @@ export {
   validatePassword,
   convertOneToTwoDigits,
   configLongDate,
+  configShortDate,
   getTodaysDate,
   sortByDate
 }
