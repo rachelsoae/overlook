@@ -4,7 +4,8 @@ import {
   searchByRoomType,
   validateUsername,
   validatePassword,
-  sortByDate
+  sortByDate,
+  configShortDate
 } from './bookings';
 
 import {
@@ -114,11 +115,12 @@ const getRoomDetails = (room) => {
 };
 
 const createDashboardCard = (room, booking) => {
+  const displayDate = configShortDate(booking.date)
   const dashBookingCard =
   `
     <article class="room" tabindex="0">
       <h3 class="room-type" tabindex="0">${room.roomType} ${room.bidet}</h3>  
-      <p class="booking-date" tabindex="0">${booking.date}</p>
+      <p class="booking-date" tabindex="0">${displayDate}</p>
       <img class="room-image" src=${room.image} alt="${room.imageAltText}" tabindex="0">
       <div class="room-details">
         <span class="material-icons-round">bed</span>  
