@@ -3,7 +3,9 @@ import {
   getTotalCost,
   searchByRoomType,
   validateUsername,
-  validatePassword
+  validatePassword,
+  sortByDate,
+  configShortDate
 } from './bookings';
 
 import {
@@ -25,13 +27,9 @@ import {
 } from './scripts';
 
 const validateLogin = (customers, username, password) => {
-  if (!validateUsername(customers, username) && !validatePassword(password)) {
+  if (!validateUsername(customers, username) || !validatePassword(password)) {
     loginForm.reset();
-    alert('Oops! The username and password you have entered are invalid. Please try again.')
-  } else if (!validateUsername(customers, username)) {
-    alert('Oops! The username you have entered is invalid. Please try again.')
-  } else if (!validatePassword(password)) {
-    alert('Oops! The password you have entered is invalid. Please try again.')
+    alert('Oops! One or more of the values you have entered are invalid. Please try again.')
   } else {
     return true;
   };
@@ -67,12 +65,11 @@ const setDashboard = (customer, allBookings, allRooms) => {
     yourBookings.innerHTML = `<p tabindex="0">${usersBookings}</p>`;
   } else {
     yourBookingsCostContainer.classList.remove('invisible');
-
     const spent = getTotalCost(allRooms, usersBookings);
     yourBookingsCost.innerText = `$${spent}`;
-
-    yourBookings.innerHTML = '';    
-    usersBookings.forEach(booking => {
+    const sorted = sortByDate(usersBookings)
+    yourBookings.innerHTML = '';  
+    sorted.forEach(booking => {
       const roomRef = allRooms.find(room => room.number === booking.roomNumber);
       let dashRoom = getRoomDetails(roomRef);
       yourBookings.innerHTML += createDashboardCard(dashRoom, booking);
@@ -118,11 +115,12 @@ const getRoomDetails = (room) => {
 };
 
 const createDashboardCard = (room, booking) => {
+  const displayDate = configShortDate(booking.date)
   const dashBookingCard =
   `
     <article class="room" tabindex="0">
       <h3 class="room-type" tabindex="0">${room.roomType} ${room.bidet}</h3>  
-      <p class="booking-date" tabindex="0">${booking.date}</p>
+      <p class="booking-date" tabindex="0">${displayDate}</p>
       <img class="room-image" src=${room.image} alt="${room.imageAltText}" tabindex="0">
       <div class="room-details">
         <span class="material-icons-round">bed</span>  
