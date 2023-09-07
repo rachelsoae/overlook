@@ -6,7 +6,8 @@ import {
   getTotalCost, 
   searchByDate, 
   searchByRoomType,
-  configDate,
+  convertOneToTwoDigits,
+  configLongDate,
   getTodaysDate,
   sortByDate
 } from '../src/bookings'
@@ -91,15 +92,39 @@ describe('Search rooms', () => {
 });
 
 describe('Dates', () => {
-  it('Should return a date in the correct format', () => {
+  it('Should return a 2-digit number, given a 1-digit number', () => {
+    const month = 6;
+    const convertedMonth = convertOneToTwoDigits(month);
+    expect(convertedMonth).to.equal(0o6);
+  });
+
+  it('Should return the same number, given a 2-digit number', () => {
+    const day = 29;
+    const convertedDay = convertOneToTwoDigits(day);
+    expect(convertedDay).to.equal(29);
+  });
+
+  it('Should return the same number, given a number with more than 2 digits', () => {
+    const year = 2023;
+    const convertedYear = convertOneToTwoDigits(year);
+    expect(convertedYear).to.equal(2023);
+  });
+  
+  it('Should return a long date in the short format', () => {
     const longDate = 'June 29, 2023';
-    const dataDate = configDate(longDate);
+    const dataDate = configLongDate(longDate);
     expect(dataDate).to.equal('2023/06/29');
+  });
+
+  it('Should return a short date in the long format', () => {
+
   });
 
   it('Should sort a user\'s bookings in reverse chronological order', () => {
     const leathasBookings = sampleData.customers[0].bookings;
     const sortedBookings = sortByDate(leathasBookings);
     expect(sortedBookings).to.deep.equal(sampleData.leathasBookingsSorted);
-  })
+  });
+
+
 });

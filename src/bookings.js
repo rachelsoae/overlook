@@ -69,9 +69,12 @@ const validatePassword = (password) => {
   return validation;
 };
 
-const configDate = (longDate) => {
+const convertOneToTwoDigits = num => {
+  return (num.toString().length === 1) ? parseInt(`0${num}`) : num;
+}
+
+const configLongDate = (longDate) => {
   const date = new Date(longDate);
-  console.log(date);
   const year = date.getFullYear();
   const day = date.getDate();
   const month = date.getMonth() + 1;
@@ -82,15 +85,19 @@ const configDate = (longDate) => {
   return `${year}/${formattedMonth}/${day}`
 }
 
+const configShortDate = (shortDate) =>{
+  //split string
+  //get rid of spaces and commas
+  //
+}
+
 const getTodaysDate = () => {
   const today = new Date();
   const year = today.getFullYear();
   const day = today.getDate();
   const month = today.getMonth() + 1;
 
-  const formatNum = num => {
-    return (num.toString().length === 1) ? `0${num}`: num;
-  }
+
 
   return `${year}/${formatNum(month)}/${formatNum(day)}`
 }
@@ -107,7 +114,8 @@ export {
   parseUserID,
   validateUsername,
   validatePassword,
-  configDate,
+  convertOneToTwoDigits,
+  configLongDate,
   getTodaysDate,
   sortByDate
 }
