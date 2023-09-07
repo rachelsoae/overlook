@@ -88,10 +88,15 @@ const getTodaysDate = () => {
   const day = today.getDate();
   const month = today.getMonth() + 1;
 
-  let formattedMonth;
-  (month.toString().length === 1) ? formattedMonth = `0${month}`: formattedMonth = month;
+  const formatNum = num => {
+    return (num.toString().length === 1) ? `0${num}`: num;
+  }
 
-  return `${year}/${formattedMonth}/${day}`
+  return `${year}/${formatNum(month)}/${formatNum(day)}`
+}
+
+const sortByDate = (bookings) => {
+  return bookings.sort((a, b) => a.date.localeCompare(b.date)).reverse();
 }
 
 export { 
@@ -103,5 +108,6 @@ export {
   validateUsername,
   validatePassword,
   configDate,
-  getTodaysDate
+  getTodaysDate,
+  sortByDate
 }
