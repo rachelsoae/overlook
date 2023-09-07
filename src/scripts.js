@@ -8,10 +8,7 @@ import './images/single-room.png';
 import './images/overlook.png';
 
 import {
-  getUserData,
-  getAllCustomersData,
-  getBookingsData,
-  getRoomsData,
+  getData,
   bookRoom
 } from './api-calls';
 
@@ -83,7 +80,7 @@ window.addEventListener('load', () => {
     minDate: 'today',
     dateFormat: "Y/m/d"
   });
-  Promise.all([getAllCustomersData(), getBookingsData(), getRoomsData()])
+  Promise.all([getData('customers'), getData('bookings'), getData('rooms')])
     .then(data => {
       customers = data[0].customers;
       bookings = data[1].bookings;
@@ -95,7 +92,7 @@ loginForm.addEventListener('submit', (event) => {
   event.preventDefault();
   if (validateLogin(customers, username.value, password.value) === true) {
     const userID = parseUserID(username.value);
-    Promise.resolve(getUserData(userID))
+    Promise.resolve(getData('customers', userID))
     .then(data => user = data)
     .then(() =>  setDashboard(user, bookings, rooms));
   };
