@@ -98,37 +98,8 @@ describe('Dates', () => {
   });
 
   it('Should sort a user\'s bookings in reverse chronological order', () => {
-    const leathasBookings = sampleData.customers[0].bookings
-    // const rocio = sampleData.customers[1];
-    // const rachel = sampleData.customers[2];
-    // const bookings = sampleData.bookings;
-
-    const sortedBookings = sortByDate(leathasBookings)
-    expect(sortedBookings).to.deep.equal([
-      {
-        "id": "1160422",
-        "userID": 1,
-        "date": "2025/12/25",
-        "roomNumber": 4
-      },
-      {
-        "id": "1220422",
-        "userID": 1,
-        "date": "2022/04/22",
-        "roomNumber": 3
-      },
-      {
-        "id": "1211004",
-        "userID": 1,
-        "date": "2021/10/04",
-        "roomNumber": 2
-      },
-      {
-        "id": "1180820",
-        "userID": 1,
-        "date": "2018/08/20",
-        "roomNumber": 2
-      }
-    ])
+    const leathasBookings = sampleData.customers[0].bookings;
+    const sortedBookings = sortByDate(leathasBookings);
+    expect(sortedBookings).to.deep.equal(sampleData.leathasBookingsSorted);
   })
 });
