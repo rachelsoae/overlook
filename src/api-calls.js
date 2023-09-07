@@ -5,25 +5,25 @@ const getAllCustomersData = () => {
 };
 
 const getBookingsData = () => {
-  return fetch('http://localhost:3001/api/v1/bookings')
+  return fetch('https://overlook-api-rachelsoae.vercel.app//api/v1/bookings')
   .then(response => checkForError(response))
   .catch(error => alert(`${error.message}`))
 };
 
 const getRoomsData = () => {
-  return fetch('http://localhost:3001/api/v1/rooms')
+  return fetch('https://overlook-api-rachelsoae.vercel.app//api/v1/rooms')
   .then(response => checkForError(response))
   .catch(error => alert(`${error.message}`))
 };
 
 const getUserData = (id) => {
-  return fetch(`http://localhost:3001/api/v1/customers/${id}`)
+  return fetch(`https://overlook-api-rachelsoae.vercel.app//api/v1/customers/${id}`)
   .then(response => checkForError(response))
   .catch(error => alert(`${error.message}`))
 };
 
 const bookRoom = (userID, selectedDate, roomNumber) => {
-  return fetch('http://localhost:3001/api/v1/bookings', {
+  return fetch('https://overlook-api-rachelsoae.vercel.app//api/v1/bookings', {
     method: 'POST',
     body: JSON.stringify({
       userID: userID, 
