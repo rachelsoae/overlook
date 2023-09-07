@@ -25,13 +25,9 @@ import {
 } from './scripts';
 
 const validateLogin = (customers, username, password) => {
-  if (!validateUsername(customers, username) && !validatePassword(password)) {
+  if (!validateUsername(customers, username) || !validatePassword(password)) {
     loginForm.reset();
-    alert('Oops! The username and password you have entered are invalid. Please try again.')
-  } else if (!validateUsername(customers, username)) {
-    alert('Oops! The username you have entered is invalid. Please try again.')
-  } else if (!validatePassword(password)) {
-    alert('Oops! The password you have entered is invalid. Please try again.')
+    alert('Oops! One or more of the values you have entered are invalid. Please try again.')
   } else {
     return true;
   };
