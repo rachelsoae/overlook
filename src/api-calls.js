@@ -32,9 +32,5 @@ const checkForError = (response) => {
 
 export {
   getData,
-  getAllCustomersData,
-  getBookingsData,
-  getRoomsData,
-  getUserData,
   bookRoom
 }
