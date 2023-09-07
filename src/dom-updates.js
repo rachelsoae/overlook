@@ -3,7 +3,8 @@ import {
   getTotalCost,
   searchByRoomType,
   validateUsername,
-  validatePassword
+  validatePassword,
+  sortByDate
 } from './bookings';
 
 import {
@@ -63,12 +64,11 @@ const setDashboard = (customer, allBookings, allRooms) => {
     yourBookings.innerHTML = `<p tabindex="0">${usersBookings}</p>`;
   } else {
     yourBookingsCostContainer.classList.remove('invisible');
-
     const spent = getTotalCost(allRooms, usersBookings);
     yourBookingsCost.innerText = `$${spent}`;
-
-    yourBookings.innerHTML = '';    
-    usersBookings.forEach(booking => {
+    const sorted = sortByDate(usersBookings)
+    yourBookings.innerHTML = '';  
+    sorted.forEach(booking => {
       const roomRef = allRooms.find(room => room.number === booking.roomNumber);
       let dashRoom = getRoomDetails(roomRef);
       yourBookings.innerHTML += createDashboardCard(dashRoom, booking);
