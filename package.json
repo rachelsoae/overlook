@@ -33,5 +33,8 @@
   "dependencies": {
     "flatpickr": "^4.6.13",
     "serve": "^14.2.1"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }
