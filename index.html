@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" class="html-login">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Ropa+Sans&family=Trirong:ital,wght@1,200&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
+      rel="stylesheet">
+  <title>The Overlook</title>
+</head>
+<body>
+  <main class="login-page">
+    <p class="welcome" tabindex="0">Welcome to</p>
+    <h1 tabindex="0" class="login-header">THE OVERLOOK</h1>
+    <form class="login">
+      <div class="input-container">
+        <span class="login-label-container">
+          <span class="material-icons-round icon-login">account_circle</span>
+          <label for="username" class="login-label">Username:</label>
+        </span>
+        <input type="text" class="login-input" id="username">
+      </div>
+      <div class="input-container">
+        <span class="login-label-container">
+          <span class="material-icons-round icon-login">lock</span>
+          <label for="password" class="login-label">Password</label>
+        </span>
+        <input type="password" class="login-input" id="password">
+      </div>
+      <button class="login-button">Login</button>
+    </form>
+  </main>
+  <header class="hidden">
+    <div class="header-content">
+      <h1 tabindex="0" class="logo">THE OVERLOOK</h1>
+      <form role="search" class="date-search">
+        <label for="date-picker" id="date-picker-label">Arrival Date</label>
+        <span class="date-picker-container">
+          <span class="material-icons-round icon-calendar">calendar_month</span>
+          <input type="text" class="date-picker" id="date-picker" placeholder="Select a Date...">
+          <button class="search">Book</button>
+      </span>
+      </form>
+    </div>
+  </header>
+  <main class="dashboard-view hidden">
+    <section class="bookings">
+      <div class="bookings-header">
+        <h2 tabindex="0">Your bookings...</h2>
+        <span class="bookings-cost">
+          <h3 tabindex="0">Total Spent:  </h3>
+          <span class="bookings-cost-insert" tabindex="0">
+            <!-- Total Cost of Bookings Populates Here -->
+          </span>
+        </span>
+      </div>
+      <section class="bookings-list">
+        <!-- Users Existing Bookings Populate Here -->
+      </section>
+    </section>
+  </main>
+  <main class="book-room-view hidden">
+    <section class="bookings">
+      <div class="search-header">
+        <h2 tabindex="0">Select a room to book...</h2>
+        <span class="filter-container">
+          <label for="filter" class="filter-label" tabindex="0">Filter:</label>
+          <select name="filter" id="filter">
+            <option value="any" selected>Any Room Type</option>
+            <option value="residential suite">Residential Suite</option>
+            <option value="suite">Suite</option>
+            <option value="junior suite">Junior Suite</option>
+            <option value="single room">Single Room</option>
+          </select>
+        </span>
+      </div>
+      <section class="bookings-searched">
+        <!-- Search Results Populate Here -->
+      </section>
+    </section>
+    <div role="dialog" class="background-overlay hidden">
+      <section class="confirmation" tabindex="0">
+        <!-- Confirmation Container Content Populates Here -->
+      </section>
+    </div>
+  </main>
+  
+  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
+  <script src="bundle.js"></script>
+  
+</body>
+</html>
