@@ -38,7 +38,7 @@
   },
   "homepage": "http://rachelsoae.github.io/overlook",
   "engines": {
-    "npm":"10.x",
+    "npm":"9.x",
     "node": "20.x"
   }
 }
