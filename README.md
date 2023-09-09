@@ -54,8 +54,8 @@ My favorite feature, though it's small, is that you can click on the overlay to 
 
 ### Plans for the Future:
 A few features and UI improvments I plan to implement:
-- [ ] Sort Dashboard bookings by date, so that most recent displays on top
+- [x] Sort Dashboard bookings by date, so that most recent displays on top
 - [ ] Separate Dashboard into "Past" and "Upcoming" bookings sections
 - [ ] Use visual overlay to display username/password validation messages
 - [ ] Add confirmation number to "Thank You" confirmation message
-- [ ] Reformat dates into "Month Day, Year"
+- [x] Reformat dates into "Month Day, Year"
