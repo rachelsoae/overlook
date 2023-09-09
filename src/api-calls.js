@@ -18,7 +18,7 @@ const bookRoom = (userID, selectedDate, roomNumber) => {
     }
   })
   .then(response => checkForError(response))
-  .then(() => getBookingsData())
+  .then((userID) => getData('customers', userID))
   .catch(error => alert(`${error.message}`))
 };
 
@@ -26,7 +26,8 @@ const checkForError = (response) => {
   if (response.ok) {
     return response.json();
   } else {
-    throw new Error(`${response.statusText}`);
+    console.log(response.status)
+    throw new Error('We\'re sorry, there\'s been an error.');
   };
 };
 
