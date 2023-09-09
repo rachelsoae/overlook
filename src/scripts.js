@@ -172,6 +172,7 @@ confirmationContainer.addEventListener('click', (event) => {
   if (event.target.classList.contains('book-now')) {
     Promise.resolve(bookRoom(user.id, selectedDate, event.target.closest('article').id))
     .then(data => {
+      console.log(data)
       bookings = data.bookings;
       availRooms = searchByDate(bookings, rooms, selectedDate)
     })
