@@ -6,6 +6,7 @@ const getData = (url1, url2 = null) => {
 }
 
 const bookRoom = (userID, selectedDate, roomNumber) => {
+  
   return fetch('https://overlook-api-rachelsoae.vercel.app/api/v1/bookings', {
     method: 'POST',
     body: JSON.stringify({
@@ -18,7 +19,7 @@ const bookRoom = (userID, selectedDate, roomNumber) => {
     }
   })
   .then(response => checkForError(response))
-  .then(() => getBookingsData())
+  .then(() => getData('bookings')) 
   .catch(error => alert(`${error.message}`))
 };
 
@@ -26,7 +27,8 @@ const checkForError = (response) => {
   if (response.ok) {
     return response.json();
   } else {
-    throw new Error(`${response.statusText}`);
+    console.log(response)
+    throw new Error('We\'re sorry, there\'s been an error.');
   };
 };
 
