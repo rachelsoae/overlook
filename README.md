@@ -1,4 +1,10 @@
 # Overlook
+## [Enter Site Here](https://rachelsoae.github.io/overlook/)
+#### To Log In:
+- Username: customer[*input any number between 1 and 50*], example `customer21`
+- Password: `overlook2021`
+
+![preview of booking feature](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjY5NWQ1Njc1YTQ4OGVlNTAyMzZjNzQxMzgwNWU4NjA4NzExMmE2NCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/XM2JngU2hKNuC5PqmW/giphy.gif)
 
 ### Abstract:
 [//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
@@ -7,33 +13,18 @@ This hotel booking site allows a user to log into a beautiful personalized dashb
 Search for available rooms by desired check-in date, and filter search results by the type of room you want. 
 Once a room is selected, you may confirm your booking or return to your previous search results to change the details of your stay.
 
-### Preview:
-![preview of booking feature](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjY5NWQ1Njc1YTQ4OGVlNTAyMzZjNzQxMzgwNWU4NjA4NzExMmE2NCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/XM2JngU2hKNuC5PqmW/giphy.gif)
-
 ### Contributors:
 [//]: <> (Who worked on this application? Link to their GitHubs.)
 [Rachel Soae Prather](https://github.com/rachelsoae)
 
 ### Installation Instructions:
 [//]: <> (What steps does a person have to take to get your app cloned down and running?)
-#### Local Server Set Up:
-1. Clone the [local server respository](https://github.com/turingschool-examples/overlook-api) down to your machine
-1. `cd` into the directory
-1. Run `npm install` or `npm i`
-1. Run `npm start`
-1. Keep the server running in a separate terminal tab each time you run the client. `Ctrl + C` to close the server.
-
-#### Client Set Up:
 1. Clone this respository down to your machine
 1. Run `npm install` or `npm i`
 1. Run `npm start`
 1. In your browser, navigate to [localHost:8080](http://localhost:8080/)
 1. Keep the client running in the terminal in order to view the site. `Ctrl + C` to close the client.
 1. To run unit tests, run `npm test` from the `overlook` directory 
-
-#### Log In:
-- Username: customer[*input any number between 1 and 50*], example `customer21`
-- Password: `overlook2021`
 
 ### Tech
 #### Build:
@@ -63,8 +54,8 @@ My favorite feature, though it's small, is that you can click on the overlay to 
 
 ### Plans for the Future:
 A few features and UI improvments I plan to implement:
-- Sort Dashboard bookings by date, so that most recent displays on top
-- Separate Dashboard into "Past" and "Upcoming" bookings sections
-- Use visual overlay to display username/password validation messages
-- Add confirmation number to "Thank You" confirmation message
-- Reformat dates into "Month Day, Year"
+- [ ] Sort Dashboard bookings by date, so that most recent displays on top
+- [ ] Separate Dashboard into "Past" and "Upcoming" bookings sections
+- [ ] Use visual overlay to display username/password validation messages
+- [ ] Add confirmation number to "Thank You" confirmation message
+- [ ] Reformat dates into "Month Day, Year"
